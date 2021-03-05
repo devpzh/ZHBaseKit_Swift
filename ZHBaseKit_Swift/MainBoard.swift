@@ -41,7 +41,14 @@ class MainBoard: ZHBaseTableViewBoard,ZHProtocol{
               
 //      Routes.routesURL(url: RoutesPath("SecondaryBoard"),params: ["name":"123456789","age":"18"],present: true);
         
-        self.MSG(TestInterface.checkVersion(msg:),onCheckVersion(msg:)).send();
+//        self.MSG(TestInterface.checkVersion(msg:),onCheckVersion(msg:)).send();
+        
+    
+        self.MSG(TestInterface.checkVersion(msg:)).send().response = { msg in
+            
+            print("status = \(msg.status!)");
+            
+        };
         
     }
     

@@ -10,10 +10,17 @@ import UIKit
 
 extension NSObject
 {
-    func MSG(_ executer:ZHMessageClosure?, _ handler:ZHMessageClosure?) -> ZHMessage {
+    func MSG(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?) -> ZHMessage {
         
-        let message = ZHMessage.init(executer, handler);
-        message.responder = self;
+        let message = ZHMessage.init(perform, response);
+        message.delegate = self;
+        return message;
+    }
+    
+    func MSG(_ perform:ZHMessageClosure?) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform);
+        message.delegate = self;
         return message;
     }
     
@@ -58,25 +65,32 @@ class ZHMessage: NSObject {
         
     }
     
-    weak var responder:AnyObject?
+    weak var delegate:AnyObject?
     
-    var executer:ZHMessageClosure?
+    var perform:ZHMessageClosure?
     
-    var handler:ZHMessageClosure?
+    var response:ZHMessageClosure?
     
-    init(_ executer:ZHMessageClosure?, _ handler:ZHMessageClosure?)
+    init(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?)
     {
-        self.executer = executer;
-        self.handler  = handler;
+        self.perform   = perform;
+        self.response  = response;
     }
     
-    func send()
+    init(_ perform:ZHMessageClosure?)
+    {
+        self.perform = perform;
+    }
+    
+    func send() ->Self
     {
         self.input.removeAll();
         self.onStatusChanged(.Sending);
+        
+        return self;
     }
     
-    func send(_ params:Dictionary<String,Any>)
+    func send(_ params:Dictionary<String,Any>) ->Self
     {
         self.input.removeAll();
         if !params.isEmpty {
@@ -84,6 +98,7 @@ class ZHMessage: NSObject {
         }
         
         self.onStatusChanged(.Sending);
+        return self;
     }
     
     func onStatusChanged(_ status:HttpRequestStatus)
@@ -94,17 +109,8 @@ class ZHMessage: NSObject {
         }
         
         self.status = status;
-        
-        if self.executer != nil
-        {
-            self.executer?(self);
-        }
-        
-        if self.handler != nil
-        {
-            self.handler?(self);
-        }
-        
+        self.perform?(self);
+        self.response?(self);
         
     }
     
