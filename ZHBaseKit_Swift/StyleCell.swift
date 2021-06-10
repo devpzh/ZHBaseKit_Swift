@@ -8,6 +8,19 @@
 
 import UIKit
 
+class StyleCellModel: ZHBaseCellModel {
+
+    var title:String?
+    var iconName:String?
+    
+    override init() {
+        super.init();
+        self.cellClassName = "StyleCell";
+        self.cellHeight    = 44.0;
+    }
+    
+}
+
 class StyleCell: ZHBaseCell {
     lazy var icon:UIImageView = {
         let icon = UIImageView.init();
@@ -62,11 +75,11 @@ class StyleCell: ZHBaseCell {
     }
     
     override func onTouch() {
-        if self.delegate != nil {
-            if self.delegate!.responds(to: #selector(ZHProtocol.onTouch(_:_:))) {
-                self.delegate!.onTouch(self, self.data!);
-            }
+        
+        if let delegate = self.delegate as? ZHProtocol {
+            delegate.onTouch(self, data: self.data!);
         }
+    
     }
     
 }

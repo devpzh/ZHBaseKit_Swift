@@ -8,6 +8,16 @@
 
 import UIKit
 
+class NormalCellModel: ZHBaseCellModel {
+
+    var title:String = "";
+    override init() {
+        super.init();
+        self.cellClassName = "NormalCell";
+        self.cellHeight    = 44.0;
+    }
+}
+
 class NormalCell: ZHBaseCell {
 
     lazy var titleLb: UILabel = {
@@ -56,15 +66,12 @@ class NormalCell: ZHBaseCell {
     
     override func onTouch() {
         
-        if self.delegate != nil {
-
-            if self.delegate!.responds(to: #selector(ZHProtocol.onTouch(_:_:)))
-            {
-                self.delegate?.onTouch(self, self.data!);
-
-            }
-
-         }
+  
+        if let delegate = self.delegate as? ZHProtocol {
+            delegate.onTouch(self, data: self.data!);
+        }
+        
+        
     }
     
 

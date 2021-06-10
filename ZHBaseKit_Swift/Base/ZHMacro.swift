@@ -14,9 +14,16 @@ let kScreenHeight        = UIScreen.main.bounds.height;
 let kNavigationBarHeight:CGFloat = isPhoneX() ? 88.0 : 64.0;
 let kStatusBarHeight:CGFloat     = isPhoneX() ? 44.0 : 20.0;
 let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0;
+let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0;
 
-let kMargin :CGFloat       = 10.0;
-let kPadding:CGFloat       = 15.0;
+let kMargin:CGFloat       = 10.0;
+let kSpace:CGFloat        = 16.0;
+let kPadding:CGFloat      = 8.0;
+let kMinScale:CGFloat     = 1.0/UIScreen.main.scale;
+
+func kRandomColor() -> UIColor {
+    return UIColor(red: CGFloat(arc4random()%256)/255.0, green: CGFloat(arc4random()%256)/255.0, blue: CGFloat(arc4random()%256)/255.0, alpha: 1.0);
+}
 
 func isPhoneX() -> Bool {
     
@@ -24,6 +31,7 @@ func isPhoneX() -> Bool {
     if #available(iOS 11.0, *){
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom;
         isPhoneX = (bottom ?? 0) > 0.0;
+        
     }
     return isPhoneX;
 
@@ -39,13 +47,19 @@ func kImageName(_ name:String) -> UIImage
 //MARK: Font
 func kFont(_ size:CGFloat) -> UIFont
 {
-    return UIFont.systemFont(ofSize: size);
+    return  UIFont.systemFont(ofSize: size);
 }
 
 func kBoldFont(_ size:CGFloat) -> UIFont
 {
-    return UIFont.boldSystemFont(ofSize: size);
+    return  UIFont.boldSystemFont(ofSize: size);
 }
+
+func kMediumFont(_ size:CGFloat) -> UIFont
+{
+    return  UIFont.systemFont(ofSize: size, weight:.medium)
+}
+
 
 //MARK: Color
 extension UIColor
@@ -60,7 +74,7 @@ extension UIColor
         return UIColor.init(red: r/255.0 , green: g/255.0, blue: b/255.0, alpha: alpha);
     }
     
-    public convenience init(hex: String) {
+    public convenience init(_ hex: String) {
        
        var red:   CGFloat = 0.0
        var green: CGFloat = 0.0
@@ -80,7 +94,7 @@ extension UIColor
            case 3:
                red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
                green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
-               blue  = CGFloat(hexValue & 0x00F)              / 15.0
+               blue  = CGFloat(hexValue  & 0x00F)              / 15.0
            case 4:
                red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
                green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
@@ -104,4 +118,60 @@ extension UIColor
        }
        self.init(red:red, green:green, blue:blue, alpha:alpha)
    }
+}
+
+
+// MARK: iphone size
+let kIphoneX_height   = 812
+let kIphoneX_width    = 375
+let kIphone6p_height  = 736
+let kIphone6p_width   = 414
+let kIphone11_width   = 414
+let kIphone11_height  = 896
+
+
+public func kScaleWidth(_ width : CGFloat) -> CGFloat {
+    return width * kScreenWidth / CGFloat(kIphone11_width)
+}
+public func kScaleHeight(_ height : CGFloat) -> CGFloat {
+    return height * kScreenHeight / CGFloat(kIphone11_height)
+}
+
+
+public func kScaleWidth(_ width : CGFloat, _ scaleWidth:CGFloat) -> CGFloat {
+    return width * kScreenWidth / scaleWidth;
+}
+public func kScaleHeight(_ height : CGFloat,_ scaleHeight:CGFloat ) -> CGFloat {
+    return height * kScreenHeight / scaleHeight;
+}
+
+
+// mark salce
+extension CGFloat {
+    var scalex: CGFloat{
+        get{
+            return CGFloat(kScaleWidth(self))
+        }
+    }
+    
+    var scaley:CGFloat{
+        get{
+            return CGFloat(kScaleHeight(self))
+        }
+    }
+    
+}
+
+extension FixedWidthInteger{
+    var scalex: CGFloat{
+        get{
+            return kScaleWidth(CGFloat(self))
+        }
+    }
+    
+    var scaley:CGFloat{
+        get{
+            return kScaleHeight(CGFloat(self))
+        }
+    }
 }

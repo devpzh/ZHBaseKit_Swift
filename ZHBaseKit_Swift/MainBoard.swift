@@ -15,7 +15,7 @@ let kMultiSectionCollectionView         = "CollectionView Multi  Section"
 let kNestedTableView       = "TableView Nested CollectionView"
 let kNestedCollectionView  = "CollectionView Nested TableView"
 
-class MainBoard: ZHBaseTableViewBoard,ZHProtocol{
+class MainBoard: ZHBaseTableViewBoard{
     
     override func onViewCreate() {
         super.onViewCreate();
@@ -38,11 +38,7 @@ class MainBoard: ZHBaseTableViewBoard,ZHProtocol{
     }
 
     override func onRightTouch() {
-              
-//      Routes.routesURL(url: RoutesPath("SecondaryBoard"),params: ["name":"123456789","age":"18"],present: true);
-        
-//        self.MSG(TestInterface.checkVersion(msg:),onCheckVersion(msg:)).send();
-        
+            
     
         self.MSG(TestInterface.checkVersion(msg:)).send().response = { msg in
             
@@ -115,7 +111,19 @@ class MainBoard: ZHBaseTableViewBoard,ZHProtocol{
         self.tableView.reloadData();
     }
     
-    func onTouch(_ cell: ZHBaseCell, _ data: ZHBaseCellModel) {
+
+    func onCheckVersion(msg:ZHMessage) {
+        
+        print("status = \(msg.status!)");
+        
+    }
+    
+    
+}
+
+extension MainBoard:ZHProtocol {
+
+    func onTouch(_ cell: ZHBaseCell, data: ZHBaseCellModel) {
         
         if data.isKind(of: StyleCellModel.self) {
             
@@ -152,17 +160,9 @@ class MainBoard: ZHBaseTableViewBoard,ZHProtocol{
         
     }
     
-    
-    func onCheckVersion(msg:ZHMessage) {
-        
-        print("status = \(msg.status!)");
-        
-    }
-    
-    
 }
 
-class TestInterface: ZHInterface{
+class TestInterface: ZHController{
     
     class func checkVersion(msg:ZHMessage)
     {
@@ -170,7 +170,7 @@ class TestInterface: ZHInterface{
         switch msg.status!
         {
             case .Sending:
-                ZHInterface.HTTP_GET(msg,"supplement/sys/version/check")
+                ZHController.HTTP_GET(msg,"supplement/sys/version/check")
                 Toast.presentLoadingTips("加载...")
 
             case .Succeed:
@@ -182,6 +182,8 @@ class TestInterface: ZHInterface{
                 break
 
             case .Failed:
+                Toast.dismiss();
+                Toast.presentTips("请求失败");
                 break;
         }
         

@@ -25,6 +25,7 @@ class ZHBaseTableView: ZHBaseCell {
 
     override func onLoad() {
         super.onLoad();
+        self.enabled = false;
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self);
         }
@@ -44,6 +45,9 @@ class ZHBaseTableView: ZHBaseCell {
         self.tableView.reloadData();
     }
    
+    func reloadData() {
+        self.tableView.reloadData();
+    }
     
     func onConfigurationTableHeaderView(_ headerViewModel:ZHBaseCellModel?){
       

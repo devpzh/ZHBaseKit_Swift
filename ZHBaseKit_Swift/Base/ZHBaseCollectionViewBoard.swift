@@ -13,6 +13,7 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
     //MARK: collectionView
     lazy var collectionView: ZHCollectionView = {
         let collectionView = ZHCollectionView.init(self);
+        collectionView.alwaysBounceVertical = true;
         self.view.addSubview(collectionView);
         return collectionView;
     }()
@@ -23,16 +24,24 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
     }()
     
     //MARK: sectionsArray
-    lazy var sectionsArray:[ZHCollectionViewSection] = {
-          return [ZHCollectionViewSection]();
-    }()
+    var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
+        didSet{
+            if sectionsArray != self.collectionView.sectionsArray {
+                self.collectionView.sectionsArray = sectionsArray;
+            }
+        }
+    }
     
     override func onViewCreate() {
         super.onViewCreate();
         
+        // refresh
+        self.onRefreshHeaderCreate();
+        self.onRefreshFooterCreate();
+        
         // add default section
         self.sectionsArray.append(self.section);
-        self.collectionView.sectionsArray = self.sectionsArray;
+       
     }
     
     override func onViewLayout() {
@@ -40,4 +49,12 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
         self.collectionView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
     
+    
+    func onRefreshHeaderCreate(){
+        
+    }
+    
+    func onRefreshFooterCreate(){
+        
+    }
 }

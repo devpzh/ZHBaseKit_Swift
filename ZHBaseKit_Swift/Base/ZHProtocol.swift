@@ -2,15 +2,11 @@
 //  ZHProtocol.swift
 //  ZHBaseKit_Swift
 //
-//  Created by pzh on 2020/5/19.
-//  Copyright © 2020 pzh. All rights reserved.
+//  Created by pzh on 2021/6/10.
+//  Copyright © 2021 pzh. All rights reserved.
 //
 
-import UIKit
-
-@objc protocol ZHProtocol : class
-{
-    @objc optional func onTouch(_ cell:ZHBaseCell, _ data:ZHBaseCellModel);
+protocol ZHProtocol {
+    
+    func onTouch(_ cell:ZHBaseCell, data:ZHBaseCellModel);
 }
-
-

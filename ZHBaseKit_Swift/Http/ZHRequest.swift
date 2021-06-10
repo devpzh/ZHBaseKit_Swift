@@ -10,20 +10,39 @@ import UIKit
 import Alamofire
 
 let API = ZHRequest.shared;
+let kEmptyResponseCodes:Set<Int> = [200,204,205];
 
 class ZHRequest: NSObject {
     
     static let shared:ZHRequest = ZHRequest();
     
-    func headers() -> HTTPHeaders
+    override init() {
+        super.init();
+        self.configuration();
+    }
+    
+    func configuration()  {
+        
+        AF.session.configuration.timeoutIntervalForRequest  = 30;
+        AF.session.configuration.timeoutIntervalForResource = 30;
+    
+    }
+    
+    func headers(_  msg:ZHMessage) -> HTTPHeaders
     {
-        let headers = HTTPHeaders();
+        var headers = AF.session.configuration.headers;
+        if !(msg.headers.isEmpty) {
+            
+            for e in msg.headers {
+                headers.update(name: e.key, value:e.value as? String ?? "");
+            }
+        }
         return headers;
     }
     
     func HTTP_GET(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.get, parameters:nil, headers:self.headers()).responseJSON{(response) in
+        AF.request(url, method:.get, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
             
             self.response(msg:msg, response:response);
         }
@@ -31,7 +50,7 @@ class ZHRequest: NSObject {
     
     func HTTP_POST(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.post, parameters:nil, headers:self.headers()).responseJSON{(response) in
+        AF.request(url, method:.post, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
             
             self.response(msg:msg, response:response);
         }
@@ -40,7 +59,7 @@ class ZHRequest: NSObject {
     
     func HTTP_DELETE(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.delete, parameters:nil, headers:self.headers()).responseJSON{(response) in
+        AF.request(url, method:.delete, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
             
             self.response(msg:msg, response:response);
         }
@@ -49,7 +68,7 @@ class ZHRequest: NSObject {
     
     func HTTP_PUT(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.put, parameters:nil, headers:self.headers()).responseJSON{(response) in
+        AF.request(url, method:.put, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
           
             self.response(msg:msg, response:response);
         }
@@ -72,6 +91,4 @@ class ZHRequest: NSObject {
             print("\(String(describing: response.error))")
         }
     }
-    
-    
 }

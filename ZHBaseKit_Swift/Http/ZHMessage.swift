@@ -10,20 +10,71 @@ import UIKit
 
 extension NSObject
 {
+    //MARK: Instance Func
     func MSG(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?) -> ZHMessage {
         
         let message = ZHMessage.init(perform, response);
-        message.delegate = self;
+        return message;
+    }
+    
+    func MSG(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?,_ headers:Dictionary<String,Any>? ) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform, response);
+        if  headers != nil {
+            message.headers  = headers!;
+        }
         return message;
     }
     
     func MSG(_ perform:ZHMessageClosure?) -> ZHMessage {
         
         let message = ZHMessage.init(perform);
-        message.delegate = self;
         return message;
     }
     
+    func MSG(_ perform:ZHMessageClosure?,_ headers:Dictionary<String,Any>?) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform);
+        if headers != nil {
+            message.headers  = headers!;
+        }
+        return message;
+    }
+    
+    
+    //MARK: Static Func
+    static func MSG(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform, response);
+        return message;
+    }
+    
+    
+    static func MSG(_ perform:ZHMessageClosure?, _ response:ZHMessageClosure?,_ headers:Dictionary<String,Any>? ) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform, response);
+        if  headers != nil {
+            message.headers  = headers!;
+        }
+        return message;
+    }
+    
+    
+    static func MSG(_ perform:ZHMessageClosure?) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform);
+        return message;
+    }
+    
+    
+    static func MSG(_ perform:ZHMessageClosure?,_ headers:Dictionary<String,Any>?) -> ZHMessage {
+        
+        let message = ZHMessage.init(perform);
+        if headers != nil {
+            message.headers  = headers!;
+        }
+        return message;
+    }
 }
 
 let kMsgOutPutKey = "kMsgOutPutKey"
@@ -53,10 +104,16 @@ class ZHMessage: NSObject {
         return output;
     }()
     
+    var headers:Dictionary<String,Any> =
+    {
+        let output = Dictionary<String,Any>();
+        return output;
+    }()
     
     //MARK: 请求状态
     var status:HttpRequestStatus?
     
+    //MARK: response
     var responseData:Dictionary<String,Any>?
     {
         didSet {
@@ -64,8 +121,6 @@ class ZHMessage: NSObject {
         }
         
     }
-    
-    weak var delegate:AnyObject?
     
     var perform:ZHMessageClosure?
     
@@ -82,32 +137,30 @@ class ZHMessage: NSObject {
         self.perform = perform;
     }
     
+    @discardableResult
     func send() ->Self
     {
         self.input.removeAll();
         self.onStatusChanged(.Sending);
-        
         return self;
     }
     
-    func send(_ params:Dictionary<String,Any>) ->Self
+    @discardableResult
+    func send(_ params:Dictionary<String,Any>)-> Self
     {
         self.input.removeAll();
         if !params.isEmpty {
             self.input = params;
         }
-        
         self.onStatusChanged(.Sending);
-        return self;
+        return self
     }
     
     func onStatusChanged(_ status:HttpRequestStatus)
     {
-        
         if self.status == status {
             return;
         }
-        
         self.status = status;
         self.perform?(self);
         self.response?(self);

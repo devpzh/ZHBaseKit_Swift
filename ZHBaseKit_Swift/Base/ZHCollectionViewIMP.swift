@@ -104,6 +104,12 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
             reusableView = UICollectionView.collectionView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath, cellClassName:sectionMdl.headerModel!.cellClassName)
             let contentView:ZHBaseCell = reusableView.viewWithTag(kUICollectionReusableViewContentViewTag) as! ZHBaseCell;
             contentView.data = sectionMdl.headerModel!;
+            contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
+                UIView.setAnimationsEnabled(false)
+                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
+                UIView.setAnimationsEnabled(true)
+            }
+            
         }
         
         if kind == UICollectionView.elementKindSectionFooter && sectionMdl.footerModel != nil {
@@ -111,6 +117,11 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
             reusableView = UICollectionView.collectionView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath, cellClassName:sectionMdl.footerModel!.cellClassName);
             let contentView:ZHBaseCell = reusableView.viewWithTag(kUICollectionReusableViewContentViewTag) as! ZHBaseCell;
             contentView.data = sectionMdl.footerModel!;
+            contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
+                UIView.setAnimationsEnabled(false)
+                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
+                UIView.setAnimationsEnabled(true)
+            }
             
         }
         
@@ -118,25 +129,59 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
         let cell =  UICollectionView.collectionView(collectionView: collectionView, indexPath: indexPath, cellClassName: model.cellClassName);
         let contentView:ZHBaseCell = cell.contentView.viewWithTag(kCollectionViewCellContentViewTag) as! ZHBaseCell;
         contentView.data = model;
-        contentView.reloadRowsClosure = {[weak collectionView] in
+        contentView.reloadRowsClosure = {[weak collectionView] (animation) in
             UIView.setAnimationsEnabled(false)
             collectionView?.reloadItems(at: [indexPath]);
             UIView.setAnimationsEnabled(true)
         }
-        contentView.reloadSectionsClosure = { [weak collectionView] in
+        contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
             UIView.setAnimationsEnabled(false)
             collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
             UIView.setAnimationsEnabled(true)
         }
         return cell;
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        
+        guard let zh_collectionView = collectionView as? ZHCollectionView else { return false }
+        return zh_collectionView.allowMoveItems;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        if sourceIndexPath.section == destinationIndexPath.section {
+            
+            let section = self.sectionsArray[sourceIndexPath.section];
+            let model = section.rowsArray[sourceIndexPath.row];
+            section.rowsArray.remove(at: sourceIndexPath.row);
+            section.rowsArray.insert(model, at: destinationIndexPath.row);
+            
+        }else
+        {
+            let section   = self.sectionsArray[sourceIndexPath.section];
+            let to_sectiion = self.sectionsArray[destinationIndexPath.section];
+            
+            let model = section.rowsArray[sourceIndexPath.row];
+            let to_model = section.rowsArray[destinationIndexPath.row];
+            
+            section.rowsArray.remove(at: sourceIndexPath.row);
+            section.rowsArray.insert(to_model, at: sourceIndexPath.row);
+            
+            to_sectiion.rowsArray.remove(at: destinationIndexPath.row);
+            to_sectiion.rowsArray.insert(model, at: destinationIndexPath.row);
+            
+        }
+        
+        
+    }
+    
 }
 
 

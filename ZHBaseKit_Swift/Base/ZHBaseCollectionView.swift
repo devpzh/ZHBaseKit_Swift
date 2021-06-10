@@ -33,6 +33,7 @@ class ZHBaseCollectionView: ZHBaseCell{
     
     override func onLoad(){
         super.onLoad();
+        self.enabled = false;
         self.collectionView.snp.makeConstraints { (make) in
             make.edges.equalTo(self);
         }
@@ -53,5 +54,9 @@ class ZHBaseCollectionView: ZHBaseCell{
         self.collectionView.sectionsArray   = model.sectionsArray;
         self.collectionView.reloadData();
        
+    }
+    
+    func reloadData(){
+        self.collectionView.reloadData();
     }
 }

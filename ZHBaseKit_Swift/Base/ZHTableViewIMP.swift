@@ -72,8 +72,17 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         }
         
         let header = UITableView.tableView(tableView: tableView, headerFooterClassName: headerModel!.cellClassName);
-        let headerContentView : ZHBaseCell = header.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as! ZHBaseCell;
+        
+        guard let headerContentView = header.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as? ZHBaseCell else
+        { return nil }
         headerContentView.data = headerModel;
+        headerContentView.reloadSectionsClosure = {[weak tableView] (animation) in
+            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true;
+            UIView.setAnimationsEnabled(enable)
+            tableView?.reloadSections(IndexSet.init(integer: section), with: (animation != nil) ? animation! : UITableView.RowAnimation.none);
+            UIView.setAnimationsEnabled(true)
+        }
+        
         return header;
     }
     
@@ -84,10 +93,18 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         {
             return nil;
         }
-        
         let footer = UITableView.tableView(tableView: tableView, headerFooterClassName: footerModel!.cellClassName);
-        let footerContentView : ZHBaseCell = footer.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as! ZHBaseCell;
+        guard let footerContentView = footer.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as? ZHBaseCell else
+        { return nil }
         footerContentView.data = footerModel;
+        footerContentView.reloadSectionsClosure = {[weak tableView] (animation)in
+            
+            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true;
+            UIView.setAnimationsEnabled(enable)
+            tableView?.reloadSections(IndexSet.init(integer: section), with:(animation != nil) ? animation! : UITableView.RowAnimation.none);
+            UIView.setAnimationsEnabled(true)
+        }
+        
         return footer;
     }
     
@@ -108,14 +125,18 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         let cell  = UITableView.tableView(tableView: tableView, indexPath: indexPath, cellClassName: model.cellClassName);
         let contentView:ZHBaseCell = cell.contentView.viewWithTag(kTableViewCellContentViewTag) as! ZHBaseCell;
         contentView.data = model;
-        contentView.reloadRowsClosure = { [weak tableView] in
-            UIView.setAnimationsEnabled(false)
-            tableView?.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none);
+        contentView.reloadRowsClosure = { [weak tableView] (animation) in
+
+            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true;
+            UIView.setAnimationsEnabled(enable)
+            tableView?.reloadRows(at: [indexPath], with:(animation != nil) ? animation! : UITableView.RowAnimation.none);
             UIView.setAnimationsEnabled(true)
         };
-        contentView.reloadSectionsClosure = {[weak tableView] in
-            UIView.setAnimationsEnabled(false)
-            tableView?.reloadSections(IndexSet.init(integer: indexPath.section), with: UITableView.RowAnimation.none);
+        contentView.reloadSectionsClosure = {[weak tableView] (animation) in
+            
+            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true;
+            UIView.setAnimationsEnabled(enable)
+            tableView?.reloadSections(IndexSet.init(integer: indexPath.section), with: (animation != nil) ? animation! : UITableView.RowAnimation.none);
             UIView.setAnimationsEnabled(true)
         }
         return cell;
@@ -132,10 +153,10 @@ extension UITableView
         let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + cellClassName)!
         let clazzType = clazz as? ZHBaseCell.Type;
         var cell = tableView.dequeueReusableCell(withIdentifier: cellClassName);
-        
         if cell == nil
         {
             cell = UITableViewCell.init(style: .value1, reuseIdentifier: cellClassName);
+            cell?.selectionStyle = .none;
             cell?.contentView.backgroundColor = UIColor.clear;
             let contentView = clazzType?.init();
             contentView?.tag = kTableViewCellContentViewTag;
@@ -156,7 +177,6 @@ extension UITableView
         let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + headerFooterClassName)!
         let clazzType = clazz as? ZHBaseCell.Type;
         var headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerFooterClassName);
-        
         if headerFooterView == nil
         {
             headerFooterView = UITableViewHeaderFooterView.init(reuseIdentifier:headerFooterClassName);
@@ -174,7 +194,6 @@ extension UITableView
             });
             
         }
-        
         return headerFooterView!;
     }
    

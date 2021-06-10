@@ -10,6 +10,8 @@ import UIKit
 
 class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
 
+    var isStatusBarHidden = false;
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.interactivePopGestureRecognizer?.delegate = self;
@@ -33,11 +35,13 @@ class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
      
         if (self.children.count > 0)
-        {   // 隐藏tabbar
+        {
+            // 隐藏tabbar
             viewController.hidesBottomBarWhenPushed = true;
         }
         super.pushViewController(viewController, animated: animated)
     }
+    
     
     class func addChildControllers(_ viewController:UIViewController)->ZHNavigationBoard {
         
@@ -46,4 +50,9 @@ class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
         
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return self.isStatusBarHidden;
+    }
 }
+
+

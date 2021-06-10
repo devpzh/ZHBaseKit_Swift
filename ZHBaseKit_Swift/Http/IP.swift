@@ -8,33 +8,34 @@
 
 import UIKit
 
-let IP = IPAgent.shared;
 
 enum IPServerType {
     case IPServerTypeTest           //< 测试服
     case IPServerTypeDistribution   //< 正式服
 }
 
-class IPAgent: NSObject {
+class IP: NSObject {
 
-    static let shared = { ()->IPAgent in
-        let manager = IPAgent();
+    static let shared = { ()->IP in
+        let manager = IP();
         manager.type = .IPServerTypeTest;
         return manager;
     }()
     
     var domains = "";
-    
+      
     var type:IPServerType = .IPServerTypeTest
     {
         didSet
         {
             switch type{
             case .IPServerTypeTest:
-                self.domains = "http://test.92uni.com/uni/";
-            
+                self.domains = "http://dev.kscore.com";
+                break;
+
             case .IPServerTypeDistribution:
-                self.domains = "https://www.92uni.com/uni/";
+                self.domains = "https://api.kscore.com";
+                break;
             }
         
         }

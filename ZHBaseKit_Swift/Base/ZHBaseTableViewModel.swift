@@ -33,7 +33,7 @@ class ZHBaseTableViewModel: ZHBaseCellModel {
     var showsHorizontalScrollIndicator = false;
     
     //MARK: showsVerticalScrollIndicator
-    var showsVerticalScrollIndicator = true;
+    var showsVerticalScrollIndicator = false;
     
     
     override init() {

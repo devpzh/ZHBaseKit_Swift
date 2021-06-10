@@ -9,7 +9,7 @@
 import UIKit
 
 class ZHBaseCellModel: NSObject {
-
+    
     var cellClassName : String  = "";
     var cellWidth     : CGFloat = 0.0;
     var cellHeight    : CGFloat = 0.0;

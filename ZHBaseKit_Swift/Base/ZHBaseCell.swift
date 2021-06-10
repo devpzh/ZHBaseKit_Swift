@@ -8,8 +8,8 @@
 
 import UIKit
 
-typealias ZHTableViewCellReloadRowsClosure     = ()->();
-typealias ZHTableViewCellReloadSectionsClosure = ()->();
+typealias ZHTableViewCellReloadRowsClosure     = (_ animation:UITableView.RowAnimation?)->();
+typealias ZHTableViewCellReloadSectionsClosure = (_ animation:UITableView.RowAnimation?)->();
 
 class ZHBaseCell: UIView {
   
@@ -54,6 +54,7 @@ class ZHBaseCell: UIView {
     func onLoad()
     {
         self.enabled = true;
+     
     }
     
     func dataDidChange()
@@ -61,7 +62,7 @@ class ZHBaseCell: UIView {
        
     }
     
-    func addGesture()
+   private func addGesture()
     {
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(onTouch))
         self.addGestureRecognizer(gesture);
@@ -74,6 +75,18 @@ class ZHBaseCell: UIView {
         
     @objc func onTouch()
     {
+        
+    }
+    
+    override func layoutSubviews(){
+        
+        if self.frame.size.width > 0 || self.frame.size.height > 0
+        {
+            self.layoutDidFinish()
+        }
+    }
+    
+    func layoutDidFinish() {
         
     }
     

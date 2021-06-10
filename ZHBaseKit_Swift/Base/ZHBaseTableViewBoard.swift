@@ -23,17 +23,25 @@ class ZHBaseTableViewBoard: ZHBaseBoard {
     }()
     
     //MARK: sectionsArray
-    lazy var sectionsArray:[ZHTableViewSection] = {
-       return [ZHTableViewSection]();
-    }()
-    
+    var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
+        didSet{
+            if sectionsArray != self.tableView.sectionsArray {
+                self.tableView.sectionsArray = sectionsArray;
+            }
+        }
+    }
     
     //MARK: Func
     override func onViewCreate() {
         super.onViewCreate();
+        
+        // refresh
+        self.onRefreshHeaderCreate();
+        self.onRefreshFooterCreate();
+        
         // add default section
         self.sectionsArray.append(self.section);
-        self.tableView.sectionsArray = self.sectionsArray;
+        
     }
     
     override func onViewLayout() {
@@ -41,4 +49,12 @@ class ZHBaseTableViewBoard: ZHBaseBoard {
         self.tableView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
 
+    func onRefreshHeaderCreate(){
+        
+    }
+    
+    func onRefreshFooterCreate(){
+        
+    }
+    
 }

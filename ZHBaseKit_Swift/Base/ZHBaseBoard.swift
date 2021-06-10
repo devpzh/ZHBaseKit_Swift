@@ -9,10 +9,14 @@
 import UIKit
 import SnapKit
 
+enum ZHStatusBarStyle {
+    case lightContent
+    case darkContent
+}
+
 @objcMembers
 class ZHBaseBoard: UIViewController {
 
-    
     //MARK: Properties
     lazy var naviBar: UIView = {
         let naviBar = UIView.init();
@@ -48,11 +52,35 @@ class ZHBaseBoard: UIViewController {
     var leftItem   = UIView.init();
     var rightItem  = UIView.init();
     
+    var isStatusBarHidden = false {
+        
+        didSet {
+            
+            guard let navi = self.navigationController as? ZHNavigationBoard else { return }
+            navi.isStatusBarHidden = isStatusBarHidden;
+            self.setNeedsStatusBarAppearanceUpdate();
+            
+        }
+    };
+    
+    var isHomeIndicatorAutoHidden = false {
+        
+        didSet {
+            if #available(iOS 11.0, *) {
+                self.setNeedsUpdateOfHomeIndicatorAutoHidden()
+            } else {
+                
+            };
+        }
+    }
+    
+    var statusBarStyle:ZHStatusBarStyle = .darkContent;
 
     //MARK: Func
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.onViewWillAppear();
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,16 +101,20 @@ class ZHBaseBoard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.onLoad();
+        self.resetStatusBarStyle();
         self.onViewCreate();
         self.onViewLayout();
     }
     
     func onViewWillAppear()
     {
+    
     }
     
     func onViewDidAppear()
     {
+        self.resetStatusBarStyle();
     }
     
     func onViewWillDisappear()
@@ -92,7 +124,10 @@ class ZHBaseBoard: UIViewController {
     func onViewDidDisappear()
     {
     }
-
+    
+    func onLoad(){
+    }
+    
     func onViewCreate()
     {
         self.navigationController?.navigationBar.isHidden = true;  //< 隐藏系统导航栏
@@ -125,12 +160,28 @@ class ZHBaseBoard: UIViewController {
     {
     }
     
+    
+    func resetStatusBarStyle() {
+        
+        if statusBarStyle == .lightContent
+        {
+            self.navigationController?.navigationBar.barStyle  = .black;
+            return;
+        }
+        self.navigationController?.navigationBar.barStyle  = .default;
+        
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return self.isHomeIndicatorAutoHidden;
+    }
+    
     //MARK: 自定义导航栏
     func onNavigatonBarCreate()
     {
         self.view.addSubview(self.naviBar);
         self.naviBar.snp.makeConstraints {(make) in
-            make.top.left.right.equalTo(self.view);
+            make.top.leading.trailing.equalTo(self.view);
             make.height.equalTo(kNavigationBarHeight);
         };
     }
@@ -141,7 +192,7 @@ class ZHBaseBoard: UIViewController {
         self.naviBar.addSubview(self.naviBarContainer);
         self.naviBarContainer.snp.makeConstraints { (make) in
             make.top.equalTo(self.naviBar).offset(kStatusBarHeight);
-            make.left.bottom.right.equalTo(self.naviBar);
+            make.leading.bottom.trailing.equalTo(self.naviBar);
         };
     }
     
@@ -151,7 +202,7 @@ class ZHBaseBoard: UIViewController {
         self.naviBarContainer.addSubview(self.naviBarSeparator);
         self.naviBarSeparator.snp.makeConstraints { (make) in
             make.height.equalTo(0.5);
-            make.left.bottom.right.equalTo(self.naviBarContainer);
+            make.leading.bottom.trailing.equalTo(self.naviBarContainer);
         };
     }
     
@@ -241,6 +292,9 @@ class ZHBaseBoard: UIViewController {
         self.naviBarContainer.addSubview(customView);
         customView.snp.makeConstraints { (make) in
             make.center.equalTo(self.naviBarContainer);
+            make.top.equalToSuperview()
+            make.bottom.equalTo(-1)
+            make.width.equalTo(kScreenWidth - 120)
         };
         self.titleItem = customView;
         
@@ -257,7 +311,7 @@ class ZHBaseBoard: UIViewController {
         label.textAlignment = NSTextAlignment.left;
         self.naviBarContainer.addSubview(label);
         label.snp.makeConstraints { (make) in
-            make.left.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
+            make.leading.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
             make.centerY.equalTo(self.naviBarContainer);
         };
         self.leftItem = label;
@@ -273,7 +327,7 @@ class ZHBaseBoard: UIViewController {
         imageView.contentMode = UIView.ContentMode.center;
         self.naviBarContainer.addSubview(imageView);
         imageView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
+            make.leading.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
             make.centerY.equalTo(self.naviBarContainer);
             make.size.equalTo(image.size);
         }
@@ -290,7 +344,7 @@ class ZHBaseBoard: UIViewController {
         self.leftItem.removeFromSuperview();
         self.naviBarContainer.addSubview(customView);
         customView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
+            make.leading.equalTo(self.naviBarContainer).offset(ZHBaseKit.shared.leftItemMarginLeft);
             make.centerY.equalTo(self.naviBarContainer);
         };
         
@@ -311,7 +365,7 @@ class ZHBaseBoard: UIViewController {
         label.textAlignment = NSTextAlignment.right;
         self.naviBarContainer.addSubview(label);
         label.snp.makeConstraints { (make) in
-            make.right.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
+            make.trailing.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
             make.centerY.equalTo(self.naviBarContainer);
         };
         self.rightItem = label;
@@ -328,7 +382,7 @@ class ZHBaseBoard: UIViewController {
         imageView.contentMode = UIView.ContentMode.center;
         self.naviBarContainer.addSubview(imageView);
         imageView.snp.makeConstraints { (make) in
-            make.right.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
+            make.trailing.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
             make.centerY.equalTo(self.naviBarContainer);
             make.size.equalTo(image.size);
         }
@@ -345,12 +399,13 @@ class ZHBaseBoard: UIViewController {
         self.rightItem.removeFromSuperview();
         self.naviBarContainer.addSubview(customView);
         customView.snp.makeConstraints { (make) in
-            make.right.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
+            make.trailing.equalTo(self.naviBarContainer).offset(-ZHBaseKit.shared.rightItemMarginRight);
             make.centerY.equalTo(self.naviBarContainer);
+            make.size.equalTo(customView.bounds.size)
         };
         
         self.rightItem = customView;
-        self.addRightItemButton();
+        //self.addRightItemButton();
         
     }
     
@@ -359,8 +414,8 @@ class ZHBaseBoard: UIViewController {
     {
         self.naviBarContainer.addSubview(self.leftItemBtn);
         self.leftItemBtn.snp.makeConstraints { (make) in
-            make.top.left.bottom.equalTo(self.naviBarContainer);
-            make.right.equalTo(self.leftItem.snp.right).offset(kMargin);
+            make.top.leading.bottom.equalTo(self.naviBarContainer);
+            make.trailing.equalTo(self.leftItem.snp.trailing).offset(kMargin);
         }
     }
     
@@ -369,9 +424,12 @@ class ZHBaseBoard: UIViewController {
     {
         self.naviBarContainer.addSubview(self.rightItemBtn);
         self.rightItemBtn.snp.makeConstraints { (make) in
-            make.top.right.bottom.equalTo(self.naviBarContainer);
-            make.left.equalTo(self.rightItem.snp.left).offset(-kMargin);
+            make.top.trailing.bottom.equalTo(self.naviBarContainer);
+            make.leading.equalTo(self.rightItem.snp.leading).offset(-kMargin);
         }
     }
+    
+    
+   
     
 }

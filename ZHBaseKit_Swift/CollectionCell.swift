@@ -8,6 +8,18 @@
 
 import UIKit
 
+class CollectionCellModel: ZHBaseCellModel {
+    
+    var title:String = "";
+    
+    override init() {
+        super.init();
+        self.cellClassName = "CollectionCell";
+        self.cellWidth     = (kScreenWidth-30)/2;
+        self.cellHeight    = self.cellWidth;
+    }
+}
+
 class CollectionCell: ZHBaseCell {
 
     lazy var titleLb: UILabel = {
@@ -41,7 +53,7 @@ class CollectionCell: ZHBaseCell {
         let model = self.data as! CollectionCellModel;
         model.title = "Touch reload";
         if self.reloadRowsClosure != nil {
-            self.reloadRowsClosure!();
+            self.reloadRowsClosure!(.none);
         }
     }
 }

@@ -8,45 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		3015BC5C25512788008104EA /* StyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015BC5B25512788008104EA /* StyleCell.swift */; };
-		3015BC5E255129AB008104EA /* StyleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015BC5D255129AB008104EA /* StyleCellModel.swift */; };
 		3015BC60255136D6008104EA /* PagingBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015BC5F255136D6008104EA /* PagingBoard.swift */; };
 		3015BC62255140B6008104EA /* PagingItemBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015BC61255140B6008104EA /* PagingItemBoard.swift */; };
-		3024B1F424B3113500185EC9 /* ZHTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024B1F324B3113500185EC9 /* ZHTableView.swift */; };
-		3024B1F624B31CB200185EC9 /* ZHBaseTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024B1F524B31CB200185EC9 /* ZHBaseTableViewBoard.swift */; };
 		3024B1F824B3224F00185EC9 /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024B1F724B3224F00185EC9 /* NormalCell.swift */; };
-		3024B1FA24B323D000185EC9 /* NormalCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024B1F924B323D000185EC9 /* NormalCellModel.swift */; };
-		303DE7E124C54E1300EC0CDF /* ZHBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DE7E024C54E1300EC0CDF /* ZHBaseTableView.swift */; };
-		303DE7E324C5647200EC0CDF /* ZHBaseTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DE7E224C5647200EC0CDF /* ZHBaseTableViewModel.swift */; };
 		303DE7E524C5785F00EC0CDF /* NestedCollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DE7E424C5785F00EC0CDF /* NestedCollectionViewBoard.swift */; };
 		304051E7255E32F300F2E347 /* TabbarBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304051E6255E32F300F2E347 /* TabbarBoard.swift */; };
 		30432D0E24B6EB060083C49E /* TableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30432D0D24B6EB060083C49E /* TableViewBoard.swift */; };
-		30432D1024B6FA3B0083C49E /* ZHCollectionViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30432D0F24B6FA3B0083C49E /* ZHCollectionViewSection.swift */; };
-		30432D1224B7007F0083C49E /* ZHCollectionViewIMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30432D1124B7007F0083C49E /* ZHCollectionViewIMP.swift */; };
-		305F772A2581CC3D006B5469 /* ZHInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305F77292581CC3D006B5469 /* ZHInterface.swift */; };
 		305F77332581F806006B5469 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305F77322581F806006B5469 /* Toast.swift */; };
+		306A60C32671AA74005B47F5 /* ZHBaseTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B12671AA74005B47F5 /* ZHBaseTableViewModel.swift */; };
+		306A60C42671AA74005B47F5 /* ZHBaseTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B22671AA74005B47F5 /* ZHBaseTableViewBoard.swift */; };
+		306A60C52671AA74005B47F5 /* ZHTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B32671AA74005B47F5 /* ZHTableViewSection.swift */; };
+		306A60C62671AA74005B47F5 /* ZHNavigationBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B42671AA74005B47F5 /* ZHNavigationBoard.swift */; };
+		306A60C72671AA74005B47F5 /* ZHCollectionViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B52671AA74005B47F5 /* ZHCollectionViewSection.swift */; };
+		306A60C82671AA74005B47F5 /* ZHBaseCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B62671AA74005B47F5 /* ZHBaseCellModel.swift */; };
+		306A60C92671AA74005B47F5 /* ZHCollectionViewIMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B72671AA74005B47F5 /* ZHCollectionViewIMP.swift */; };
+		306A60CA2671AA74005B47F5 /* ZHBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B82671AA74005B47F5 /* ZHBaseCell.swift */; };
+		306A60CB2671AA74005B47F5 /* ZHBaseBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60B92671AA74005B47F5 /* ZHBaseBoard.swift */; };
+		306A60CC2671AA74005B47F5 /* ZHBaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BA2671AA74005B47F5 /* ZHBaseCollectionView.swift */; };
+		306A60CD2671AA74005B47F5 /* ZHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BB2671AA74005B47F5 /* ZHCollectionView.swift */; };
+		306A60CE2671AA74005B47F5 /* ZHTableViewIMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BC2671AA74005B47F5 /* ZHTableViewIMP.swift */; };
+		306A60CF2671AA74005B47F5 /* ZHTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BD2671AA74005B47F5 /* ZHTableView.swift */; };
+		306A60D02671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BE2671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift */; };
+		306A60D12671AA74005B47F5 /* ZHBaseCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60BF2671AA74005B47F5 /* ZHBaseCollectionViewModel.swift */; };
+		306A60D22671AA74005B47F5 /* ZHMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60C02671AA74005B47F5 /* ZHMacro.swift */; };
+		306A60D32671AA74005B47F5 /* ZHBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60C12671AA74005B47F5 /* ZHBaseTableView.swift */; };
+		306A60D42671AA74005B47F5 /* ZHBaseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60C22671AA74005B47F5 /* ZHBaseKit.swift */; };
+		306A60F82671AD2B005B47F5 /* ZHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60F42671AD2B005B47F5 /* ZHMessage.swift */; };
+		306A60F92671AD2B005B47F5 /* ZHController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60F52671AD2B005B47F5 /* ZHController.swift */; };
+		306A60FA2671AD2B005B47F5 /* IP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60F62671AD2B005B47F5 /* IP.swift */; };
+		306A60FB2671AD2B005B47F5 /* ZHRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A60F72671AD2B005B47F5 /* ZHRequest.swift */; };
+		306A61062671B04C005B47F5 /* ZHProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A61052671B04C005B47F5 /* ZHProtocol.swift */; };
 		3076A4F52577347B00765E03 /* MineBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076A4F42577347B00765E03 /* MineBoard.swift */; };
-		3077990324C177CA00371B8D /* ZHBaseCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077990224C177CA00371B8D /* ZHBaseCollectionViewModel.swift */; };
 		3077990524C1981A00371B8D /* NestedTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077990424C1981A00371B8D /* NestedTableViewBoard.swift */; };
 		307915EE257DD74A0083850F /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915ED257DD74A0083850F /* Routes.swift */; };
 		307915F6257DE4930083850F /* RoutesScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915F5257DE4930083850F /* RoutesScheme.swift */; };
-		30791607257F1F880083850F /* IPAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30791606257F1F880083850F /* IPAgent.swift */; };
-		3079160F257F253E0083850F /* ZHRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079160E257F253E0083850F /* ZHRequest.swift */; };
-		30791665257F789D0083850F /* ZHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30791664257F789D0083850F /* ZHMessage.swift */; };
-		308267A2247394B3001AAEF1 /* ZHProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308267A1247394B3001AAEF1 /* ZHProtocol.swift */; };
-		309984D124BEE840003DFAA8 /* ZHCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D024BEE840003DFAA8 /* ZHCollectionView.swift */; };
-		309984D324BEF029003DFAA8 /* ZHBaseCollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D224BEF029003DFAA8 /* ZHBaseCollectionViewBoard.swift */; };
 		309984D524BEF248003DFAA8 /* CollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D424BEF248003DFAA8 /* CollectionViewBoard.swift */; };
 		309984D724BF12E5003DFAA8 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D624BF12E5003DFAA8 /* CollectionCell.swift */; };
-		309984D924BF134D003DFAA8 /* CollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D824BF134D003DFAA8 /* CollectionCellModel.swift */; };
 		309984DB24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984DA24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift */; };
 		309984DD24BFF00D003DFAA8 /* MultiSectionCollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984DC24BFF00D003DFAA8 /* MultiSectionCollectionViewBoard.swift */; };
-		309984DF24BFFA9B003DFAA8 /* ZHBaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984DE24BFFA9B003DFAA8 /* ZHBaseCollectionView.swift */; };
-		30A8CFC124A2FC9700186816 /* ZHBaseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8CFC024A2FC9700186816 /* ZHBaseKit.swift */; };
-		30A8CFC324A3083E00186816 /* ZHBaseBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A8CFC224A3083E00186816 /* ZHBaseBoard.swift */; };
-		30CBBDE7246E796A005C2857 /* ZHBaseCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBBDE6246E796A005C2857 /* ZHBaseCellModel.swift */; };
-		30CBBDE9246E7B2C005C2857 /* ZHMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBBDE8246E7B2C005C2857 /* ZHMacro.swift */; };
 		30CFB23124A9CD9500E0864B /* SecondaryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFB23024A9CD9500E0864B /* SecondaryBoard.swift */; };
-		30CFB23324A9D78A00E0864B /* ZHNavigationBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFB23224A9D78A00E0864B /* ZHNavigationBoard.swift */; };
 		30DFFE3824403CE8001B4803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DFFE3724403CE8001B4803 /* AppDelegate.swift */; };
 		30DFFE3A24403CE8001B4803 /* MainBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DFFE3924403CE8001B4803 /* MainBoard.swift */; };
 		30DFFE3D24403CE8001B4803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DFFE3B24403CE8001B4803 /* Main.storyboard */; };
@@ -54,9 +54,6 @@
 		30DFFE4224403CE9001B4803 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DFFE4024403CE9001B4803 /* LaunchScreen.storyboard */; };
 		30DFFE4D24403CE9001B4803 /* ZHBaseKit_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DFFE4C24403CE9001B4803 /* ZHBaseKit_SwiftTests.swift */; };
 		30DFFE5824403CE9001B4803 /* ZHBaseKit_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DFFE5724403CE9001B4803 /* ZHBaseKit_SwiftUITests.swift */; };
-		30DFFE6724403EF2001B4803 /* ZHBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DFFE6624403EF2001B4803 /* ZHBaseCell.swift */; };
-		30E818FF24AC7A9D000C2D74 /* ZHTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E818FE24AC7A9D000C2D74 /* ZHTableViewSection.swift */; };
-		30E8190124AC7DD2000C2D74 /* ZHTableViewIMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8190024AC7DD2000C2D74 /* ZHTableViewIMP.swift */; };
 		D1345F589D2A0D0874520AC8 /* Pods_ZHBaseKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F94F0C46C8DF8ED8E267284 /* Pods_ZHBaseKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,46 +77,46 @@
 /* Begin PBXFileReference section */
 		0F94F0C46C8DF8ED8E267284 /* Pods_ZHBaseKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHBaseKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3015BC5B25512788008104EA /* StyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCell.swift; sourceTree = "<group>"; };
-		3015BC5D255129AB008104EA /* StyleCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCellModel.swift; sourceTree = "<group>"; };
 		3015BC5F255136D6008104EA /* PagingBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingBoard.swift; sourceTree = "<group>"; };
 		3015BC61255140B6008104EA /* PagingItemBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingItemBoard.swift; sourceTree = "<group>"; };
-		3024B1F324B3113500185EC9 /* ZHTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTableView.swift; sourceTree = "<group>"; };
-		3024B1F524B31CB200185EC9 /* ZHBaseTableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseTableViewBoard.swift; sourceTree = "<group>"; };
 		3024B1F724B3224F00185EC9 /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
-		3024B1F924B323D000185EC9 /* NormalCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCellModel.swift; sourceTree = "<group>"; };
-		303DE7E024C54E1300EC0CDF /* ZHBaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseTableView.swift; sourceTree = "<group>"; };
-		303DE7E224C5647200EC0CDF /* ZHBaseTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseTableViewModel.swift; sourceTree = "<group>"; };
 		303DE7E424C5785F00EC0CDF /* NestedCollectionViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedCollectionViewBoard.swift; sourceTree = "<group>"; };
 		304051DA255E328C00F2E347 /* ZHBaseKit_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZHBaseKit_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		304051E6255E32F300F2E347 /* TabbarBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarBoard.swift; sourceTree = "<group>"; };
 		30432D0D24B6EB060083C49E /* TableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBoard.swift; sourceTree = "<group>"; };
-		30432D0F24B6FA3B0083C49E /* ZHCollectionViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCollectionViewSection.swift; sourceTree = "<group>"; };
-		30432D1124B7007F0083C49E /* ZHCollectionViewIMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCollectionViewIMP.swift; sourceTree = "<group>"; };
-		305F77292581CC3D006B5469 /* ZHInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHInterface.swift; sourceTree = "<group>"; };
 		305F77322581F806006B5469 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		306A60B12671AA74005B47F5 /* ZHBaseTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseTableViewModel.swift; sourceTree = "<group>"; };
+		306A60B22671AA74005B47F5 /* ZHBaseTableViewBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseTableViewBoard.swift; sourceTree = "<group>"; };
+		306A60B32671AA74005B47F5 /* ZHTableViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHTableViewSection.swift; sourceTree = "<group>"; };
+		306A60B42671AA74005B47F5 /* ZHNavigationBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHNavigationBoard.swift; sourceTree = "<group>"; };
+		306A60B52671AA74005B47F5 /* ZHCollectionViewSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHCollectionViewSection.swift; sourceTree = "<group>"; };
+		306A60B62671AA74005B47F5 /* ZHBaseCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseCellModel.swift; sourceTree = "<group>"; };
+		306A60B72671AA74005B47F5 /* ZHCollectionViewIMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHCollectionViewIMP.swift; sourceTree = "<group>"; };
+		306A60B82671AA74005B47F5 /* ZHBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseCell.swift; sourceTree = "<group>"; };
+		306A60B92671AA74005B47F5 /* ZHBaseBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseBoard.swift; sourceTree = "<group>"; };
+		306A60BA2671AA74005B47F5 /* ZHBaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionView.swift; sourceTree = "<group>"; };
+		306A60BB2671AA74005B47F5 /* ZHCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHCollectionView.swift; sourceTree = "<group>"; };
+		306A60BC2671AA74005B47F5 /* ZHTableViewIMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHTableViewIMP.swift; sourceTree = "<group>"; };
+		306A60BD2671AA74005B47F5 /* ZHTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHTableView.swift; sourceTree = "<group>"; };
+		306A60BE2671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionViewBoard.swift; sourceTree = "<group>"; };
+		306A60BF2671AA74005B47F5 /* ZHBaseCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionViewModel.swift; sourceTree = "<group>"; };
+		306A60C02671AA74005B47F5 /* ZHMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHMacro.swift; sourceTree = "<group>"; };
+		306A60C12671AA74005B47F5 /* ZHBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseTableView.swift; sourceTree = "<group>"; };
+		306A60C22671AA74005B47F5 /* ZHBaseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHBaseKit.swift; sourceTree = "<group>"; };
+		306A60F42671AD2B005B47F5 /* ZHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHMessage.swift; sourceTree = "<group>"; };
+		306A60F52671AD2B005B47F5 /* ZHController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHController.swift; sourceTree = "<group>"; };
+		306A60F62671AD2B005B47F5 /* IP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IP.swift; sourceTree = "<group>"; };
+		306A60F72671AD2B005B47F5 /* ZHRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHRequest.swift; sourceTree = "<group>"; };
+		306A61052671B04C005B47F5 /* ZHProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHProtocol.swift; sourceTree = "<group>"; };
 		3076A4F42577347B00765E03 /* MineBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineBoard.swift; sourceTree = "<group>"; };
-		3077990224C177CA00371B8D /* ZHBaseCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionViewModel.swift; sourceTree = "<group>"; };
 		3077990424C1981A00371B8D /* NestedTableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedTableViewBoard.swift; sourceTree = "<group>"; };
 		307915ED257DD74A0083850F /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		307915F5257DE4930083850F /* RoutesScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheme.swift; sourceTree = "<group>"; };
-		30791606257F1F880083850F /* IPAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAgent.swift; sourceTree = "<group>"; };
-		3079160E257F253E0083850F /* ZHRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHRequest.swift; sourceTree = "<group>"; };
-		30791664257F789D0083850F /* ZHMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHMessage.swift; sourceTree = "<group>"; };
-		308267A1247394B3001AAEF1 /* ZHProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHProtocol.swift; sourceTree = "<group>"; };
-		309984D024BEE840003DFAA8 /* ZHCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHCollectionView.swift; sourceTree = "<group>"; };
-		309984D224BEF029003DFAA8 /* ZHBaseCollectionViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionViewBoard.swift; sourceTree = "<group>"; };
 		309984D424BEF248003DFAA8 /* CollectionViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewBoard.swift; sourceTree = "<group>"; };
 		309984D624BF12E5003DFAA8 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
-		309984D824BF134D003DFAA8 /* CollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellModel.swift; sourceTree = "<group>"; };
 		309984DA24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSectionTableViewBoard.swift; sourceTree = "<group>"; };
 		309984DC24BFF00D003DFAA8 /* MultiSectionCollectionViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSectionCollectionViewBoard.swift; sourceTree = "<group>"; };
-		309984DE24BFFA9B003DFAA8 /* ZHBaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseCollectionView.swift; sourceTree = "<group>"; };
-		30A8CFC024A2FC9700186816 /* ZHBaseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseKit.swift; sourceTree = "<group>"; };
-		30A8CFC224A3083E00186816 /* ZHBaseBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseBoard.swift; sourceTree = "<group>"; };
-		30CBBDE6246E796A005C2857 /* ZHBaseCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseCellModel.swift; sourceTree = "<group>"; };
-		30CBBDE8246E7B2C005C2857 /* ZHMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHMacro.swift; sourceTree = "<group>"; };
 		30CFB23024A9CD9500E0864B /* SecondaryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryBoard.swift; sourceTree = "<group>"; };
-		30CFB23224A9D78A00E0864B /* ZHNavigationBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHNavigationBoard.swift; sourceTree = "<group>"; };
 		30DFFE3424403CE8001B4803 /* ZHBaseKit_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHBaseKit_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DFFE3724403CE8001B4803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30DFFE3924403CE8001B4803 /* MainBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoard.swift; sourceTree = "<group>"; };
@@ -133,9 +130,6 @@
 		30DFFE5324403CE9001B4803 /* ZHBaseKit_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZHBaseKit_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DFFE5724403CE9001B4803 /* ZHBaseKit_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseKit_SwiftUITests.swift; sourceTree = "<group>"; };
 		30DFFE5924403CE9001B4803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30DFFE6624403EF2001B4803 /* ZHBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHBaseCell.swift; sourceTree = "<group>"; };
-		30E818FE24AC7A9D000C2D74 /* ZHTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTableViewSection.swift; sourceTree = "<group>"; };
-		30E8190024AC7DD2000C2D74 /* ZHTableViewIMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHTableViewIMP.swift; sourceTree = "<group>"; };
 		595AB85F379032F41FCF8FE0 /* Pods-ZHBaseKit_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHBaseKit_Swift.debug.xcconfig"; path = "Target Support Files/Pods-ZHBaseKit_Swift/Pods-ZHBaseKit_Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		9AC8D5BF434930450B321FAC /* Pods-ZHBaseKit_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHBaseKit_Swift.release.xcconfig"; path = "Target Support Files/Pods-ZHBaseKit_Swift/Pods-ZHBaseKit_Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +168,43 @@
 			path = Libs;
 			sourceTree = "<group>";
 		};
+		306A60B02671AA74005B47F5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				306A60B12671AA74005B47F5 /* ZHBaseTableViewModel.swift */,
+				306A60B22671AA74005B47F5 /* ZHBaseTableViewBoard.swift */,
+				306A60B32671AA74005B47F5 /* ZHTableViewSection.swift */,
+				306A60B42671AA74005B47F5 /* ZHNavigationBoard.swift */,
+				306A60B52671AA74005B47F5 /* ZHCollectionViewSection.swift */,
+				306A60B62671AA74005B47F5 /* ZHBaseCellModel.swift */,
+				306A60B72671AA74005B47F5 /* ZHCollectionViewIMP.swift */,
+				306A60B82671AA74005B47F5 /* ZHBaseCell.swift */,
+				306A60B92671AA74005B47F5 /* ZHBaseBoard.swift */,
+				306A60BA2671AA74005B47F5 /* ZHBaseCollectionView.swift */,
+				306A60BB2671AA74005B47F5 /* ZHCollectionView.swift */,
+				306A60BC2671AA74005B47F5 /* ZHTableViewIMP.swift */,
+				306A60BD2671AA74005B47F5 /* ZHTableView.swift */,
+				306A60BE2671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift */,
+				306A60BF2671AA74005B47F5 /* ZHBaseCollectionViewModel.swift */,
+				306A60C12671AA74005B47F5 /* ZHBaseTableView.swift */,
+				306A61052671B04C005B47F5 /* ZHProtocol.swift */,
+				306A60C22671AA74005B47F5 /* ZHBaseKit.swift */,
+				306A60C02671AA74005B47F5 /* ZHMacro.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		306A60F32671AD2B005B47F5 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				306A60F62671AD2B005B47F5 /* IP.swift */,
+				306A60F42671AD2B005B47F5 /* ZHMessage.swift */,
+				306A60F52671AD2B005B47F5 /* ZHController.swift */,
+				306A60F72671AD2B005B47F5 /* ZHRequest.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 		307915EC257DD6FE0083850F /* Routes */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,17 +212,6 @@
 				307915F5257DE4930083850F /* RoutesScheme.swift */,
 			);
 			path = Routes;
-			sourceTree = "<group>";
-		};
-		30791605257F1F300083850F /* Http */ = {
-			isa = PBXGroup;
-			children = (
-				30791606257F1F880083850F /* IPAgent.swift */,
-				3079160E257F253E0083850F /* ZHRequest.swift */,
-				30791664257F789D0083850F /* ZHMessage.swift */,
-				305F77292581CC3D006B5469 /* ZHInterface.swift */,
-			);
-			path = Http;
 			sourceTree = "<group>";
 		};
 		30DFFE2B24403CE8001B4803 = {
@@ -233,16 +253,13 @@
 				3015BC5F255136D6008104EA /* PagingBoard.swift */,
 				3015BC61255140B6008104EA /* PagingItemBoard.swift */,
 				3024B1F724B3224F00185EC9 /* NormalCell.swift */,
-				3024B1F924B323D000185EC9 /* NormalCellModel.swift */,
 				309984D624BF12E5003DFAA8 /* CollectionCell.swift */,
-				309984D824BF134D003DFAA8 /* CollectionCellModel.swift */,
 				3015BC5B25512788008104EA /* StyleCell.swift */,
-				3015BC5D255129AB008104EA /* StyleCellModel.swift */,
 				304051DA255E328C00F2E347 /* ZHBaseKit_Swift-Bridging-Header.h */,
-				30791605257F1F300083850F /* Http */,
+				306A60B02671AA74005B47F5 /* Base */,
+				306A60F32671AD2B005B47F5 /* Http */,
 				307915EC257DD6FE0083850F /* Routes */,
 				305F772E2581F64D006B5469 /* Libs */,
-				30DFFE6524403E4C001B4803 /* Base */,
 				30DFFE3B24403CE8001B4803 /* Main.storyboard */,
 				30DFFE3E24403CE9001B4803 /* Assets.xcassets */,
 				30DFFE4024403CE9001B4803 /* LaunchScreen.storyboard */,
@@ -267,32 +284,6 @@
 				30DFFE5924403CE9001B4803 /* Info.plist */,
 			);
 			path = ZHBaseKit_SwiftUITests;
-			sourceTree = "<group>";
-		};
-		30DFFE6524403E4C001B4803 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				30CBBDE8246E7B2C005C2857 /* ZHMacro.swift */,
-				30A8CFC024A2FC9700186816 /* ZHBaseKit.swift */,
-				308267A1247394B3001AAEF1 /* ZHProtocol.swift */,
-				30CFB23224A9D78A00E0864B /* ZHNavigationBoard.swift */,
-				30A8CFC224A3083E00186816 /* ZHBaseBoard.swift */,
-				3024B1F524B31CB200185EC9 /* ZHBaseTableViewBoard.swift */,
-				309984D224BEF029003DFAA8 /* ZHBaseCollectionViewBoard.swift */,
-				30DFFE6624403EF2001B4803 /* ZHBaseCell.swift */,
-				30CBBDE6246E796A005C2857 /* ZHBaseCellModel.swift */,
-				303DE7E024C54E1300EC0CDF /* ZHBaseTableView.swift */,
-				303DE7E224C5647200EC0CDF /* ZHBaseTableViewModel.swift */,
-				309984DE24BFFA9B003DFAA8 /* ZHBaseCollectionView.swift */,
-				3077990224C177CA00371B8D /* ZHBaseCollectionViewModel.swift */,
-				30E818FE24AC7A9D000C2D74 /* ZHTableViewSection.swift */,
-				30E8190024AC7DD2000C2D74 /* ZHTableViewIMP.swift */,
-				3024B1F324B3113500185EC9 /* ZHTableView.swift */,
-				30432D0F24B6FA3B0083C49E /* ZHCollectionViewSection.swift */,
-				30432D1124B7007F0083C49E /* ZHCollectionViewIMP.swift */,
-				309984D024BEE840003DFAA8 /* ZHCollectionView.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		4B5EFA6B61E8C2A0845D804E /* Frameworks */ = {
@@ -489,50 +480,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				3015BC60255136D6008104EA /* PagingBoard.swift in Sources */,
+				306A60CC2671AA74005B47F5 /* ZHBaseCollectionView.swift in Sources */,
 				30CFB23124A9CD9500E0864B /* SecondaryBoard.swift in Sources */,
-				3015BC5E255129AB008104EA /* StyleCellModel.swift in Sources */,
-				3024B1F624B31CB200185EC9 /* ZHBaseTableViewBoard.swift in Sources */,
+				306A60C32671AA74005B47F5 /* ZHBaseTableViewModel.swift in Sources */,
+				306A60F82671AD2B005B47F5 /* ZHMessage.swift in Sources */,
 				307915F6257DE4930083850F /* RoutesScheme.swift in Sources */,
+				306A60D02671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift in Sources */,
+				306A60CB2671AA74005B47F5 /* ZHBaseBoard.swift in Sources */,
+				306A60F92671AD2B005B47F5 /* ZHController.swift in Sources */,
+				306A60C42671AA74005B47F5 /* ZHBaseTableViewBoard.swift in Sources */,
+				306A60C62671AA74005B47F5 /* ZHNavigationBoard.swift in Sources */,
 				3015BC5C25512788008104EA /* StyleCell.swift in Sources */,
-				309984DF24BFFA9B003DFAA8 /* ZHBaseCollectionView.swift in Sources */,
 				305F77332581F806006B5469 /* Toast.swift in Sources */,
-				3077990324C177CA00371B8D /* ZHBaseCollectionViewModel.swift in Sources */,
-				303DE7E124C54E1300EC0CDF /* ZHBaseTableView.swift in Sources */,
-				309984D124BEE840003DFAA8 /* ZHCollectionView.swift in Sources */,
+				306A60C52671AA74005B47F5 /* ZHTableViewSection.swift in Sources */,
 				309984D524BEF248003DFAA8 /* CollectionViewBoard.swift in Sources */,
+				306A61062671B04C005B47F5 /* ZHProtocol.swift in Sources */,
 				30DFFE3A24403CE8001B4803 /* MainBoard.swift in Sources */,
-				30A8CFC324A3083E00186816 /* ZHBaseBoard.swift in Sources */,
+				306A60C72671AA74005B47F5 /* ZHCollectionViewSection.swift in Sources */,
 				3024B1F824B3224F00185EC9 /* NormalCell.swift in Sources */,
 				309984DB24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift in Sources */,
-				30432D1224B7007F0083C49E /* ZHCollectionViewIMP.swift in Sources */,
 				303DE7E524C5785F00EC0CDF /* NestedCollectionViewBoard.swift in Sources */,
+				306A60CD2671AA74005B47F5 /* ZHCollectionView.swift in Sources */,
 				309984DD24BFF00D003DFAA8 /* MultiSectionCollectionViewBoard.swift in Sources */,
-				308267A2247394B3001AAEF1 /* ZHProtocol.swift in Sources */,
-				309984D924BF134D003DFAA8 /* CollectionCellModel.swift in Sources */,
 				30DFFE3824403CE8001B4803 /* AppDelegate.swift in Sources */,
-				3024B1F424B3113500185EC9 /* ZHTableView.swift in Sources */,
-				30CBBDE7246E796A005C2857 /* ZHBaseCellModel.swift in Sources */,
-				30E818FF24AC7A9D000C2D74 /* ZHTableViewSection.swift in Sources */,
 				30432D0E24B6EB060083C49E /* TableViewBoard.swift in Sources */,
-				3024B1FA24B323D000185EC9 /* NormalCellModel.swift in Sources */,
-				303DE7E324C5647200EC0CDF /* ZHBaseTableViewModel.swift in Sources */,
+				306A60FA2671AD2B005B47F5 /* IP.swift in Sources */,
+				306A60D32671AA74005B47F5 /* ZHBaseTableView.swift in Sources */,
 				309984D724BF12E5003DFAA8 /* CollectionCell.swift in Sources */,
+				306A60D42671AA74005B47F5 /* ZHBaseKit.swift in Sources */,
 				304051E7255E32F300F2E347 /* TabbarBoard.swift in Sources */,
-				309984D324BEF029003DFAA8 /* ZHBaseCollectionViewBoard.swift in Sources */,
-				30432D1024B6FA3B0083C49E /* ZHCollectionViewSection.swift in Sources */,
-				305F772A2581CC3D006B5469 /* ZHInterface.swift in Sources */,
-				30CFB23324A9D78A00E0864B /* ZHNavigationBoard.swift in Sources */,
+				306A60CE2671AA74005B47F5 /* ZHTableViewIMP.swift in Sources */,
+				306A60FB2671AD2B005B47F5 /* ZHRequest.swift in Sources */,
+				306A60D22671AA74005B47F5 /* ZHMacro.swift in Sources */,
+				306A60CF2671AA74005B47F5 /* ZHTableView.swift in Sources */,
 				3077990524C1981A00371B8D /* NestedTableViewBoard.swift in Sources */,
-				3079160F257F253E0083850F /* ZHRequest.swift in Sources */,
-				30DFFE6724403EF2001B4803 /* ZHBaseCell.swift in Sources */,
-				30791607257F1F880083850F /* IPAgent.swift in Sources */,
+				306A60C92671AA74005B47F5 /* ZHCollectionViewIMP.swift in Sources */,
 				3076A4F52577347B00765E03 /* MineBoard.swift in Sources */,
+				306A60D12671AA74005B47F5 /* ZHBaseCollectionViewModel.swift in Sources */,
 				307915EE257DD74A0083850F /* Routes.swift in Sources */,
-				30A8CFC124A2FC9700186816 /* ZHBaseKit.swift in Sources */,
 				3015BC62255140B6008104EA /* PagingItemBoard.swift in Sources */,
-				30791665257F789D0083850F /* ZHMessage.swift in Sources */,
-				30E8190124AC7DD2000C2D74 /* ZHTableViewIMP.swift in Sources */,
-				30CBBDE9246E7B2C005C2857 /* ZHMacro.swift in Sources */,
+				306A60C82671AA74005B47F5 /* ZHBaseCellModel.swift in Sources */,
+				306A60CA2671AA74005B47F5 /* ZHBaseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +696,8 @@
 			baseConfigurationReference = 595AB85F379032F41FCF8FE0 /* Pods-ZHBaseKit_Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R9UA6KNAX3;
 				INFOPLIST_FILE = ZHBaseKit_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -716,9 +705,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZHBaseKit.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jisu.score;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = chaofan_development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -730,7 +719,8 @@
 			baseConfigurationReference = 9AC8D5BF434930450B321FAC /* Pods-ZHBaseKit_Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R9UA6KNAX3;
 				INFOPLIST_FILE = ZHBaseKit_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -738,9 +728,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZHBaseKit.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jisu.score;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = chaofan_development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
