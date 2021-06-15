@@ -15,6 +15,8 @@ class TableViewBoard: ZHBaseTableViewBoard {
         self.onShowNavigationTitle("Single Section");
         self.onConfiguration();
        
+        print("routerParams: \(self.routerParams!)");
+        
     }
 
     func onConfiguration()
@@ -40,5 +42,6 @@ class TableViewBoard: ZHBaseTableViewBoard {
         }
         
     }
+
     
 }

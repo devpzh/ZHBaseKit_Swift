@@ -127,7 +127,7 @@ extension MainBoard:ZHProtocol {
         
         if data.isKind(of: StyleCellModel.self) {
             
-            Routes.routesURL(url: RoutesPath("PagingBoard"));
+            Router.routerURL(url: RouterPath("PagingBoard"));
             return;
         }
         
@@ -135,27 +135,27 @@ extension MainBoard:ZHProtocol {
         
         if model.title == kSingleSectionTableView {
             
-            Routes.routesURL(url: RoutesPath("TableViewBoard"));
+            Router.routerURL(url: RouterPath("TableViewBoard"),params: ["key":1,"key1":"2","key3":"3.0"]);
        
         }else if model.title == kMultiSectionTableView
         {
-            Routes.routesURL(url: RoutesPath("MultiSectionTableViewBoard"));
+            Router.routerURL(url: RouterPath("MultiSectionTableViewBoard"));
         
         }else if model.title == kSingleSectionCollectionView
         {
-            Routes.routesURL(url: RoutesPath("CollectionViewBoard"));
+            Router.routerURL(url: RouterPath("CollectionViewBoard"));
         
         }else if model.title == kMultiSectionCollectionView
         {
-            Routes.routesURL(url: RoutesPath("MultiSectionCollectionViewBoard"));
+            Router.routerURL(url: RouterPath("MultiSectionCollectionViewBoard"));
        
         }else if model.title == kNestedTableView
         {
-            Routes.routesURL(url: RoutesPath("NestedTableViewBoard"));
+            Router.routerURL(url: RouterPath("NestedTableViewBoard"));
         
         }else if model.title == kNestedCollectionView
         {
-            Routes.routesURL(url: RoutesPath("NestedCollectionViewBoard"));
+            Router.routerURL(url: RouterPath("NestedCollectionViewBoard"));
         }
         
     }

@@ -26,7 +26,7 @@ class SecondaryBoard: ZHBaseBoard{
     }
     
     override func onRightTouch() {
-        Routes.routesURL(url: RoutesPath("MineBoard"))
+        Router.routerURL(url: RouterPath("MineBoard"))
     }
     
 

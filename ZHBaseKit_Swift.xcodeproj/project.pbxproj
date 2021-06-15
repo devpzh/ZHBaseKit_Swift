@@ -40,8 +40,8 @@
 		306A61062671B04C005B47F5 /* ZHProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306A61052671B04C005B47F5 /* ZHProtocol.swift */; };
 		3076A4F52577347B00765E03 /* MineBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076A4F42577347B00765E03 /* MineBoard.swift */; };
 		3077990524C1981A00371B8D /* NestedTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077990424C1981A00371B8D /* NestedTableViewBoard.swift */; };
-		307915EE257DD74A0083850F /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915ED257DD74A0083850F /* Routes.swift */; };
-		307915F6257DE4930083850F /* RoutesScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915F5257DE4930083850F /* RoutesScheme.swift */; };
+		307915EE257DD74A0083850F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915ED257DD74A0083850F /* Router.swift */; };
+		307915F6257DE4930083850F /* RouterScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307915F5257DE4930083850F /* RouterScheme.swift */; };
 		309984D524BEF248003DFAA8 /* CollectionViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D424BEF248003DFAA8 /* CollectionViewBoard.swift */; };
 		309984D724BF12E5003DFAA8 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984D624BF12E5003DFAA8 /* CollectionCell.swift */; };
 		309984DB24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309984DA24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift */; };
@@ -110,8 +110,8 @@
 		306A61052671B04C005B47F5 /* ZHProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZHProtocol.swift; sourceTree = "<group>"; };
 		3076A4F42577347B00765E03 /* MineBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineBoard.swift; sourceTree = "<group>"; };
 		3077990424C1981A00371B8D /* NestedTableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedTableViewBoard.swift; sourceTree = "<group>"; };
-		307915ED257DD74A0083850F /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
-		307915F5257DE4930083850F /* RoutesScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesScheme.swift; sourceTree = "<group>"; };
+		307915ED257DD74A0083850F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		307915F5257DE4930083850F /* RouterScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterScheme.swift; sourceTree = "<group>"; };
 		309984D424BEF248003DFAA8 /* CollectionViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewBoard.swift; sourceTree = "<group>"; };
 		309984D624BF12E5003DFAA8 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		309984DA24BFEC5F003DFAA8 /* MultiSectionTableViewBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSectionTableViewBoard.swift; sourceTree = "<group>"; };
@@ -208,8 +208,8 @@
 		307915EC257DD6FE0083850F /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				307915ED257DD74A0083850F /* Routes.swift */,
-				307915F5257DE4930083850F /* RoutesScheme.swift */,
+				307915ED257DD74A0083850F /* Router.swift */,
+				307915F5257DE4930083850F /* RouterScheme.swift */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				30CFB23124A9CD9500E0864B /* SecondaryBoard.swift in Sources */,
 				306A60C32671AA74005B47F5 /* ZHBaseTableViewModel.swift in Sources */,
 				306A60F82671AD2B005B47F5 /* ZHMessage.swift in Sources */,
-				307915F6257DE4930083850F /* RoutesScheme.swift in Sources */,
+				307915F6257DE4930083850F /* RouterScheme.swift in Sources */,
 				306A60D02671AA74005B47F5 /* ZHBaseCollectionViewBoard.swift in Sources */,
 				306A60CB2671AA74005B47F5 /* ZHBaseBoard.swift in Sources */,
 				306A60F92671AD2B005B47F5 /* ZHController.swift in Sources */,
@@ -517,7 +517,7 @@
 				306A60C92671AA74005B47F5 /* ZHCollectionViewIMP.swift in Sources */,
 				3076A4F52577347B00765E03 /* MineBoard.swift in Sources */,
 				306A60D12671AA74005B47F5 /* ZHBaseCollectionViewModel.swift in Sources */,
-				307915EE257DD74A0083850F /* Routes.swift in Sources */,
+				307915EE257DD74A0083850F /* Router.swift in Sources */,
 				3015BC62255140B6008104EA /* PagingItemBoard.swift in Sources */,
 				306A60C82671AA74005B47F5 /* ZHBaseCellModel.swift in Sources */,
 				306A60CA2671AA74005B47F5 /* ZHBaseCell.swift in Sources */,

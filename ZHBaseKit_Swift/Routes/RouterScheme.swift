@@ -1,5 +1,5 @@
 //
-//  RoutesScheme.swift
+//  RouterScheme.swift
 //  ZHBaseKit_Swift
 //
 //  Created by pzh on 2020/12/7.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class RoutesScheme: NSObject {
+class RouterScheme: NSObject {
    
     var path:String?;
     var present = false;
     var animated = false;
-    var completeClosure:RoutesCompleteClosure?
+    var completeClosure:RouterCompleteClosure?
     var params:Dictionary<String, Any>?;
 
-    init(url:String, params:Dictionary<String, Any>?, present:Bool, animated:Bool, completeClosure:RoutesCompleteClosure?)
+    init(url:String, params:Dictionary<String, Any>?, present:Bool, animated:Bool, completeClosure:RouterCompleteClosure?)
     {
         self.present = present;
         self.animated = animated;
@@ -82,11 +82,6 @@ class RoutesScheme: NSObject {
             self.path = tPath;
             self.params = obj;
             
-            print("path \(self.path!) params:\(self.params!)");
-            
-        }else
-        {
-            print("path \(url)");
         }
     
     }

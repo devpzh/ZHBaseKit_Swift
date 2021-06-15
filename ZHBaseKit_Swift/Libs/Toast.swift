@@ -13,19 +13,19 @@ class Toast: NSObject {
     
    class func presentTips(_ message:String) {
     
-    self.presentTips(message, 1.5, Routes.topViewController().view, .center)
+    self.presentTips(message, 1.5, Router.topViewController().view, .center)
    
    }
     
    class func presentTips(_ message:String, _ delay:TimeInterval) {
     
-    self.presentTips(message, delay, Routes.topViewController().view, .center)
+    self.presentTips(message, delay, Router.topViewController().view, .center)
     
    }
     
    class func presentTips(_ message:String, _ position: ToastPosition) {
       
-     self.presentTips(message, 1.5, Routes.topViewController().view, .center)
+     self.presentTips(message, 1.5, Router.topViewController().view, .center)
    
    }
     
@@ -47,7 +47,7 @@ class Toast: NSObject {
     
     class func presentLoadingTips(_ message:String) {
         
-        self.presentLoadingTips(message, Routes.topViewController().view)
+        self.presentLoadingTips(message, Router.topViewController().view)
         
     }
     
@@ -62,7 +62,7 @@ class Toast: NSObject {
     
     class func dismiss() {
         
-        self.dismiss(Routes.topViewController().view);
+        self.dismiss(Router.topViewController().view);
         
     }
     

@@ -14,7 +14,6 @@ enum ZHStatusBarStyle {
     case darkContent
 }
 
-@objcMembers
 class ZHBaseBoard: UIViewController {
 
     //MARK: Properties
@@ -146,7 +145,7 @@ class ZHBaseBoard: UIViewController {
     {
     }
     
-    func onLeftTouch()
+    @objc func onLeftTouch()
     {
         if self.navigationController == nil
         {
@@ -156,7 +155,7 @@ class ZHBaseBoard: UIViewController {
 
     }
 
-    func onRightTouch()
+   @objc func onRightTouch()
     {
     }
     
