@@ -15,9 +15,9 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "ZHBaseKit_Swift"
-  spec.version      = "0.0.1"
-  spec.summary      = "ZHBaseKit_Swift"
+  spec.name         = 'ZHBaseKit_Swift'
+  spec.version      = '0.0.1'
+  spec.summary      = 'ZHBaseKit_Swift'
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                     A framework for data-driven UI and rapid development -- Swift
                    DESC
 
-  spec.homepage     = "https://github.com/Panzhenghui/ZHBaseKit.Swift"
+  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit.Swift'
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  spec.license          = { :type => 'MIT', :file => 'LICENSE' }
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -53,7 +53,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "panzhenghui" => "1505517260@qq.com" }
+  spec.author             = { 'Pzh' => '1505517260@qq.com' }
   # Or just: spec.author    = "panzhenghui"
   # spec.authors            = { "panzhenghui" => "panzhenghui@nami.com" }
   # spec.social_media_url   = "https://twitter.com/panzhenghui"
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/Panzhenghui/ZHBaseKit.Swift", :tag => "#{spec.version}" }
+  spec.source      = { :git => 'https://github.com/Panzhenghui/ZHBaseKit.Swift', :tag => spec.version}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,15 +91,15 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "ZHBaseKit_Swift/ZHBaseKit_Swift/*"
+  spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*'
  
-  s.ios.deployment_target = '9.0'
+  spec.ios.deployment_target = '9.0'
 
-  s.requires_arc = true
+  spec.requires_arc = true
 
-  s.frameworks = ['UIKit']
+  spec.frameworks = ['UIKit']
    
-  s.dependency 'SnapKit'
+  spec.dependency 'SnapKit'
 
 
 end
