@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = 'ZHBaseKit_Swift'
-  spec.version      = '0.0.1'
+  spec.version      = '0.0.3'
   spec.summary      = 'ZHBaseKit_Swift'
 
   # This description is used to generate tags and improve search results.
@@ -91,15 +91,19 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
+  spec.swift_version = '5.0'
+  
   spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*'
  
-  spec.ios.deployment_target = '9.0'
+  spec.ios.deployment_target = '10.0'
 
   spec.requires_arc = true
 
   spec.frameworks = ['UIKit']
    
   spec.dependency 'SnapKit'
+
+  
 
 
 end
