@@ -198,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				306A60F62671AD2B005B47F5 /* IP.swift */,
-				306A60F42671AD2B005B47F5 /* ZHMessage.swift */,
 				306A60F52671AD2B005B47F5 /* ZHController.swift */,
+				306A60F42671AD2B005B47F5 /* ZHMessage.swift */,
 				306A60F72671AD2B005B47F5 /* ZHRequest.swift */,
 			);
 			path = Http;

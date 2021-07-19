@@ -20,16 +20,14 @@ class MainBoard: ZHBaseTableViewBoard{
     override func onViewCreate() {
         super.onViewCreate();
         self.onShowNavigationTitle("首页");
-        self.onShowRightItemWithTitle("next");
+        self.onShowRightItemWithTitle("Request");
         self.onConfiguration();
         
         //MARK: tableViewDidScroll
         self.tableView.tableViewDidScrollClosure = { scrollView in
         
         }
-        
-       
-
+    
     }
 
 
@@ -170,7 +168,7 @@ class TestInterface: ZHController{
         switch msg.status!
         {
             case .Sending:
-                ZHController.HTTP_GET(msg,"supplement/sys/version/check")
+                ZHController.HTTP_GET(msg,"")
                 Toast.presentLoadingTips("加载...")
 
             case .Succeed:

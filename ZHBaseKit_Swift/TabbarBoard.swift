@@ -31,7 +31,6 @@ class TabbarBoard : CYLTabBarController {
         
         let mineItem = [CYLTabBarItemTitle:"我的",CYLTabBarItemImage:"tabbar_mine_default",CYLTabBarItemSelectedImage:"tabbar_mine_select"];
         
-        
         self.tabBarItemsAttributes = [mainItem,mineItem];
         self.viewControllers = [main,mine];
         

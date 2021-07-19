@@ -25,14 +25,12 @@ class ZHRequest: NSObject {
         
         AF.session.configuration.timeoutIntervalForRequest  = 30;
         AF.session.configuration.timeoutIntervalForResource = 30;
-    
     }
     
     func headers(_  msg:ZHMessage) -> HTTPHeaders
     {
         var headers = AF.session.configuration.headers;
         if !(msg.headers.isEmpty) {
-            
             for e in msg.headers {
                 headers.update(name: e.key, value:e.value as? String ?? "");
             }
@@ -42,16 +40,14 @@ class ZHRequest: NSObject {
     
     func HTTP_GET(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.get, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
-            
+        AF.request(url, method:.get, parameters:nil, headers:self.headers(msg)).responseJSON(emptyResponseCodes:kEmptyResponseCodes){(response) in
             self.response(msg:msg, response:response);
         }
     }
     
     func HTTP_POST(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.post, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
-            
+        AF.request(url, method:.post, parameters:nil, headers:self.headers(msg)).responseJSON(emptyResponseCodes:kEmptyResponseCodes){(response) in
             self.response(msg:msg, response:response);
         }
     }
@@ -59,8 +55,7 @@ class ZHRequest: NSObject {
     
     func HTTP_DELETE(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.delete, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
-            
+        AF.request(url, method:.delete, parameters:nil, headers:self.headers(msg)).responseJSON(emptyResponseCodes:kEmptyResponseCodes){(response) in
             self.response(msg:msg, response:response);
         }
     }
@@ -68,9 +63,8 @@ class ZHRequest: NSObject {
     
     func HTTP_PUT(msg:ZHMessage, url:String) {
         
-        AF.request(url, method:.put, parameters:nil, headers:self.headers(msg)).responseJSON{(response) in
-          
-            self.response(msg:msg, response:response);
+        AF.request(url, method:.put, parameters:nil, headers:self.headers(msg)).responseJSON(emptyResponseCodes:kEmptyResponseCodes){(response) in
+           self.response(msg:msg, response:response);
         }
     }
     

@@ -65,13 +65,11 @@ class NormalCell: ZHBaseCell {
     }
     
     override func onTouch() {
-        
-  
+    
         if let delegate = self.delegate as? ZHProtocol {
             delegate.onTouch(self, data: self.data!);
         }
-        
-        
+    
     }
     
 

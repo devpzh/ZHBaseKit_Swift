@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum IPServerType {
     case IPServerTypeTest           //< 测试服
     case IPServerTypeDistribution   //< 正式服
@@ -30,11 +29,11 @@ class IP: NSObject {
         {
             switch type{
             case .IPServerTypeTest:
-                self.domains = "http://dev.kscore.com";
+                self.domains = "https://www.baidu.com";
                 break;
 
             case .IPServerTypeDistribution:
-                self.domains = "https://api.kscore.com";
+                self.domains = "https://www.baidu.com";
                 break;
             }
         

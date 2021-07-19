@@ -87,7 +87,6 @@ class Router: NSObject
             vc?.routerParams = params;
         }
         
-    
         let topVc = self.topViewController();
         if present {
             

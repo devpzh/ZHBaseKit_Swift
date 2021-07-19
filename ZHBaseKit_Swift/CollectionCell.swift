@@ -52,8 +52,6 @@ class CollectionCell: ZHBaseCell {
         
         let model = self.data as! CollectionCellModel;
         model.title = "Touch reload";
-        if self.reloadRowsClosure != nil {
-            self.reloadRowsClosure!(.none);
-        }
+        self.reloadRowsClosure?(UITableView.RowAnimation.none);
     }
 }
