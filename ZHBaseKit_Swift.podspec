@@ -15,9 +15,17 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
+  spec.ios.deployment_target = '10.0'
+
   spec.name         = 'ZHBaseKit_Swift'
-  spec.version      = '0.0.5'
+
+  spec.version      = '0.0.6'
+
   spec.summary      = 'ZHBaseKit_Swift'
+
+  spec.requires_arc = true
+
+  spec.license      = 'MIT'
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -29,20 +37,9 @@ Pod::Spec.new do |spec|
                    DESC
 
   spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git'
-  # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  
 
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Licensing your code is important. See https://choosealicense.com for more info.
-  #  CocoaPods will detect a license file if there is a named LICENSE*
-  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
-
-  spec.license          = 'MIT'
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-
-
+  
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Specify the authors of the library, with email addresses. Email addresses
@@ -82,25 +79,14 @@ Pod::Spec.new do |spec|
 
   spec.source    = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git', :tag => spec.version}
 
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
+  spec.dependency 'SnapKit'
 
   spec.swift_version = '5.0'
-  
-  spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*.swift'
+
+  spec.source_files  = 'ZHBaseKit_Swift/Source/*.swift'
  
-  spec.ios.deployment_target = '10.0'
-
-  spec.requires_arc = true
-
-  spec.frameworks = ['UIKit']
+  spec.frameworks = 'UIKit'
    
-  spec.dependency 'SnapKit'
+  
 
 end
