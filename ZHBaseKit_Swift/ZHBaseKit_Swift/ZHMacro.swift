@@ -9,8 +9,8 @@
 import UIKit
 
 //MARK:
-let kScreenWidth         = UIScreen.main.bounds.width;
-let kScreenHeight        = UIScreen.main.bounds.height;
+let kScreenWidth                 = UIScreen.main.bounds.width;
+let kScreenHeight                = UIScreen.main.bounds.height;
 let kNavigationBarHeight:CGFloat = isPhoneX() ? 88.0 : 64.0;
 let kStatusBarHeight:CGFloat     = isPhoneX() ? 44.0 : 20.0;
 let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0;
@@ -19,11 +19,7 @@ let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0;
 let kMargin:CGFloat       = 10.0;
 let kSpace:CGFloat        = 16.0;
 let kPadding:CGFloat      = 8.0;
-let kMinScale:CGFloat     = 1.0/UIScreen.main.scale;
-
-func kRandomColor() -> UIColor {
-    return UIColor(red: CGFloat(arc4random()%256)/255.0, green: CGFloat(arc4random()%256)/255.0, blue: CGFloat(arc4random()%256)/255.0, alpha: 1.0);
-}
+let kScale:CGFloat        = 1.0/UIScreen.main.scale;
 
 func isPhoneX() -> Bool {
     
@@ -121,14 +117,13 @@ extension UIColor
 }
 
 
-// MARK: iphone size
+//MARK: iphone size
 let kIphoneX_height   = 812
 let kIphoneX_width    = 375
 let kIphone6p_height  = 736
 let kIphone6p_width   = 414
 let kIphone11_width   = 414
 let kIphone11_height  = 896
-
 
 public func kScaleWidth(_ width : CGFloat) -> CGFloat {
     return width * kScreenWidth / CGFloat(kIphone11_width)
@@ -146,7 +141,7 @@ public func kScaleHeight(_ height : CGFloat,_ scaleHeight:CGFloat ) -> CGFloat {
 }
 
 
-// mark salce
+//MARK: salce
 extension CGFloat {
     var scalex: CGFloat{
         get{
@@ -162,16 +157,3 @@ extension CGFloat {
     
 }
 
-extension FixedWidthInteger{
-    var scalex: CGFloat{
-        get{
-            return kScaleWidth(CGFloat(self))
-        }
-    }
-    
-    var scaley:CGFloat{
-        get{
-            return kScaleHeight(CGFloat(self))
-        }
-    }
-}

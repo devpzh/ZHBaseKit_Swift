@@ -46,7 +46,6 @@ class ZHBaseBoard: UIViewController {
         return rightItemBtn
     }()
     
-    
     var titleItem  = UIView.init();
     var leftItem   = UIView.init();
     var rightItem  = UIView.init();
@@ -68,13 +67,13 @@ class ZHBaseBoard: UIViewController {
             if #available(iOS 11.0, *) {
                 self.setNeedsUpdateOfHomeIndicatorAutoHidden()
             } else {
-                
             };
         }
     }
     
     var statusBarStyle:ZHStatusBarStyle = .darkContent;
 
+    
     //MARK: Func
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,9 +106,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     func onViewWillAppear()
-    {
-    
-    }
+    {}
     
     func onViewDidAppear()
     {
@@ -117,15 +114,13 @@ class ZHBaseBoard: UIViewController {
     }
     
     func onViewWillDisappear()
-    {
-    }
+    {}
     
     func onViewDidDisappear()
-    {
-    }
+    {}
     
-    func onLoad(){
-    }
+    func onLoad()
+    {}
     
     func onViewCreate()
     {
@@ -137,13 +132,11 @@ class ZHBaseBoard: UIViewController {
         self.onBarTitleViewCreate();
         self.onBarLeftItemCreate();
         self.onBarRightItemCreate();
-        
-        
+    
     }
     
     func onViewLayout()
-    {
-    }
+    {}
     
     @objc func onLeftTouch()
     {
@@ -156,8 +149,7 @@ class ZHBaseBoard: UIViewController {
     }
 
    @objc func onRightTouch()
-    {
-    }
+   {}
     
     
     func resetStatusBarStyle() {
@@ -205,7 +197,6 @@ class ZHBaseBoard: UIViewController {
         };
     }
     
-    
     //MARK: TitleView
     func onBarTitleViewCreate()
     {
@@ -223,8 +214,7 @@ class ZHBaseBoard: UIViewController {
     
     //MARK: RightItem
     func onBarRightItemCreate()
-    {
-    }
+    {}
     
     //MARK: hidden naviBar
     func onHiddenNavigationBar()
@@ -391,7 +381,6 @@ class ZHBaseBoard: UIViewController {
         
     }
     
-    
     //MARK: rightItem-->自定义视图
     func onShowRightItemWithCustomView(_ customView:UIView)
     {
@@ -404,7 +393,7 @@ class ZHBaseBoard: UIViewController {
         };
         
         self.rightItem = customView;
-        //self.addRightItemButton();
+        self.addRightItemButton();
         
     }
     
@@ -427,8 +416,5 @@ class ZHBaseBoard: UIViewController {
             make.leading.equalTo(self.rightItem.snp.leading).offset(-kMargin);
         }
     }
-    
-    
-   
     
 }

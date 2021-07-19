@@ -46,7 +46,7 @@ class ZHBaseKit: NSObject
     var naviBarSeparatorColor = UIColor.lightGray;
     
     //MARK:返回按钮
-    var backIcon:String       = "nav_back";
+    var backIcon:String  = "back";
     
     override init() {
         

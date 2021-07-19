@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = 'ZHBaseKit_Swift'
-  spec.version      = '0.0.4'
+  spec.version      = '0.0.5'
   spec.summary      = 'ZHBaseKit_Swift'
 
   # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                     A framework for data-driven UI and rapid development -- Swift
                    DESC
 
-  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit_Swift'
+  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git'
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license          = { :type => 'MIT', :file => 'LICENSE' }
+  spec.license          = 'MIT'
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source      = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift', :tag => spec.version}
+  spec.source    = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git', :tag => spec.version}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -93,7 +93,7 @@ Pod::Spec.new do |spec|
 
   spec.swift_version = '5.0'
   
-  spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*'
+  spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*.swift'
  
   spec.ios.deployment_target = '10.0'
 
@@ -102,8 +102,5 @@ Pod::Spec.new do |spec|
   spec.frameworks = ['UIKit']
    
   spec.dependency 'SnapKit'
-
-  
-
 
 end
