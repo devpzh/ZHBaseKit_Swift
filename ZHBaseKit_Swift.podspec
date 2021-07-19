@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = 'ZHBaseKit_Swift'
-  spec.version      = '0.0.3'
+  spec.version      = '0.0.4'
   spec.summary      = 'ZHBaseKit_Swift'
 
   # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                     A framework for data-driven UI and rapid development -- Swift
                    DESC
 
-  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit.Swift'
+  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit_Swift'
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source      = { :git => 'https://github.com/Panzhenghui/ZHBaseKit.Swift', :tag => spec.version}
+  spec.source      = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift', :tag => spec.version}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
