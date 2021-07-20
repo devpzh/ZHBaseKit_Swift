@@ -8,15 +8,14 @@
 
 import UIKit
 
-@objc protocol ZHCollectionViewLayoutDelegate:class
+@objc protocol ZHCollectionViewLayoutDelegate
 {
-   @objc optional func collectionViewLayout() -> UICollectionViewLayout;
+    @objc optional func collectionViewLayout() -> UICollectionViewLayout;
 }
 
 class ZHCollectionView: UICollectionView {
 
     lazy var imp: ZHCollectionViewIMP = {
-        
         let imp = ZHCollectionViewIMP();
         
         imp.collectionViewDidScrollClosure = { [weak self] scorllView in
@@ -44,6 +43,7 @@ class ZHCollectionView: UICollectionView {
     var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
     var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
     var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
+    
     var allowMoveItems:Bool = false
     {
         didSet {
