@@ -15,8 +15,6 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.ios.deployment_target = '10.0'
-
   spec.name         = 'ZHBaseKit_Swift'
 
   spec.version      = '0.0.8'
@@ -80,6 +78,8 @@ Pod::Spec.new do |spec|
   spec.source    = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git', :tag => spec.version}
 
   spec.dependency 'SnapKit'
+
+  spec.ios.deployment_target = '10.0'
 
   spec.source_files  = 'ZHBaseKit_Swift/Source/*.swift'
  
