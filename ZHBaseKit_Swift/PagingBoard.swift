@@ -10,7 +10,6 @@ import UIKit
 import JXSegmentedView
 
 let kMenuHeight = 40.0;
-
 class PagingBoard: ZHBaseBoard {
 
     lazy var listContainerView: JXSegmentedListContainerView = {
