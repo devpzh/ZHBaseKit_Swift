@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = 'ZHBaseKit_Swift'
 
-  spec.version      = '0.0.7'
+  spec.version      = '0.0.8'
 
   spec.summary      = 'ZHBaseKit_Swift'
 
@@ -81,11 +81,11 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'SnapKit'
 
-  spec.swift_version = '5.0'
-
-  spec.source_files  = 'ZHBaseKit_Swift/ZHBaseKit_Swift/*.swift'
+  spec.source_files  = 'ZHBaseKit_Swift/Source/*.swift'
  
   spec.frameworks = 'UIKit'
+
+  spec.swift_version = '5.0'
    
   
 

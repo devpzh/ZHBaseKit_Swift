@@ -179,7 +179,7 @@
 			path = Http;
 			sourceTree = "<group>";
 		};
-		306D01E826A5831C0018E445 /* ZHBaseKit_Swift */ = {
+		306D01E826A5831C0018E445 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				306D01E926A5831C0018E445 /* ZHBaseTableViewModel.swift */,
@@ -202,7 +202,7 @@
 				306D01FA26A5831C0018E445 /* ZHBaseTableView.swift */,
 				306D01FB26A5831C0018E445 /* ZHBaseKit.swift */,
 			);
-			path = ZHBaseKit_Swift;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		307915EC257DD6FE0083850F /* Routes */ = {
@@ -259,7 +259,7 @@
 				306A60F32671AD2B005B47F5 /* Http */,
 				307915EC257DD6FE0083850F /* Routes */,
 				305F772E2581F64D006B5469 /* Libs */,
-				306D01E826A5831C0018E445 /* ZHBaseKit_Swift */,
+				306D01E826A5831C0018E445 /* Source */,
 				30DFFE3B24403CE8001B4803 /* Main.storyboard */,
 				30DFFE3E24403CE9001B4803 /* Assets.xcassets */,
 				30DFFE4024403CE9001B4803 /* LaunchScreen.storyboard */,
