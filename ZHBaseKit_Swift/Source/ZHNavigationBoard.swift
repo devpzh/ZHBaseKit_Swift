@@ -8,31 +8,31 @@
 
 import UIKit
 
-class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
+open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
 
-    var isStatusBarHidden = false;
+    public var isStatusBarHidden = false;
    
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.interactivePopGestureRecognizer?.delegate = self;
     }
     
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if self.viewControllers.count <= 1 {
             return false;
         }
         return true;
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true;
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self);
     }
     
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    open override func pushViewController(_ viewController: UIViewController, animated: Bool) {
      
         if (self.children.count > 0)
         {
@@ -43,14 +43,14 @@ class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
     }
     
     
-    class func addChildControllers(_ viewController:UIViewController)->ZHNavigationBoard {
+    open class func addChildControllers(_ viewController:UIViewController)->ZHNavigationBoard {
         
         let navi = ZHNavigationBoard.init(rootViewController: viewController)
         return navi;
         
     }
     
-    override var prefersStatusBarHidden: Bool {
+    open override var prefersStatusBarHidden: Bool {
         return self.isStatusBarHidden;
     }
 }

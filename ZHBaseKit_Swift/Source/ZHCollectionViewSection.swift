@@ -8,29 +8,29 @@
 
 import UIKit
 
-class ZHCollectionViewSection: NSObject{
+open class ZHCollectionViewSection: NSObject{
     
-    //MARK: minimumLineSpacing
-    var minimumLineSpacing:CGFloat = 0.0;
+  //MARK: minimumLineSpacing
+  public var minimumLineSpacing:CGFloat = 0.0;
     
-    //MARK: minimumInteritemSpacing
-    var minimumInteritemSpacing:CGFloat = 0.0;
+  //MARK: minimumInteritemSpacing
+  public var minimumInteritemSpacing:CGFloat = 0.0;
     
-    //MARK: edgeInset
-    var edgeInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0);
+  //MARK: edgeInset
+  public var edgeInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0);
     
-    //MARK: Section Header Model
-    var headerModel : ZHBaseCellModel?;
+  //MARK: Section Header Model
+  public  var headerModel : ZHBaseCellModel?;
     
-    //MARK: Section Footer Model
-    var footerModel : ZHBaseCellModel?;
+  //MARK: Section Footer Model
+  public var footerModel : ZHBaseCellModel?;
     
     //MARK: Cell Models
-    lazy var rowsArray:[ZHBaseCellModel] =
-    {
+  public lazy var rowsArray:[ZHBaseCellModel] =
+  {
         return [ZHBaseCellModel]();
             
-    }()
+  }()
     
 
 }

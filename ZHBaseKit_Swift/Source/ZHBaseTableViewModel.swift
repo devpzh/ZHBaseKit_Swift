@@ -8,35 +8,35 @@
 
 import UIKit
 
-class ZHBaseTableViewModel: ZHBaseCellModel {
+open class ZHBaseTableViewModel: ZHBaseCellModel {
 
     //MARK: default section
-    lazy var section: ZHTableViewSection = {
+    public lazy var section: ZHTableViewSection = {
         return ZHTableViewSection();
     }()
     
     //MARK: sectionsArray
-    lazy var sectionsArray: [ZHTableViewSection] = {
+    public lazy var sectionsArray: [ZHTableViewSection] = {
         return [ZHTableViewSection]();
     }()
     
     //MARK: tableView.tableHeaderView,非 sectionHeader
-    var tableHeaderViewModel:ZHBaseCellModel?
+    public var tableHeaderViewModel:ZHBaseCellModel?
     
     //MARK: tableView.tableFooterView,非 sectionFooter
-    var tableFooterViewModel:ZHBaseCellModel?
+    public var tableFooterViewModel:ZHBaseCellModel?
     
     //MARK: scrollEnabled
-    var scrollEnabled = true;
+    public var scrollEnabled = true;
     
     //MARK: showsHorizontalScrollIndicator
-    var showsHorizontalScrollIndicator = false;
+    public var showsHorizontalScrollIndicator = false;
     
     //MARK: showsVerticalScrollIndicator
-    var showsVerticalScrollIndicator = false;
+    public var showsVerticalScrollIndicator = false;
     
     
-    override init() {
+    public override init() {
         super.init();
         self.cellClassName = "ZHBaseTableView";
         self.sectionsArray.append(self.section);

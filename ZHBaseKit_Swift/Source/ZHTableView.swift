@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ZHTableView: UITableView {
+open class ZHTableView: UITableView {
 
     //MARK: Lazy loading
-    lazy var imp: ZHTableViewIMP = {
+    public lazy var imp: ZHTableViewIMP = {
         let imp  = ZHTableViewIMP();
         imp.tableViewDidScrollClosure = { [weak self] scorllView in
            self?.tableViewDidScrollClosure?(scorllView);
@@ -27,7 +27,7 @@ class ZHTableView: UITableView {
         return imp;
     }()
     
-    var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
+    public var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
         didSet
         {
             self.imp.sectionsArray = sectionsArray;
@@ -35,12 +35,12 @@ class ZHTableView: UITableView {
     }
     
     //MARK: Closure
-    var tableViewDidScrollClosure:ZHTableViewDidScrollClosure?
-    var tableViewDidEndDeceleratingClosure:ZHTableViewDidEndDeceleratingClosure?
-    var tableViewDidEndDraggingClosure:ZHTableViewDidEndDraggingClosure?
+    public var tableViewDidScrollClosure:ZHTableViewDidScrollClosure?
+    public var tableViewDidEndDeceleratingClosure:ZHTableViewDidEndDeceleratingClosure?
+    public var tableViewDidEndDraggingClosure:ZHTableViewDidEndDraggingClosure?
     
     
-    func onConguration()
+    open func onConguration()
     {
         self.backgroundColor = UIColor.clear;
         self.showsHorizontalScrollIndicator = false;
@@ -65,13 +65,13 @@ class ZHTableView: UITableView {
         self.dataSource = self.imp;
     }
     
-    override init(frame: CGRect, style: UITableView.Style)
+    public override init(frame: CGRect, style: UITableView.Style)
     {
         super.init(frame: frame, style: style);
         self.onConguration();
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

@@ -9,48 +9,48 @@
 import UIKit
 import SnapKit
 
-enum ZHStatusBarStyle {
+public enum ZHStatusBarStyle {
     case lightContent
     case darkContent
 }
 
-class ZHBaseBoard: UIViewController {
+open class ZHBaseBoard: UIViewController {
 
     //MARK: Properties
-    lazy var naviBar: UIView = {
+    public lazy var naviBar: UIView = {
         let naviBar = UIView.init();
         naviBar.backgroundColor = ZHBaseKit.shared.naviBarBackgroundColor;
         return naviBar;
     }()
     
-    lazy var naviBarContainer: UIView = {
+    public lazy var naviBarContainer: UIView = {
         let naviBarContainer = UIView.init();
         return naviBarContainer;
     }()
     
-    lazy var naviBarSeparator: UIView = {
+    public lazy var naviBarSeparator: UIView = {
         let barSeparator = UIView.init();
         barSeparator.backgroundColor = ZHBaseKit.shared.naviBarSeparatorColor;
         return barSeparator;
     }()
     
-    lazy var leftItemBtn: UIButton = {
+    public lazy var leftItemBtn: UIButton = {
         let leftItemBtn = UIButton.init();
         leftItemBtn.addTarget(self, action:#selector(onLeftTouch), for: UIControl.Event.touchUpInside)
         return leftItemBtn
     }()
     
-    lazy var rightItemBtn: UIButton = {
+    public lazy var rightItemBtn: UIButton = {
         let rightItemBtn = UIButton.init();
         rightItemBtn.addTarget(self, action:#selector(onRightTouch), for: UIControl.Event.touchUpInside);
         return rightItemBtn
     }()
     
-    var titleItem  = UIView.init();
-    var leftItem   = UIView.init();
-    var rightItem  = UIView.init();
+    public var titleItem  = UIView.init();
+    public var leftItem   = UIView.init();
+    public var rightItem  = UIView.init();
     
-    var isStatusBarHidden = false {
+    public var isStatusBarHidden = false {
         
         didSet {
             
@@ -61,7 +61,7 @@ class ZHBaseBoard: UIViewController {
         }
     };
     
-    var isHomeIndicatorAutoHidden = false {
+    public var isHomeIndicatorAutoHidden = false {
         
         didSet {
             if #available(iOS 11.0, *) {
@@ -71,33 +71,33 @@ class ZHBaseBoard: UIViewController {
         }
     }
     
-    var statusBarStyle:ZHStatusBarStyle = .darkContent;
+    public var statusBarStyle:ZHStatusBarStyle = .darkContent;
 
     
     //MARK: Func
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.onViewWillAppear();
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         self.onViewDidAppear();
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
         self.onViewWillDisappear();
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated);
         self.onViewDidDisappear();
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.onLoad();
         self.resetStatusBarStyle();
@@ -105,24 +105,24 @@ class ZHBaseBoard: UIViewController {
         self.onViewLayout();
     }
     
-    func onViewWillAppear()
+    open func onViewWillAppear()
     {}
     
-    func onViewDidAppear()
+    open func onViewDidAppear()
     {
         self.resetStatusBarStyle();
     }
     
-    func onViewWillDisappear()
+    open func onViewWillDisappear()
     {}
     
-    func onViewDidDisappear()
+    open func onViewDidDisappear()
     {}
     
-    func onLoad()
+    open func onLoad()
     {}
     
-    func onViewCreate()
+    open func onViewCreate()
     {
         self.navigationController?.navigationBar.isHidden = true;  //< 隐藏系统导航栏
         self.view.backgroundColor = ZHBaseKit.shared.backgroundColor;
@@ -135,10 +135,10 @@ class ZHBaseBoard: UIViewController {
     
     }
     
-    func onViewLayout()
+    open func onViewLayout()
     {}
     
-    @objc func onLeftTouch()
+    @objc open func onLeftTouch()
     {
         if self.navigationController == nil
         {
@@ -148,11 +148,11 @@ class ZHBaseBoard: UIViewController {
 
     }
 
-   @objc func onRightTouch()
-   {}
+    @objc open func onRightTouch()
+    {}
     
     
-    func resetStatusBarStyle() {
+    open func resetStatusBarStyle() {
         
         if statusBarStyle == .lightContent
         {
@@ -161,14 +161,14 @@ class ZHBaseBoard: UIViewController {
         }
         self.navigationController?.navigationBar.barStyle  = .default;
         
-    }
+     }
     
-    override var prefersHomeIndicatorAutoHidden: Bool {
+    open override var prefersHomeIndicatorAutoHidden: Bool {
         return self.isHomeIndicatorAutoHidden;
     }
     
     //MARK: 自定义导航栏
-    func onNavigatonBarCreate()
+    open func onNavigatonBarCreate()
     {
         self.view.addSubview(self.naviBar);
         self.naviBar.snp.makeConstraints {(make) in
@@ -178,7 +178,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: 导航栏容器
-    func onBarContainerCreate()
+    open func onBarContainerCreate()
     {
         self.naviBar.addSubview(self.naviBarContainer);
         self.naviBarContainer.snp.makeConstraints { (make) in
@@ -188,7 +188,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: 分割线
-    func onBarSeparatorCreate()
+    open func onBarSeparatorCreate()
     {
         self.naviBarContainer.addSubview(self.naviBarSeparator);
         self.naviBarSeparator.snp.makeConstraints { (make) in
@@ -198,50 +198,49 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: TitleView
-    func onBarTitleViewCreate()
+    open func onBarTitleViewCreate()
     {
     }
     
     //MARK: LeftItem
-    func onBarLeftItemCreate()
+    open func onBarLeftItemCreate()
     {
         if !ZHBaseKit.shared.backIcon.isEmpty
         {
             self.onShowLeftItemWithImage(kImageName(ZHBaseKit.shared.backIcon));
         }
-        
     }
     
     //MARK: RightItem
-    func onBarRightItemCreate()
+    open func onBarRightItemCreate()
     {}
     
     //MARK: hidden naviBar
-    func onHiddenNavigationBar()
+    open func onHiddenNavigationBar()
     {
         self.naviBar.isHidden = true;
     }
     
     //MARK: show naviBar
-    func onShowNavigationBar()
+    open func onShowNavigationBar()
     {
         self.naviBar.isHidden = false;
     }
     
     //MARK: hidden naviBarSeparator
-    func onHiddenBarSeparator()
+    open func onHiddenBarSeparator()
     {
         self.naviBarSeparator.isHidden = true;
     }
     
     //MARK: show naviBarSeparator
-    func onShowBarSeparator()
+    open func onShowBarSeparator()
     {
         self.naviBarSeparator.isHidden = false;
     }
     
     //MARK: 标题栏-->文字
-    func onShowNavigationTitle(_ title:String)
+    open func onShowNavigationTitle(_ title:String)
     {
         self.titleItem.removeFromSuperview();
         let label = UILabel.init();
@@ -254,13 +253,12 @@ class ZHBaseBoard: UIViewController {
             make.center.equalTo(self.naviBarContainer);
             make.width.lessThanOrEqualToSuperview().multipliedBy(0.75);
         };
-        
         self.titleItem = label;
 
     }
     
     //MARK: 标题栏-->图片
-    func onShowNavigationTitleWithImage(_ image:UIImage)
+    open func onShowNavigationTitleWithImage(_ image:UIImage)
     {
         self.titleItem.removeFromSuperview();
         let imageView = UIImageView.init(image: image);
@@ -275,7 +273,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: 标题栏-->自定义视图
-    func onShowNavigationTitleWithCustomView(_ customView:UIView)
+    open func onShowNavigationTitleWithCustomView(_ customView:UIView)
     {
         self.titleItem.removeFromSuperview();
         self.naviBarContainer.addSubview(customView);
@@ -290,7 +288,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: leftItem-->文字
-    func onShowLeftItemWithTitle(_ title:String)
+    open func onShowLeftItemWithTitle(_ title:String)
     {
         self.leftItem.removeFromSuperview();
         let label = UILabel.init();
@@ -308,7 +306,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: leftItem-->图片
-    func onShowLeftItemWithImage(_ image:UIImage)
+    open func onShowLeftItemWithImage(_ image:UIImage)
     {
         self.leftItem.removeFromSuperview();
         let imageView = UIImageView.init();
@@ -328,7 +326,7 @@ class ZHBaseBoard: UIViewController {
     
     
     //MARK: leftItem-->自定义视图
-    func onShowLeftItemWithCustomView(_ customView:UIView)
+    open func onShowLeftItemWithCustomView(_ customView:UIView)
     {
         self.leftItem.removeFromSuperview();
         self.naviBarContainer.addSubview(customView);
@@ -344,7 +342,7 @@ class ZHBaseBoard: UIViewController {
     
     
     //MARK: rightItem-->文字
-    func onShowRightItemWithTitle(_ title:String)
+    open func onShowRightItemWithTitle(_ title:String)
     {
         self.rightItem.removeFromSuperview();
         let label = UILabel.init();
@@ -363,7 +361,7 @@ class ZHBaseBoard: UIViewController {
     
     
     //MARK: rightItem-->图片
-    func onShowRightItemWithImage(_ image:UIImage)
+    open func onShowRightItemWithImage(_ image:UIImage)
     {
         self.rightItem.removeFromSuperview();
         let imageView = UIImageView.init();
@@ -382,7 +380,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: rightItem-->自定义视图
-    func onShowRightItemWithCustomView(_ customView:UIView)
+    open func onShowRightItemWithCustomView(_ customView:UIView)
     {
         self.rightItem.removeFromSuperview();
         self.naviBarContainer.addSubview(customView);
@@ -398,7 +396,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: leftItemButton
-    func addLeftItemButton()
+    open func addLeftItemButton()
     {
         self.naviBarContainer.addSubview(self.leftItemBtn);
         self.leftItemBtn.snp.makeConstraints { (make) in
@@ -408,7 +406,7 @@ class ZHBaseBoard: UIViewController {
     }
     
     //MARK: rightItemButton
-    func addRightItemButton()
+    open func addRightItemButton()
     {
         self.naviBarContainer.addSubview(self.rightItemBtn);
         self.rightItemBtn.snp.makeConstraints { (make) in

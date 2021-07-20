@@ -8,30 +8,30 @@
 
 import UIKit
 
-class ZHBaseCollectionView: ZHBaseCell{
+open class ZHBaseCollectionView: ZHBaseCell{
 
-    weak var viewLayoutDelegate: ZHCollectionViewLayoutDelegate?;
+   public weak var viewLayoutDelegate: ZHCollectionViewLayoutDelegate?;
     
-    init(_ frame:CGRect, _ viewLayoutDelegate:ZHCollectionViewLayoutDelegate){
+   public init(_ frame:CGRect, _ viewLayoutDelegate:ZHCollectionViewLayoutDelegate){
         self.viewLayoutDelegate = viewLayoutDelegate;
         super.init(frame: CGRect.zero);
     }
     
-    required init?(coder aDecoder: NSCoder) {
+   required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
+   public override init(frame: CGRect) {
         super.init(frame: frame);
     }
     
-    lazy var collectionView : ZHCollectionView = {
+   public lazy var collectionView : ZHCollectionView = {
         let collectionView = ZHCollectionView.init((self.viewLayoutDelegate != nil) ? self.viewLayoutDelegate!:self);
         self.addSubview(collectionView);
         return collectionView;
     }()
     
-    override func onLoad(){
+   open override func onLoad(){
         super.onLoad();
         self.enabled = false;
         self.collectionView.snp.makeConstraints { (make) in
@@ -39,14 +39,19 @@ class ZHBaseCollectionView: ZHBaseCell{
         }
     }
 
-    override func dataDidChange() {
+    open override func dataDidChange() {
+       
         if self.data == nil {return;}
+        
         let model = self.data as! ZHBaseCollectionViewModel;
         
-        let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout;
-        if flowLayout?.scrollDirection != model.scrollDirection {
-           flowLayout?.scrollDirection = model.scrollDirection;
+        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            
+            if flowLayout.scrollDirection != model.scrollDirection {
+               flowLayout.scrollDirection = model.scrollDirection;
+            }
         }
+        
         self.collectionView.showsVerticalScrollIndicator = model.showsVerticalScrollIndicator;
         self.collectionView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator;
         self.collectionView.isPagingEnabled = model.pagingEnabled;
@@ -56,7 +61,7 @@ class ZHBaseCollectionView: ZHBaseCell{
        
     }
     
-    func reloadData(){
+    open func reloadData(){
         self.collectionView.reloadData();
     }
 }

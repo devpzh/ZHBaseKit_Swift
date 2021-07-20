@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc protocol ZHCollectionViewLayoutDelegate
+@objc public protocol ZHCollectionViewLayoutDelegate
 {
-    @objc optional func collectionViewLayout() -> UICollectionViewLayout;
+   @objc optional func collectionViewLayout() -> UICollectionViewLayout;
 }
 
-class ZHCollectionView: UICollectionView {
+open class ZHCollectionView: UICollectionView {
 
-    lazy var imp: ZHCollectionViewIMP = {
+    public lazy var imp: ZHCollectionViewIMP = {
         let imp = ZHCollectionViewIMP();
         
         imp.collectionViewDidScrollClosure = { [weak self] scorllView in
@@ -31,7 +31,7 @@ class ZHCollectionView: UICollectionView {
         return imp;
     }()
     
-    var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
+    public var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet
         {
             self.imp.sectionsArray = sectionsArray;
@@ -40,11 +40,11 @@ class ZHCollectionView: UICollectionView {
     
 
     //MARK: Closure
-    var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
-    var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
-    var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
+    public var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
+    public var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
+    public var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
     
-    var allowMoveItems:Bool = false
+    public var allowMoveItems:Bool = false
     {
         didSet {
             if allowMoveItems == true {
@@ -57,7 +57,7 @@ class ZHCollectionView: UICollectionView {
     }
     
     
-    func onConfiguration()
+   open func onConfiguration()
     {
         self.backgroundColor = UIColor.clear;
         self.delegate   = self.imp;
@@ -70,7 +70,7 @@ class ZHCollectionView: UICollectionView {
     }
     
     
-    init(_ delegate : AnyObject?) {
+    public init(_ delegate : AnyObject?) {
     
         var flowLayout:UICollectionViewLayout?
         
@@ -93,21 +93,19 @@ class ZHCollectionView: UICollectionView {
         
         super.init(frame: CGRect.zero, collectionViewLayout:flowLayout!)
         self.onConfiguration();
-        
-    
-         
+
     }
     
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+   public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout);
         self.onConfiguration();
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func longPressGestureAction(_ gesture:UILongPressGestureRecognizer)
+    @objc open func longPressGestureAction(_ gesture:UILongPressGestureRecognizer)
     {
         switch gesture.state {
         case .began:
@@ -142,22 +140,22 @@ class ZHCollectionView: UICollectionView {
    
 }
 
-typealias ZHCollectionViewLayoutClosure = (_ height:CGFloat)->();
+public typealias ZHCollectionViewLayoutClosure = (_ height:CGFloat)->();
 
-class ZHCollectionViewLayout: UICollectionViewFlowLayout {
+open class ZHCollectionViewLayout: UICollectionViewFlowLayout {
     
-    var space:CGFloat = kMargin;
+    public var space:CGFloat = kMargin;
 
-    override init() {
+    public override init() {
         super.init();
        
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder);
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         guard let s_layoutAttributes = super.layoutAttributesForElements(in: rect) else { return []};
         var layoutAttributes:[UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]();
@@ -207,7 +205,7 @@ class ZHCollectionViewLayout: UICollectionViewFlowLayout {
         return layoutAttributes;
     }
     
-    func updateCellFrame(layoutAttributes: inout [UICollectionViewLayoutAttributes]) {
+    open func updateCellFrame(layoutAttributes: inout [UICollectionViewLayoutAttributes]) {
         
         var x:CGFloat = kSpace;
         

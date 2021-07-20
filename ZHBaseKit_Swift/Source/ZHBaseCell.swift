@@ -8,17 +8,16 @@
 
 import UIKit
 
-typealias ZHTableViewCellReloadRowsClosure     = (_ animation:UITableView.RowAnimation?)->();
-typealias ZHTableViewCellReloadSectionsClosure = (_ animation:UITableView.RowAnimation?)->();
+public typealias ZHTableViewCellReloadRowsClosure     = (_ animation:UITableView.RowAnimation?)->();
+public typealias ZHTableViewCellReloadSectionsClosure = (_ animation:UITableView.RowAnimation?)->();
 
-class ZHBaseCell: UIView {
+open class ZHBaseCell: UIView {
   
     //MARK: Properties
-    var reloadRowsClosure : ZHTableViewCellReloadRowsClosure?
-    var reloadSectionsClosure : ZHTableViewCellReloadSectionsClosure?
+    public var reloadRowsClosure : ZHTableViewCellReloadRowsClosure?
+    public var reloadSectionsClosure : ZHTableViewCellReloadSectionsClosure?
 
-    
-    var enabled:Bool = true
+    public var enabled:Bool = true
     {
        didSet
         {
@@ -34,8 +33,8 @@ class ZHBaseCell: UIView {
         
     }
 
-    weak var delegate: AnyObject?;
-    var data:ZHBaseCellModel? 
+    public weak var delegate: AnyObject?;
+    public var data:ZHBaseCellModel?
     {
         didSet
         {
@@ -51,34 +50,34 @@ class ZHBaseCell: UIView {
     }
 
     //MARK: Func
-    func onLoad()
+    open func onLoad()
     {
         self.enabled = true;
      
     }
     
-    func dataDidChange()
+    open func dataDidChange()
     {
        
     }
     
-   private func addGesture()
+    open func addGesture()
     {
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(onTouch))
         self.addGestureRecognizer(gesture);
     }
     
-    func removeGesture()
+    open func removeGesture()
     {
         self.gestureRecognizers?.removeAll();
     }
         
-    @objc func onTouch()
+    @objc open func onTouch()
     {
         
     }
     
-    override func layoutSubviews(){
+    open override func layoutSubviews(){
         
         if self.frame.size.width > 0 || self.frame.size.height > 0
         {
@@ -86,17 +85,17 @@ class ZHBaseCell: UIView {
         }
     }
     
-    func layoutDidFinish() {
+    open func layoutDidFinish() {
         
     }
     
     //MARK: Init
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame);
         self.onLoad();
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

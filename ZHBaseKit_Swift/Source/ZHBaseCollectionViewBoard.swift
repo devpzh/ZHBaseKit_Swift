@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
+open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
 
     //MARK: collectionView
-    lazy var collectionView: ZHCollectionView = {
+    public lazy var collectionView: ZHCollectionView = {
         let collectionView = ZHCollectionView.init(self);
         collectionView.alwaysBounceVertical = true;
         self.view.addSubview(collectionView);
@@ -19,12 +19,12 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
     }()
     
     //MARK: default section
-    lazy var section: ZHCollectionViewSection = {
+    public lazy var section: ZHCollectionViewSection = {
         return ZHCollectionViewSection();
     }()
     
     //MARK: sectionsArray
-    var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
+    public var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet{
             if sectionsArray != self.collectionView.sectionsArray {
                 self.collectionView.sectionsArray = sectionsArray;
@@ -32,7 +32,7 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
         }
     }
     
-    override func onViewCreate() {
+    open override func onViewCreate() {
         super.onViewCreate();
         
         // refresh
@@ -44,17 +44,17 @@ class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate{
        
     }
     
-    override func onViewLayout() {
+    open override func onViewLayout() {
         super.onViewLayout();
         self.collectionView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
     
     
-    func onRefreshHeaderCreate(){
+    open func onRefreshHeaderCreate(){
         
     }
     
-    func onRefreshFooterCreate(){
+    open func onRefreshFooterCreate(){
         
     }
 }

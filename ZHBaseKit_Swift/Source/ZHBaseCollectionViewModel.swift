@@ -8,34 +8,34 @@
 
 import UIKit
 
-class ZHBaseCollectionViewModel: ZHBaseCellModel {
+open class ZHBaseCollectionViewModel: ZHBaseCellModel {
 
     //MARK: default section
-    lazy var section: ZHCollectionViewSection = {
+    public lazy var section: ZHCollectionViewSection = {
         return ZHCollectionViewSection();
     }()
     
     //MARK: sectionsArray
-     lazy var sectionsArray:[ZHCollectionViewSection] = {
+    public lazy var sectionsArray:[ZHCollectionViewSection] = {
         return [ZHCollectionViewSection]();
     }()
     
     //MARK: scrollDirection
-    var scrollDirection: UICollectionView.ScrollDirection = .horizontal;
+    public var scrollDirection: UICollectionView.ScrollDirection = .horizontal;
     
     //MARK: pagingEnabled
-    var pagingEnabled = false;
+    public var pagingEnabled = false;
     
     //MARK: scrollEnabled
-    var scrollEnabled = true;
+    public var scrollEnabled = true;
     
     //MARK: showsHorizontalScrollIndicator
-    var showsHorizontalScrollIndicator = false;
+    public var showsHorizontalScrollIndicator = false;
     
     //MARK: showsVerticalScrollIndicator
-    var showsVerticalScrollIndicator = false;
+    public var showsVerticalScrollIndicator = false;
     
-    override init() {
+    public override init() {
         super.init();
         self.cellClassName = "ZHBaseCollectionView";
         self.sectionsArray.append(self.section);

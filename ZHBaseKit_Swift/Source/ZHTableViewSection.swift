@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ZHTableViewSection: NSObject
+open class ZHTableViewSection: NSObject
 {
     //MARK: Section Header Model
-    var headerModel : ZHBaseCellModel?;
+    public var headerModel : ZHBaseCellModel?;
     
     //MARK: Section Footer Model
-    var footerModel : ZHBaseCellModel?;
+    public var footerModel : ZHBaseCellModel?;
     
     //MARK: Cell Models
-    lazy var rowsArray:[ZHBaseCellModel] =
+    public lazy var rowsArray:[ZHBaseCellModel] =
     {
         return [ZHBaseCellModel]();
     }()

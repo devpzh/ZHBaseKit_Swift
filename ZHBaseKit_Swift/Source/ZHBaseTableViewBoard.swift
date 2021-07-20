@@ -8,22 +8,22 @@
 
 import UIKit
 
-class ZHBaseTableViewBoard: ZHBaseBoard {
+open class ZHBaseTableViewBoard: ZHBaseBoard {
 
     //MARK: Lazy loading
-    lazy var tableView: ZHTableView = {
+    public lazy var tableView: ZHTableView = {
         let tableView = ZHTableView();
         self.view.addSubview(tableView);
         return tableView;
     }()
     
     //MARK: default section
-    lazy var section: ZHTableViewSection = {
+    public lazy var section: ZHTableViewSection = {
         return ZHTableViewSection();
     }()
     
     //MARK: sectionsArray
-    var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
+    public var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
         didSet{
             if sectionsArray != self.tableView.sectionsArray {
                 self.tableView.sectionsArray = sectionsArray;
@@ -32,7 +32,7 @@ class ZHBaseTableViewBoard: ZHBaseBoard {
     }
     
     //MARK: Func
-    override func onViewCreate() {
+    open override func onViewCreate() {
         super.onViewCreate();
         
         // refresh
@@ -44,16 +44,16 @@ class ZHBaseTableViewBoard: ZHBaseBoard {
         
     }
     
-    override func onViewLayout() {
+    open override func onViewLayout() {
         super.onViewLayout();
         self.tableView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
 
-    func onRefreshHeaderCreate(){
+    open func onRefreshHeaderCreate(){
         
     }
     
-    func onRefreshFooterCreate(){
+    open func onRefreshFooterCreate(){
         
     }
     

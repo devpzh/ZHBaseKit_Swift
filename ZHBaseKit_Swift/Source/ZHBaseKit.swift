@@ -8,47 +8,47 @@
 
 import UIKit
 
-class ZHBaseKit: NSObject
+open class ZHBaseKit: NSObject
 {
-    static let shared:ZHBaseKit = ZHBaseKit();
+    public static let shared:ZHBaseKit = ZHBaseKit();
     
     //MARK:背景色
-    var backgroundColor         = UIColor.white;
+    public var backgroundColor         = UIColor.white;
     
     //MARK:导航栏背景色
-    var naviBarBackgroundColor  = UIColor.white;
+    public var naviBarBackgroundColor  = UIColor.white;
     
     //MARK:导航栏字体颜色
-    var naviBarTitleColor       = UIColor.black;
+    public var naviBarTitleColor       = UIColor.black;
     
     //MARK:导航栏 leftItem 字体颜色
-    var leftItemTitleColor      = UIColor.black;
+    public var leftItemTitleColor      = UIColor.black;
     
     //MARK:导航栏 rightItem 字体颜色
-    var rightItemTitleColor     = UIColor.black;
+    public var rightItemTitleColor     = UIColor.black;
     
     //MARK:导航栏标题字体大小
-    var titleFont = kFont(16.0);
+    public var titleFont = kFont(16.0);
     
     //MARK:导航栏 leftItem 字体大小
-    var leftItemTitleFont = kFont(14.0);
+    public var leftItemTitleFont = kFont(14.0);
     
     //MARK:导航栏 rightItem 字体大小
-    var rightItemTitleFont = kFont(14.0);
+    public var rightItemTitleFont = kFont(14.0);
     
     //MARK:导航栏 leftItem  边距
-    var leftItemMarginLeft = 15.0;
+    public var leftItemMarginLeft = 15.0;
     
     //MARK:导航栏 rightItem 边距
-    var rightItemMarginRight = 15.0;
+    public var rightItemMarginRight = 15.0;
     
     //MARK:导航栏下划线颜色
-    var naviBarSeparatorColor = UIColor.lightGray;
+    public var naviBarSeparatorColor = UIColor.lightGray;
     
     //MARK:返回按钮
-    var backIcon:String  = "back";
+    public var backIcon:String  = "back";
     
-    override init() {
+    public override init() {
         
     }
 }

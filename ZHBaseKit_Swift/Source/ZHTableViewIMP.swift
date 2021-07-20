@@ -11,59 +11,59 @@ import UIKit
 let kTableViewCellContentViewTag = 10000;
 let kTableViewHeaderFooterContentViewTag = 10001;
 
-typealias ZHTableViewDidScrollClosure = (UIScrollView)->();
-typealias ZHTableViewDidEndDeceleratingClosure = (UIScrollView)->();
-typealias ZHTableViewDidEndDraggingClosure = (UIScrollView,Bool)->();
+public typealias ZHTableViewDidScrollClosure = (UIScrollView)->();
+public typealias ZHTableViewDidEndDeceleratingClosure = (UIScrollView)->();
+public typealias ZHTableViewDidEndDraggingClosure = (UIScrollView,Bool)->();
 
-class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
+open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     
     //MARK: Closure
-    var tableViewDidScrollClosure: ZHTableViewDidScrollClosure?
-    var tableViewDidEndDeceleratingClosure: ZHTableViewDidEndDeceleratingClosure?
-    var tableViewDidEndDraggingClosure: ZHTableViewDidEndDraggingClosure?
+    public var tableViewDidScrollClosure: ZHTableViewDidScrollClosure?
+    public var tableViewDidEndDeceleratingClosure: ZHTableViewDidEndDeceleratingClosure?
+    public var tableViewDidEndDraggingClosure: ZHTableViewDidEndDraggingClosure?
     
     //MARK: SectionsArray
-    lazy var sectionsArray: [ZHTableViewSection] =
+    public lazy var sectionsArray: [ZHTableViewSection] =
         {
          return [ZHTableViewSection]();
     }()
     
     //MARK: UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         self.tableViewDidScrollClosure?(scrollView);
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.tableViewDidEndDeceleratingClosure?(scrollView);
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.tableViewDidEndDraggingClosure?(scrollView,decelerate);
     }
     
     //MARK: UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
         return model.cellHeight;
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         let headerModel = self.sectionsArray[section].headerModel;
         return (headerModel != nil) ? headerModel!.cellHeight:0.0;
         
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         let footerModel = self.sectionsArray[section].footerModel;
         return (footerModel != nil) ? footerModel!.cellHeight:0.0;
     }
     
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerModel = self.sectionsArray[section].headerModel;
         if  headerModel == nil
@@ -86,7 +86,7 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         return header;
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footerModel = self.sectionsArray[section].footerModel;
         if  footerModel == nil
@@ -109,17 +109,17 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     }
     
     //MARK: UITableViewDataSource
-    func numberOfSections(in tableView: UITableView) -> Int
+    public func numberOfSections(in tableView: UITableView) -> Int
     {
         return self.sectionsArray.count;
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.sectionsArray[section].rowsArray.count;
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
         let cell  = UITableView.tableView(tableView: tableView, indexPath: indexPath, cellClassName: model.cellClassName);
@@ -144,10 +144,10 @@ class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
 
 }
 
-extension UITableView
+public extension UITableView
 {
     
-   class func tableView(tableView:UITableView, indexPath:IndexPath, cellClassName:String) -> UITableViewCell
+    class func tableView(tableView:UITableView, indexPath:IndexPath, cellClassName:String) -> UITableViewCell
     {
         let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"];
         let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + cellClassName)!
@@ -171,7 +171,7 @@ extension UITableView
     }
     
     
-  class func tableView(tableView:UITableView, headerFooterClassName:String) -> UITableViewHeaderFooterView
+    class func tableView(tableView:UITableView, headerFooterClassName:String) -> UITableViewHeaderFooterView
     {
         let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"];
         let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + headerFooterClassName)!

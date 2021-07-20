@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ZHBaseCellModel: NSObject {
+open class ZHBaseCellModel: NSObject {
     
-    var cellClassName : String  = "";
-    var cellWidth     : CGFloat = 0.0;
-    var cellHeight    : CGFloat = 0.0;
-    weak var delegate : AnyObject?
+    public var cellClassName : String  = "";
+    public var cellWidth     : CGFloat = 0.0;
+    public var cellHeight    : CGFloat = 0.0;
+    public weak var delegate : AnyObject?
     
-    override init()
+    public override init()
     {
         super.init();
         self.cellWidth = kScreenWidth;

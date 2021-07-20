@@ -6,7 +6,7 @@
 //  Copyright © 2021 pzh. All rights reserved.
 //
 
-protocol ZHProtocol {
+public protocol ZHProtocol {
     
     func onTouch(_ cell:ZHBaseCell, data:ZHBaseCellModel);
 }

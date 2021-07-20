@@ -8,71 +8,71 @@
 
 import UIKit
 
-let kCollectionViewCellContentViewTag       = 10000;
-let kUICollectionReusableViewContentViewTag = 10001;
+public let kCollectionViewCellContentViewTag       = 10000;
+public let kUICollectionReusableViewContentViewTag = 10001;
 
-typealias ZHCollectionViewDidScrollClosure = (UIScrollView)->();
-typealias ZHCollectionViewDidEndDeceleratingClosure = (UIScrollView)->();
-typealias ZHCollectionViewDidEndDraggingClosure = (UIScrollView,Bool)->();
+public typealias ZHCollectionViewDidScrollClosure = (UIScrollView)->();
+public typealias ZHCollectionViewDidEndDeceleratingClosure = (UIScrollView)->();
+public typealias ZHCollectionViewDidEndDraggingClosure = (UIScrollView,Bool)->();
 
-class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
+open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     
     //MARK: Closure
-    var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
-    var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
-    var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
+   public var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
+   public var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
+   public var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
     
     //MARK: SectionsArray
-    lazy var sectionsArray: [ZHCollectionViewSection] = {
+    public lazy var sectionsArray: [ZHCollectionViewSection] = {
         return [ZHCollectionViewSection]();
     }()
 
     //MARK: UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.collectionViewDidScrollClosure?(scrollView);
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.collectionViewDidEndDeceleratingClosure?(scrollView);
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.collectionViewDidEndDraggingClosure?(scrollView,decelerate);
     }
     
     //MARK: UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
         return CGSize.init(width: model.cellWidth, height: model.cellHeight);
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let sectionMdl = self.sectionsArray[section];
         return sectionMdl.edgeInsets;
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         let sectionMdl = self.sectionsArray[section];
         return sectionMdl.minimumLineSpacing;
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         let sectionMdl = self.sectionsArray[section];
         return sectionMdl.minimumInteritemSpacing;
     }
     
     //MARK : UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.sectionsArray.count;
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionMdl = self.sectionsArray[section];
         return sectionMdl.rowsArray.count;
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let sectionMdl = self.sectionsArray[section];
         if sectionMdl.headerModel != nil
         {
@@ -83,7 +83,7 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let sectionMdl = self.sectionsArray[section];
         if sectionMdl.footerModel != nil
         {
@@ -94,7 +94,7 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
     }
 
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var reusableView : UICollectionReusableView!;
         let sectionMdl = self.sectionsArray[indexPath.section];
@@ -129,7 +129,7 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
         let cell =  UICollectionView.collectionView(collectionView: collectionView, indexPath: indexPath, cellClassName: model.cellClassName);
@@ -148,13 +148,13 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
         return cell;
     }
     
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         
         guard let zh_collectionView = collectionView as? ZHCollectionView else { return false }
         return zh_collectionView.allowMoveItems;
     }
     
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         if sourceIndexPath.section == destinationIndexPath.section {
             
@@ -185,9 +185,9 @@ class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollect
 }
 
 
-extension UICollectionView
+public extension UICollectionView
 {
-    class  func collectionView(collectionView: UICollectionView, indexPath:IndexPath, cellClassName:String) -> UICollectionViewCell
+    class func collectionView(collectionView: UICollectionView, indexPath:IndexPath, cellClassName:String) -> UICollectionViewCell
     {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellClassName);
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellClassName, for: indexPath);
@@ -211,7 +211,7 @@ extension UICollectionView
     }
     
     
-   class func collectionView(collectionView:UICollectionView,viewForSupplementaryElementOfKind kind:String,indexPath: IndexPath,cellClassName:String) -> UICollectionReusableView
+    class func collectionView(collectionView:UICollectionView,viewForSupplementaryElementOfKind kind:String,indexPath: IndexPath,cellClassName:String) -> UICollectionReusableView
     {
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellClassName)
         

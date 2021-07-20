@@ -8,22 +8,22 @@
 
 import UIKit
 
-class ZHBaseTableView: ZHBaseCell {
+open class ZHBaseTableView: ZHBaseCell {
     
     //MARK: tableView
-    lazy var tableView: ZHTableView = {
+   public lazy var tableView: ZHTableView = {
         let tableView = ZHTableView();
         self.addSubview(tableView);
         return tableView;
     }()
     
     //MARK: tableView.tableHeaderView,非 sectionHeader
-    var tableHeaderViewModel:ZHBaseCellModel?
+    public var tableHeaderViewModel:ZHBaseCellModel?
     
     //MARK: tableView.tableFooterView,非 sectionFooter
     var tableFooterViewModel:ZHBaseCellModel?
 
-    override func onLoad() {
+    open override func onLoad() {
         super.onLoad();
         self.enabled = false;
         self.tableView.snp.makeConstraints { (make) in
@@ -31,7 +31,7 @@ class ZHBaseTableView: ZHBaseCell {
         }
     }
     
-    override func dataDidChange() {
+    open override func dataDidChange() {
         if self.data == nil {return}
         
         let model = self.data as! ZHBaseTableViewModel;
@@ -45,11 +45,11 @@ class ZHBaseTableView: ZHBaseCell {
         self.tableView.reloadData();
     }
    
-    func reloadData() {
+   open func reloadData() {
         self.tableView.reloadData();
     }
     
-    func onConfigurationTableHeaderView(_ headerViewModel:ZHBaseCellModel?){
+   open func onConfigurationTableHeaderView(_ headerViewModel:ZHBaseCellModel?){
       
         if self.tableHeaderViewModel != nil && self.tableHeaderViewModel!.cellClassName == headerViewModel?.cellClassName
         {
@@ -67,7 +67,7 @@ class ZHBaseTableView: ZHBaseCell {
     }
     
     
-    func onConfigurationTableFooterView(_ footerViewModel:ZHBaseCellModel?){
+    open func onConfigurationTableFooterView(_ footerViewModel:ZHBaseCellModel?){
         
         if self.tableFooterViewModel != nil && self.tableFooterViewModel!.cellClassName == footerViewModel?.cellClassName
         {
@@ -85,7 +85,7 @@ class ZHBaseTableView: ZHBaseCell {
         
     }
     
-    func onMappingCell(_ model:ZHBaseCellModel?) -> ZHBaseCell?{
+    open func onMappingCell(_ model:ZHBaseCellModel?) -> ZHBaseCell?{
         
         if model == nil {
             return nil;
