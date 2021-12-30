@@ -89,9 +89,8 @@ enum HttpRequestStatus
 
 typealias ZHMessageClosure = (ZHMessage)->();
 
-class ZHMessage: NSObject {
+class ZHMessage {
 
-    
     var input:Dictionary<String,Any> =
     {
         let input = Dictionary<String,Any>();
@@ -167,4 +166,7 @@ class ZHMessage: NSObject {
         
     }
     
+    deinit {
+        print(" message deint")
+    }
 }
