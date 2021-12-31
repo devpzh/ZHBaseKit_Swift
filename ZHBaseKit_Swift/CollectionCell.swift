@@ -14,6 +14,7 @@ class CollectionCellModel: ZHBaseCellModel {
     
     override init() {
         super.init();
+        
         self.cellClassName = "CollectionCell";
         self.cellWidth     = (kScreenWidth-30)/2;
         self.cellHeight    = self.cellWidth;
