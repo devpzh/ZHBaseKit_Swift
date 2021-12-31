@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = 'ZHBaseKit_Swift'
 
-  spec.version      = '2.0.1'
+  spec.version      = '2.1.0'
 
   spec.summary      = 'ZHBaseKit_Swift'
 
@@ -34,7 +34,7 @@ Pod::Spec.new do |spec|
                     A framework for data-driven UI and rapid development -- Swift
                    DESC
 
-  spec.homepage     = 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git'
+  spec.homepage     = 'https://github.com/devpzh/ZHBaseKit_Swift.git'
   
 
   
@@ -75,7 +75,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source    = { :git => 'https://github.com/Panzhenghui/ZHBaseKit_Swift.git', :tag => spec.version}
+  spec.source    = { :git => 'https://github.com/devpzh/ZHBaseKit_Swift.git', :tag => spec.version}
 
   spec.dependency 'SnapKit'
 
