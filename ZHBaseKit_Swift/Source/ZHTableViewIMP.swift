@@ -157,7 +157,7 @@ public extension UITableView
         {
             cell = UITableViewCell.init(style: .value1, reuseIdentifier: cellClassName);
             cell?.selectionStyle = .none;
-            cell?.contentView.backgroundColor = UIColor.clear;
+            cell?.backgroundColor = UIColor.clear;
             let contentView = clazzType?.init();
             contentView?.tag = kTableViewCellContentViewTag;
             cell?.contentView.addSubview(contentView!);
