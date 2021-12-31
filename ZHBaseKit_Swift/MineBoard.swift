@@ -12,7 +12,7 @@ class MineBoard: ZHBaseBoard {
 
     override func onViewCreate() {
         super.onViewCreate();
-        self.onShowNavigationTitle("我的");
+        self.onShowNavigationTitle("Mine");
     }
    
     override func onBarLeftItemCreate() {
