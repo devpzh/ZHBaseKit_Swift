@@ -61,6 +61,10 @@ open class ZHTableView: UITableView {
             };
         }
         
+        if #available(iOS 15.0, *){
+            self.sectionHeaderTopPadding = 0;
+        }
+        
         self.delegate   = self.imp;
         self.dataSource = self.imp;
     }
