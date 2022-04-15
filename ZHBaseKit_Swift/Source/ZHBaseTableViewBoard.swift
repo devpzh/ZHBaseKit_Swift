@@ -11,8 +11,11 @@ import UIKit
 open class ZHBaseTableViewBoard: ZHBaseBoard {
 
     //MARK: Lazy loading
+    public var tableViewStyle:UITableView.Style = .plain;
+    
+    //MARK: Lazy loading
     public lazy var tableView: ZHTableView = {
-        let tableView = ZHTableView();
+        let tableView =  ZHTableView(frame: CGRect.zero, style: tableViewStyle);
         self.view.addSubview(tableView);
         return tableView;
     }()
@@ -35,10 +38,6 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
     open override func onViewCreate() {
         super.onViewCreate();
         
-        // refresh
-        self.onRefreshHeaderCreate();
-        self.onRefreshFooterCreate();
-        
         // add default section
         self.sectionsArray.append(self.section);
         
@@ -49,12 +48,5 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
         self.tableView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
 
-    open func onRefreshHeaderCreate(){
-        
-    }
-    
-    open func onRefreshFooterCreate(){
-        
-    }
     
 }

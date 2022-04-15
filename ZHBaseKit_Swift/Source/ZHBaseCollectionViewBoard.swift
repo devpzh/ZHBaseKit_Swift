@@ -34,11 +34,7 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
     
     open override func onViewCreate() {
         super.onViewCreate();
-        
-        // refresh
-        self.onRefreshHeaderCreate();
-        self.onRefreshFooterCreate();
-        
+                
         // add default section
         self.sectionsArray.append(self.section);
        
@@ -49,12 +45,4 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
         self.collectionView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
     
-    
-    open func onRefreshHeaderCreate(){
-        
-    }
-    
-    open func onRefreshFooterCreate(){
-        
-    }
 }

@@ -31,6 +31,15 @@ open class ZHBaseCollectionView: ZHBaseCell{
         return collectionView;
     }()
     
+    
+    public lazy var config:ZHBaseCollectionViewModel = {
+         
+        if let model = data as? ZHBaseCollectionViewModel{
+            return model;
+        }
+        return ZHBaseCollectionViewModel();
+    }();
+    
    open override func onLoad(){
         super.onLoad();
         self.enabled = false;
@@ -38,30 +47,44 @@ open class ZHBaseCollectionView: ZHBaseCell{
             make.edges.equalTo(self);
         }
     }
-
+    
     open override func dataDidChange() {
        
-        if self.data == nil {return;}
+        guard let model = self.data as? ZHBaseCollectionViewModel else { return }
         
-        let model = self.data as! ZHBaseCollectionViewModel;
+        if config != model {
+            config = model;
+        }
+            
         
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            
+
             if flowLayout.scrollDirection != model.scrollDirection {
                flowLayout.scrollDirection = model.scrollDirection;
             }
         }
-        
+
         self.collectionView.showsVerticalScrollIndicator = model.showsVerticalScrollIndicator;
         self.collectionView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator;
         self.collectionView.isPagingEnabled = model.pagingEnabled;
         self.collectionView.isScrollEnabled = model.scrollEnabled;
         self.collectionView.sectionsArray   = model.sectionsArray;
         self.collectionView.reloadData();
-       
+
     }
     
+
     open func reloadData(){
+        
+        if data != config {
+            data = config;
+            return;
+        }
+        
+        if self.collectionView.sectionsArray != config.sectionsArray {
+            self.collectionView.sectionsArray = config.sectionsArray;
+        }
+
         self.collectionView.reloadData();
     }
 }

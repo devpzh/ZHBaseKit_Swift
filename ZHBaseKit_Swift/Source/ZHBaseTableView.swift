@@ -22,7 +22,16 @@ open class ZHBaseTableView: ZHBaseCell {
     
     //MARK: tableView.tableFooterView,非 sectionFooter
     var tableFooterViewModel:ZHBaseCellModel?
+    
+    public lazy var config:ZHBaseTableViewModel = {
+         
+        if let model = data as? ZHBaseTableViewModel{
+            return model;
+        }
+        return ZHBaseTableViewModel();
+    }();
 
+    
     open override func onLoad() {
         super.onLoad();
         self.enabled = false;
@@ -32,10 +41,9 @@ open class ZHBaseTableView: ZHBaseCell {
     }
     
     open override func dataDidChange() {
-        if self.data == nil {return}
         
-        let model = self.data as! ZHBaseTableViewModel;
-        
+        guard let model = self.data as? ZHBaseTableViewModel else { return }
+    
         self.onConfigurationTableHeaderView(model.tableHeaderViewModel);
         self.onConfigurationTableFooterView(model.tableFooterViewModel);
         self.tableView.isScrollEnabled = model.scrollEnabled;
@@ -46,7 +54,17 @@ open class ZHBaseTableView: ZHBaseCell {
     }
    
    open func reloadData() {
-        self.tableView.reloadData();
+    
+       if data != config {
+           data = config;
+           return;
+       }
+       
+       if self.tableView.sectionsArray != config.sectionsArray {
+           self.tableView.sectionsArray = config.sectionsArray;
+       }
+       
+       self.tableView.reloadData();
     }
     
    open func onConfigurationTableHeaderView(_ headerViewModel:ZHBaseCellModel?){
@@ -99,6 +117,3 @@ open class ZHBaseTableView: ZHBaseCell {
     
     
 }
-
-
-
