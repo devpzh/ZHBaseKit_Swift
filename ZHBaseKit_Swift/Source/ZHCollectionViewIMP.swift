@@ -10,10 +10,16 @@ import UIKit
 
 public let kCollectionViewCellContentViewTag       = 10000;
 public let kUICollectionReusableViewContentViewTag = 10001;
-
 public typealias ZHCollectionViewDidScrollClosure = (UIScrollView)->();
 public typealias ZHCollectionViewDidEndDeceleratingClosure = (UIScrollView)->();
 public typealias ZHCollectionViewDidEndDraggingClosure = (UIScrollView,Bool)->();
+public typealias ZHCollectionViewDidEndMovingClosure   = (ZHIndexPath,ZHIndexPath)->();
+
+public struct ZHIndexPath {
+    let section:Int
+    let row:Int
+}
+
 
 open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     
@@ -21,6 +27,7 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
    public var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
    public var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
    public var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
+   public var collectionViewDidEndMovingClosure: ZHCollectionViewDidEndMovingClosure?
     
     //MARK: SectionsArray
     public lazy var sectionsArray: [ZHCollectionViewSection] = {
@@ -42,7 +49,12 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
     
     //MARK: UICollectionViewDelegateFlowLayout
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
+        
+        let rows = self.sectionsArray[indexPath.section].rowsArray
+        if indexPath.row >= rows.count {
+            return .zero
+        }
+        let model = rows[indexPath.row];
         return CGSize.init(width: model.cellWidth, height: model.cellHeight);
     }
     
@@ -151,7 +163,17 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
     public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         
         guard let zh_collectionView = collectionView as? ZHCollectionView else { return false }
-        return zh_collectionView.allowMoveItems;
+        
+        if zh_collectionView.allowMoveItems == false {
+            return false
+        }
+        
+        let sections = zh_collectionView.onlyMoveSections
+        if sections.isEmpty {
+            return true
+        }
+        return sections.contains(indexPath.section)
+        
     }
     
     public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -163,22 +185,21 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
             section.rowsArray.remove(at: sourceIndexPath.row);
             section.rowsArray.insert(model, at: destinationIndexPath.row);
             
-        }else
-        {
-            let section   = self.sectionsArray[sourceIndexPath.section];
-            let to_sectiion = self.sectionsArray[destinationIndexPath.section];
+        }else {
             
-            let model = section.rowsArray[sourceIndexPath.row];
-            let to_model = section.rowsArray[destinationIndexPath.row];
-            
+            let section    = self.sectionsArray[sourceIndexPath.section];
+            let to_section = self.sectionsArray[destinationIndexPath.section];
+            let model      = section.rowsArray[sourceIndexPath.row];
+            let to_model   = section.rowsArray[destinationIndexPath.row];
             section.rowsArray.remove(at: sourceIndexPath.row);
             section.rowsArray.insert(to_model, at: sourceIndexPath.row);
-            
-            to_sectiion.rowsArray.remove(at: destinationIndexPath.row);
-            to_sectiion.rowsArray.insert(model, at: destinationIndexPath.row);
-            
+            to_section.rowsArray.remove(at: destinationIndexPath.row);
+            to_section.rowsArray.insert(model, at: destinationIndexPath.row);
         }
         
+        let at = ZHIndexPath(section: sourceIndexPath.section, row: sourceIndexPath.row)
+        let to = ZHIndexPath(section: destinationIndexPath.section, row: destinationIndexPath.row)
+        collectionViewDidEndMovingClosure?(at,to)
         
     }
     
@@ -237,3 +258,4 @@ public extension UICollectionView
     }
     
 }
+

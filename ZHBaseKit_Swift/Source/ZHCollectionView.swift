@@ -27,6 +27,9 @@ open class ZHCollectionView: UICollectionView {
         imp.collectionViewDidEndDraggingClosure = { [weak self] scorllView,decelerate in
             self?.collectionViewDidEndDraggingClosure?(scorllView,decelerate);
         }
+        imp.collectionViewDidEndMovingClosure = { [weak self] (at,to) in
+            self?.collectionViewDidEndMovingClosure?(at,to)
+        }
         
         return imp;
     }()
@@ -43,10 +46,13 @@ open class ZHCollectionView: UICollectionView {
     public var collectionViewDidScrollClosure: ZHCollectionViewDidScrollClosure?
     public var collectionViewDidEndDeceleratingClosure: ZHCollectionViewDidEndDeceleratingClosure?
     public var collectionViewDidEndDraggingClosure: ZHCollectionViewDidEndDraggingClosure?
+    public var collectionViewDidEndMovingClosure: ZHCollectionViewDidEndMovingClosure?
     
-    public var allowMoveItems:Bool = false
+    //MARK: Allow move
+    public var allowMoveItems   = false
     {
         didSet {
+            
             if allowMoveItems == true {
                 let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longPressGestureAction(_:)));
                 longPressGesture.minimumPressDuration = 0.5;
@@ -56,8 +62,14 @@ open class ZHCollectionView: UICollectionView {
         
     }
     
+    //MARK: Only move in the sections, default all
+    public var onlyMoveSections = [Int]()
+    //MARK: Only move in the same section
+    public var onlyMoveInSameSection = true
+    //MARK: the current move indexpath
+    private var currentMoveIndexPath:IndexPath?
     
-   open func onConfiguration()
+    open func onConfiguration()
     {
         self.backgroundColor = UIColor.clear;
         self.delegate   = self.imp;
@@ -109,13 +121,15 @@ open class ZHCollectionView: UICollectionView {
     {
         switch gesture.state {
         case .began:
+    
             let indexPath = self.indexPathForItem(at: gesture.location(in: self));
             if indexPath == nil {
                 break;
             }
+
+            currentMoveIndexPath = indexPath
             let cell = self.cellForItem(at: indexPath!);
-            
-            if cell == nil {
+            if  cell == nil {
                 break
             }
             self.bringSubviewToFront(cell!);
@@ -123,15 +137,28 @@ open class ZHCollectionView: UICollectionView {
             break;
         
         case .changed:
+            
+            if onlyMoveInSameSection == true {
+                let indexPath = self.indexPathForItem(at: gesture.location(in: self));
+                if indexPath != nil, indexPath?.section != currentMoveIndexPath?.section {
+                    cancelInteractiveMovement()
+                    currentMoveIndexPath = nil
+                    break
+                }
+            }
+            
             self.updateInteractiveMovementTargetPosition(gesture.location(in: self));
             break;
         
         case .ended:
+            currentMoveIndexPath = nil
             self.endInteractiveMovement();
             break;
         
         default:
+            currentMoveIndexPath = nil
             self.endInteractiveMovement();
+            
         
         }
         
@@ -223,5 +250,6 @@ open class ZHCollectionViewLayout: UICollectionViewFlowLayout {
         
     }
 }
+
 
 

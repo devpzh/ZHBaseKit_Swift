@@ -48,6 +48,9 @@ open class ZHBaseKit: NSObject
     //MARK:返回按钮
     public var backIcon:String  = "back";
     
+    //MARK:状态栏模式
+    public var statusBarStyle:ZHStatusBarStyle = .system;
+    
     public override init() {
         
     }

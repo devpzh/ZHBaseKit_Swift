@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 public enum ZHStatusBarStyle {
+    case system
     case lightContent
     case darkContent
 }
@@ -71,7 +72,7 @@ open class ZHBaseBoard: UIViewController {
         }
     }
     
-    public var statusBarStyle:ZHStatusBarStyle = .darkContent;
+    public var statusBarStyle:ZHStatusBarStyle = ZHBaseKit.shared.statusBarStyle;
 
     
     //MARK: Func
@@ -93,7 +94,7 @@ open class ZHBaseBoard: UIViewController {
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated);
+        super.viewDidDisappear(animated);
         self.onViewDidDisappear();
     }
     
@@ -154,13 +155,18 @@ open class ZHBaseBoard: UIViewController {
     
     open func resetStatusBarStyle() {
         
-        if statusBarStyle == .lightContent
-        {
-            self.navigationController?.navigationBar.barStyle  = .black;
-            return;
+        switch statusBarStyle {
+        case .system:
+            UIApplication.shared.setStatusBarStyle(.default, animated: false);
+        case .lightContent:
+            UIApplication.shared.setStatusBarStyle(.lightContent, animated: false);
+        case .darkContent:
+            if #available(iOS 13.0, *) {
+                UIApplication.shared.setStatusBarStyle(.darkContent, animated: false)
+            } else {
+                UIApplication.shared.setStatusBarStyle(.default, animated: false);
+            };
         }
-        self.navigationController?.navigationBar.barStyle  = .default;
-        
      }
     
     open override var prefersHomeIndicatorAutoHidden: Bool {
@@ -416,3 +422,4 @@ open class ZHBaseBoard: UIViewController {
     }
     
 }
+
