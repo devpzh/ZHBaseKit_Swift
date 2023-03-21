@@ -51,6 +51,7 @@ open class ZHBaseKit: NSObject
     //MARK:状态栏模式
     public var statusBarStyle:ZHStatusBarStyle = .system;
     
+    //MARK:init
     public override init() {
         
     }
