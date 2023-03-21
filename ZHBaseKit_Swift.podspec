@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = 'ZHBaseKit_Swift'
 
-  spec.version      = '2.1.3'
+  spec.version      = '2.1.4'
 
   spec.summary      = 'ZHBaseKit_Swift'
 
@@ -48,7 +48,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { 'Pzh' => '1505517260@qq.com' }
+  spec.author             = { 'devpzh' => 'devpzh@163.com' }
   # Or just: spec.author    = "panzhenghui"
   # spec.authors            = { "panzhenghui" => "panzhenghui@nami.com" }
   # spec.social_media_url   = "https://twitter.com/panzhenghui"

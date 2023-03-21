@@ -24,6 +24,7 @@ class NormalCell: ZHBaseCell {
         let titleLb = UILabel.init();
         titleLb.textColor = UIColor.black;
         titleLb.font      = kFont(14);
+        
         self.addSubview(titleLb);
         return titleLb;
     }()
