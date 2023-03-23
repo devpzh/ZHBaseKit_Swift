@@ -15,6 +15,7 @@ public let kNavigationBarHeight:CGFloat = isPhoneX() ? 88.0 : 64.0;
 public let kStatusBarHeight:CGFloat     = isPhoneX() ? 44.0 : 20.0;
 public let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0;
 public let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0;
+public let kTopSafeHeight:CGFloat       = isPhoneX() ? 24.0 : 0.0;
 
 public let kMargin:CGFloat       = 10.0;
 public let kSpace:CGFloat        = 16.0;

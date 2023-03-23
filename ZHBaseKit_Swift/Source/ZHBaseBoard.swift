@@ -210,7 +210,7 @@ open class ZHBaseBoard: UIViewController {
     open func onNavigatonBarCreate()
     {
         
-        let height = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kStatusBarHeight
+        let height = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kTopSafeHeight
         self.view.addSubview(self.naviBar);
         self.naviBar.snp.makeConstraints {(make) in
             make.top.leading.trailing.equalTo(self.view);

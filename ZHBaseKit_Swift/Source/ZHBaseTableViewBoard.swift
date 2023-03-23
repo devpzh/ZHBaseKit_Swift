@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 open class ZHBaseTableViewBoard: ZHBaseBoard {
 
@@ -46,8 +47,11 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
     open override func onViewLayout() {
         super.onViewLayout();
         
-        let offsety = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kStatusBarHeight
-        self.tableView.frame = CGRect.init(x: 0, y: offsety, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(naviBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view)
+        }
+        
     }
 
     

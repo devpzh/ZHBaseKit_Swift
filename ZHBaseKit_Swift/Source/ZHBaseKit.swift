@@ -9,7 +9,7 @@
 import UIKit
 
 public struct ZH {
-    static let kit = ZHBaseKit.shared
+   public static let kit = ZHBaseKit.shared
 }
 
 open class ZHBaseKit: NSObject

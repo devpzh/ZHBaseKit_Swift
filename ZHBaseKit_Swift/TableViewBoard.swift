@@ -33,7 +33,7 @@ class TableViewBoard: ZHBaseTableViewBoard {
             return model;
         }()
         
-        for i in 0..<10
+        for i in 0..<50
         {
             let item = NormalCellModel();
             item.delegate = self

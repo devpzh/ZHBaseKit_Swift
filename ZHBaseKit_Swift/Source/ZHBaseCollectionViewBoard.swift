@@ -43,8 +43,12 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
     //onViewLayout
     open override func onViewLayout() {
         super.onViewLayout();
-        let offsety = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kStatusBarHeight
-        self.collectionView.frame = CGRect.init(x: 0, y: offsety, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(naviBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view)
+        }
+        
     }
     
 }
