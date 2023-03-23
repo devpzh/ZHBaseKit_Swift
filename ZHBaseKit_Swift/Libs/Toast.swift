@@ -13,19 +13,22 @@ class Toast: NSObject {
     
    class func presentTips(_ message:String) {
     
-    self.presentTips(message, 1.5, Router.topViewController().view, .center)
+    guard let view = ZHRouter.topViewController()?.view else { return }
+    self.presentTips(message, 1.5,view, .center)
    
    }
     
    class func presentTips(_ message:String, _ delay:TimeInterval) {
     
-    self.presentTips(message, delay, Router.topViewController().view, .center)
+    guard let view = ZHRouter.topViewController()?.view else { return }
+    self.presentTips(message, delay, view, .center)
     
    }
     
    class func presentTips(_ message:String, _ position: ToastPosition) {
       
-     self.presentTips(message, 1.5, Router.topViewController().view, .center)
+     guard let view = ZHRouter.topViewController()?.view else { return }
+     self.presentTips(message, 1.5, view, .center)
    
    }
     
@@ -47,7 +50,8 @@ class Toast: NSObject {
     
     class func presentLoadingTips(_ message:String) {
         
-        self.presentLoadingTips(message, Router.topViewController().view)
+        guard let view = ZHRouter.topViewController()?.view else { return }
+        self.presentLoadingTips(message,view)
         
     }
     
@@ -62,7 +66,8 @@ class Toast: NSObject {
     
     class func dismiss() {
         
-        self.dismiss(Router.topViewController().view);
+        guard let view = ZHRouter.topViewController()?.view else { return }
+        self.dismiss(view);
         
     }
     

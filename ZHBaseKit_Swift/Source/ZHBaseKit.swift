@@ -8,6 +8,10 @@
 
 import UIKit
 
+public struct ZH {
+    static let kit = ZHBaseKit.shared
+}
+
 open class ZHBaseKit: NSObject
 {
     public static let shared:ZHBaseKit = ZHBaseKit();

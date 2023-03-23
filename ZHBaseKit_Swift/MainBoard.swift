@@ -111,9 +111,7 @@ class MainBoard: ZHBaseTableViewBoard{
     
 
     func onCheckVersion(msg:ZHMessage) {
-        
         print("status = \(msg.status!)");
-        
     }
     
     
@@ -124,36 +122,35 @@ extension MainBoard:ZHProtocol {
     func onTouch(_ cell: ZHBaseCell, data: ZHBaseCellModel) {
         
         if data.isKind(of: StyleCellModel.self) {
-            
-            Router.routerURL(url: RouterPath("PagingBoard"));
+            ZH.router.router(url:"PagingBoard");
             return;
         }
         
         let model = data as! NormalCellModel;
         
         if model.title == kSingleSectionTableView {
+           
+            ZH.router.router(url:"TableViewBoard",params:["key":1,"key1":"2","key3":"3.0"], present:false)
             
-            Router.routerURL(url: RouterPath("TableViewBoard"),params: ["key":1,"key1":"2","key3":"3.0"]);
-       
         }else if model.title == kMultiSectionTableView
         {
-            Router.routerURL(url: RouterPath("MultiSectionTableViewBoard"));
+            ZH.router.router(url:"MultiSectionTableViewBoard");
         
         }else if model.title == kSingleSectionCollectionView
         {
-            Router.routerURL(url: RouterPath("CollectionViewBoard"));
+            ZH.router.router(url:"CollectionViewBoard");
         
         }else if model.title == kMultiSectionCollectionView
         {
-            Router.routerURL(url: RouterPath("MultiSectionCollectionViewBoard"));
+            ZH.router.router(url:"MultiSectionCollectionViewBoard");
        
         }else if model.title == kNestedTableView
         {
-            Router.routerURL(url: RouterPath("NestedTableViewBoard"));
+            ZH.router.router(url: "NestedTableViewBoard");
         
         }else if model.title == kNestedCollectionView
         {
-            Router.routerURL(url: RouterPath("NestedCollectionViewBoard"));
+            ZH.router.router(url:"NestedCollectionViewBoard");
         }
         
     }

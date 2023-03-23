@@ -72,9 +72,43 @@ open class ZHBaseBoard: UIViewController {
         }
     }
     
+    //MARK: 是否是模态跳转
+    public var isModalPresentation:Bool {
+        
+        if self.presentingViewController != nil {
+            return true
+        }
+        
+        return false
+    }
+    
+    //MARK: 是否铺满屏幕
+    public var isFullScreen:Bool {
+        
+        if isModalPresentation == false {
+            return true
+        }
+        
+        if let navi = self.navigationController {
+            
+            if navi.modalPresentationStyle == .pageSheet
+                || navi.modalPresentationStyle == .formSheet
+                || navi.modalPresentationStyle == .popover {
+                return false
+            }
+            return true
+        }
+        
+        if modalPresentationStyle == .pageSheet
+            || modalPresentationStyle == .formSheet
+            || modalPresentationStyle == .popover {
+            return false
+        }
+        return true
+    }
+    
     public var statusBarStyle:ZHStatusBarStyle = ZHBaseKit.shared.statusBarStyle;
 
-    
     //MARK: Func
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -133,7 +167,6 @@ open class ZHBaseBoard: UIViewController {
         self.onBarTitleViewCreate();
         self.onBarLeftItemCreate();
         self.onBarRightItemCreate();
-    
     }
     
     open func onViewLayout()
@@ -176,19 +209,22 @@ open class ZHBaseBoard: UIViewController {
     //MARK: 自定义导航栏
     open func onNavigatonBarCreate()
     {
+        
+        let height = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kStatusBarHeight
         self.view.addSubview(self.naviBar);
         self.naviBar.snp.makeConstraints {(make) in
             make.top.leading.trailing.equalTo(self.view);
-            make.height.equalTo(kNavigationBarHeight);
+            make.height.equalTo(height);
         };
     }
     
     //MARK: 导航栏容器
     open func onBarContainerCreate()
     {
+        let offsety = isFullScreen ? kStatusBarHeight:0
         self.naviBar.addSubview(self.naviBarContainer);
         self.naviBarContainer.snp.makeConstraints { (make) in
-            make.top.equalTo(self.naviBar).offset(kStatusBarHeight);
+            make.top.equalTo(self.naviBar).offset(offsety);
             make.leading.bottom.trailing.equalTo(self.naviBar);
         };
     }

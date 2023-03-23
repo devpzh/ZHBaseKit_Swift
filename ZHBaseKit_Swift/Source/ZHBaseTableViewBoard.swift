@@ -45,7 +45,9 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
     
     open override func onViewLayout() {
         super.onViewLayout();
-        self.tableView.frame = CGRect.init(x: 0, y: kNavigationBarHeight, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
+        
+        let offsety = isFullScreen ? kNavigationBarHeight:kNavigationBarHeight - kStatusBarHeight
+        self.tableView.frame = CGRect.init(x: 0, y: offsety, width: kScreenWidth, height: kScreenHeight-kNavigationBarHeight);
     }
 
     

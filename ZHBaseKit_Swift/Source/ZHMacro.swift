@@ -39,7 +39,6 @@ public func kImageName(_ name:String) -> UIImage
     return  UIImage.init(named: name) ?? UIImage.init();
 }
 
-
 //MARK: Font
 public func kFont(_ size:CGFloat) -> UIFont
 {
@@ -128,6 +127,7 @@ public let kIphone11_height  = 896
 public func kScaleWidth(_ width : CGFloat) -> CGFloat {
     return width * kScreenWidth / CGFloat(kIphone11_width)
 }
+
 public func kScaleHeight(_ height : CGFloat) -> CGFloat {
     return height * kScreenHeight / CGFloat(kIphone11_height)
 }

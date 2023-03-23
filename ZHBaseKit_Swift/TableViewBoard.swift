@@ -15,7 +15,7 @@ class TableViewBoard: ZHBaseTableViewBoard {
         self.onShowNavigationTitle("Single Section");
         self.onConfiguration();
        
-        print("routerParams: \(self.routerParams!)");
+        print("routerParams: \(String(describing: self.routerParams))");
         
     }
 
@@ -36,6 +36,7 @@ class TableViewBoard: ZHBaseTableViewBoard {
         for i in 0..<10
         {
             let item = NormalCellModel();
+            item.delegate = self
             item.title = "row = "+"\(i)" ;
             self.section.rowsArray.append(item);
             self.tableView.reloadData();
@@ -44,4 +45,11 @@ class TableViewBoard: ZHBaseTableViewBoard {
     }
 
     
+}
+
+extension TableViewBoard:ZHProtocol {
+    
+    func onTouch(_ cell: ZHBaseCell, data: ZHBaseCellModel) {
+        ZH.router.router(url: "TableViewBoard", present: true,presentationStyle: .pageSheet)
+    }
 }
