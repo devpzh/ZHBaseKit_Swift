@@ -29,11 +29,11 @@ class IP: NSObject {
         {
             switch type{
             case .IPServerTypeTest:
-                self.domains = "https://www.baidu.com";
+                self.domains = "";
                 break;
 
             case .IPServerTypeDistribution:
-                self.domains = "https://www.baidu.com";
+                self.domains = "";
                 break;
             }
         
