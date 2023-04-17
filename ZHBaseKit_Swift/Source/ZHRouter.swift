@@ -77,21 +77,21 @@ open class ZHRouter
 
 extension ZHRouter
 {
-    class func application() -> UIApplication
+   public class func application() -> UIApplication
     {
         return UIApplication.shared;
     }
     
-    class func keyWindow() -> UIWindow? {
+   public class func keyWindow() -> UIWindow? {
         return UIApplication.shared.keyWindow;
     }
     
     
-    class func topViewController() -> UIViewController? {
+   public class func topViewController() -> UIViewController? {
         return topViewController(root: rootViewController());
     }
     
-    class func topViewController(root:UIViewController?) -> UIViewController? {
+   public class func topViewController(root:UIViewController?) -> UIViewController? {
         
         if let tabbar = root as? UITabBarController {
             return topViewController(root: tabbar.selectedViewController)
@@ -105,7 +105,7 @@ extension ZHRouter
         
     }
     
-    class func rootViewController() -> UIViewController? {
+   public class func rootViewController() -> UIViewController? {
         
         var root:UIViewController?
         var window = UIApplication.shared.keyWindow;
