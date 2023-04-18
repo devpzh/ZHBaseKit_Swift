@@ -19,16 +19,16 @@ class MultiSectionTableViewBoard: ZHBaseTableViewBoard {
     
     func onConfiguration()
        {
-          self.tableView.sectionsArray.removeAll();
+          self.tableView.sections.removeAll();
         
           let section1 = ZHTableViewSection();
-          section1.headerModel = {
+          section1.header = {
                let model = NormalCellModel();
                model.title = "Section1 Header";
                return model;
            }()
            
-           section1.footerModel = {
+           section1.footer = {
                let model = NormalCellModel();
                model.title = "Section1 Footer";
                return model;
@@ -38,20 +38,20 @@ class MultiSectionTableViewBoard: ZHBaseTableViewBoard {
            {
                let item = NormalCellModel();
                item.title = "row = "+"\(i)" ;
-               section1.rowsArray.append(item);
+               section1.rows.append(item);
            }
            
-          self.tableView.sectionsArray.append(section1);
+          self.tableView.sections.append(section1);
         
         
           let section2 = ZHTableViewSection();
-          section2.headerModel = {
+          section2.header = {
                let model = NormalCellModel();
                model.title = "Section2 Header";
                return model;
            }()
            
-           section2.footerModel = {
+           section2.footer = {
                let model = NormalCellModel();
                model.title = "Section2 Footer";
                return model;
@@ -61,9 +61,9 @@ class MultiSectionTableViewBoard: ZHBaseTableViewBoard {
            {
                let item = NormalCellModel();
                item.title = "row = "+"\(i)" ;
-               section2.rowsArray.append(item);
+               section2.rows.append(item);
            }
-           self.tableView.sectionsArray.append(section2);
+           self.tableView.sections.append(section2);
         
         self.tableView.reloadData();
            

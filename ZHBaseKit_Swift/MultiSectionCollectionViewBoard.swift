@@ -18,20 +18,20 @@ class MultiSectionCollectionViewBoard: ZHBaseCollectionViewBoard {
     
     func onConfiguration(){
         
-        self.sectionsArray.removeAll();
+        self.sections.removeAll();
         
         let section1 = ZHCollectionViewSection();
         section1.edgeInsets = UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0);
         section1.minimumLineSpacing = 10.0;
         section1.minimumInteritemSpacing = 10.0;
         
-        section1.headerModel = {
+        section1.header = {
             let model = NormalCellModel();
             model.title = "Section1 Header";
             return model;
         }()
         
-        section1.footerModel = {
+        section1.footer = {
             let model = NormalCellModel();
             model.title = "Section1 Footer";
             return model;
@@ -41,10 +41,10 @@ class MultiSectionCollectionViewBoard: ZHBaseCollectionViewBoard {
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            section1.rowsArray.append(item);
+            section1.rows.append(item);
         }
         
-        self.collectionView.sectionsArray.append(section1);
+        self.collectionView.sections.append(section1);
         
         
         let section2 = ZHCollectionViewSection();
@@ -52,13 +52,13 @@ class MultiSectionCollectionViewBoard: ZHBaseCollectionViewBoard {
         section2.minimumLineSpacing = 10.0;
         section2.minimumInteritemSpacing = 10.0;
         
-        section2.headerModel = {
+        section2.header = {
             let model = NormalCellModel();
             model.title = "Section1 Header";
             return model;
         }()
         
-        section2.footerModel = {
+        section2.footer = {
             let model = NormalCellModel();
             model.title = "Section1 Footer";
             return model;
@@ -68,10 +68,10 @@ class MultiSectionCollectionViewBoard: ZHBaseCollectionViewBoard {
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            section2.rowsArray.append(item);
+            section2.rows.append(item);
         }
         
-        self.collectionView.sectionsArray.append(section2);
+        self.collectionView.sections.append(section2);
         
     }
 

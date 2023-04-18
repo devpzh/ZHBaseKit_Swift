@@ -27,10 +27,10 @@ open class ZHTableView: UITableView {
         return imp;
     }()
     
-    public var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
+    public var sections:[ZHTableViewSection] = [ZHTableViewSection]() {
         didSet
         {
-            self.imp.sectionsArray = sectionsArray;
+            self.imp.sections = sections;
         }
     }
     

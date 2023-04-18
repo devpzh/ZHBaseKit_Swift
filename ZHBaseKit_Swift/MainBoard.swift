@@ -54,7 +54,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kSingleSectionTableView;
              return model
         }()
-        self.section.rowsArray.append(singleSectionTableViewModel);
+        self.section.rows.append(singleSectionTableViewModel);
         
         let multiSectionTableViewModel = { ()-> NormalCellModel in
              let model = NormalCellModel();
@@ -62,7 +62,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kMultiSectionTableView;
              return model
         }()
-        self.section.rowsArray.append(multiSectionTableViewModel);
+        self.section.rows.append(multiSectionTableViewModel);
         
         let singleSectionCollectionViewModel = { ()-> NormalCellModel in
              let model = NormalCellModel();
@@ -70,7 +70,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kSingleSectionCollectionView;
              return model
         }()
-        self.section.rowsArray.append(singleSectionCollectionViewModel);
+        self.section.rows.append(singleSectionCollectionViewModel);
         
         let multiSectionCollectionViewModel = { ()-> NormalCellModel in
              let model = NormalCellModel();
@@ -78,7 +78,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kMultiSectionCollectionView;
              return model
         }()
-        self.section.rowsArray.append(multiSectionCollectionViewModel);
+        self.section.rows.append(multiSectionCollectionViewModel);
         
         let nestedTableViewModel = { ()-> NormalCellModel in
              let model = NormalCellModel();
@@ -86,7 +86,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kNestedTableView;
              return model
         }()
-        self.section.rowsArray.append(nestedTableViewModel);
+        self.section.rows.append(nestedTableViewModel);
         
         let nestedCollectionViewModel = { ()-> NormalCellModel in
              let model = NormalCellModel();
@@ -94,7 +94,7 @@ class MainBoard: ZHBaseTableViewBoard{
              model.title     = kNestedCollectionView;
              return model
         }()
-        self.section.rowsArray.append(nestedCollectionViewModel);
+        self.section.rows.append(nestedCollectionViewModel);
         
         
         let styleCellModel = { ()-> StyleCellModel in
@@ -104,7 +104,7 @@ class MainBoard: ZHBaseTableViewBoard{
             model.iconName = "drink_cola";
             return model;
         }()
-        self.section.rowsArray.append(styleCellModel);
+        self.section.rows.append(styleCellModel);
 
         self.tableView.reloadData();
     }

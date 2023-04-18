@@ -68,7 +68,7 @@ open class ZHBaseCollectionView: ZHBaseCell{
         self.collectionView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator;
         self.collectionView.isPagingEnabled = model.pagingEnabled;
         self.collectionView.isScrollEnabled = model.scrollEnabled;
-        self.collectionView.sectionsArray   = model.sectionsArray;
+        self.collectionView.sections   = model.sections;
         self.collectionView.reloadData();
 
     }
@@ -81,8 +81,8 @@ open class ZHBaseCollectionView: ZHBaseCell{
             return;
         }
         
-        if self.collectionView.sectionsArray != config.sectionsArray {
-            self.collectionView.sectionsArray = config.sectionsArray;
+        if self.collectionView.sections != config.sections {
+            self.collectionView.sections = config.sections;
         }
 
         self.collectionView.reloadData();

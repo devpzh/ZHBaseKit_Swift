@@ -21,13 +21,13 @@ class NestedCollectionViewBoard: ZHBaseCollectionViewBoard {
 
     func onConfiguration()
     {
-        self.section.headerModel = {
+        self.section.header = {
             let model = NormalCellModel();
             model.title = "Section Header";
             return model;
         }()
         
-        self.section.footerModel = {
+        self.section.footer = {
             let model = NormalCellModel();
             model.title = "Section Footer";
             return model;
@@ -37,7 +37,7 @@ class NestedCollectionViewBoard: ZHBaseCollectionViewBoard {
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
             self.collectionView.reloadData();
         }
         
@@ -48,16 +48,16 @@ class NestedCollectionViewBoard: ZHBaseCollectionViewBoard {
         {
             let item = NormalCellModel();
             item.title = "item \(i)";
-            tableViewModel.section.rowsArray.append(item);
+            tableViewModel.section.rows.append(item);
         }
-        self.section.rowsArray.append(tableViewModel);
+        self.section.rows.append(tableViewModel);
         
         
         for i in 0..<4
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
             self.collectionView.reloadData();
         }
         

@@ -15,8 +15,8 @@ open class ZHBaseTableViewModel: ZHBaseCellModel {
         return ZHTableViewSection();
     }()
     
-    //MARK: sectionsArray
-    public lazy var sectionsArray: [ZHTableViewSection] = {
+    //MARK: sections
+    public lazy var sections: [ZHTableViewSection] = {
         return [ZHTableViewSection]();
     }()
     
@@ -39,7 +39,7 @@ open class ZHBaseTableViewModel: ZHBaseCellModel {
     public override init() {
         super.init();
         self.cellClassName = "ZHBaseTableView";
-        self.sectionsArray.append(self.section);
+        self.sections.append(self.section);
     }
     
 }

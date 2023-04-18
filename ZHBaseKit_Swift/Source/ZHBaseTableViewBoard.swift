@@ -26,11 +26,11 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
         return ZHTableViewSection();
     }()
     
-    //MARK: sectionsArray
-    public var sectionsArray:[ZHTableViewSection] = [ZHTableViewSection]() {
+    //MARK: sections
+    public var sections:[ZHTableViewSection] = [ZHTableViewSection]() {
         didSet{
-            if sectionsArray != self.tableView.sectionsArray {
-                self.tableView.sectionsArray = sectionsArray;
+            if sections != self.tableView.sections {
+                self.tableView.sections = sections;
             }
         }
     }
@@ -40,7 +40,7 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
         super.onViewCreate();
         
         // add default section
-        self.sectionsArray.append(self.section);
+        self.sections.append(self.section);
         
     }
     

@@ -50,13 +50,11 @@ open class ZHBaseBoard: UIViewController {
     public var titleItem  = UIView.init();
     public var leftItem   = UIView.init();
     public var rightItem  = UIView.init();
-    
-    public var isStatusBarHidden = false {
-        
+    public var hiddenStatusBar = false {
+
         didSet {
-            
             guard let navi = self.navigationController as? ZHNavigationBoard else { return }
-            navi.isStatusBarHidden = isStatusBarHidden;
+            navi.hiddenStatusBar = hiddenStatusBar;
             self.setNeedsStatusBarAppearanceUpdate();
             
         }

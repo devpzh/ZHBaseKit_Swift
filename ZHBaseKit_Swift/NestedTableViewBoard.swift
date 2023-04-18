@@ -19,13 +19,13 @@ class NestedTableViewBoard: ZHBaseTableViewBoard {
     func onConfiguration()  {
         
         
-        self.section.headerModel = {
+        self.section.header = {
             let model = NormalCellModel();
             model.title = "Section Header";
             return model;
         }()
         
-        self.section.footerModel = {
+        self.section.footer = {
             let model = NormalCellModel();
             model.title = "Section Footer";
             return model;
@@ -35,7 +35,7 @@ class NestedTableViewBoard: ZHBaseTableViewBoard {
         {
             let item = NormalCellModel();
             item.title = "row = "+"\(i)" ;
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
         }
         
         
@@ -49,16 +49,16 @@ class NestedTableViewBoard: ZHBaseTableViewBoard {
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            collectionViewModel.section.rowsArray.append(item);
+            collectionViewModel.section.rows.append(item);
         }
-        self.section.rowsArray.append(collectionViewModel);
+        self.section.rows.append(collectionViewModel);
         
         
         for i in 0..<20
         {
             let item = NormalCellModel();
             item.title = "row = "+"\(i)" ;
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
         }
         
         self.tableView.reloadData();

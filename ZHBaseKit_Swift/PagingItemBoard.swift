@@ -24,13 +24,13 @@ class PagingItemBoard: ZHBaseTableViewBoard {
     
     func onConfiguration()  {
         
-        self.section.headerModel = {
+        self.section.header = {
             let model = NormalCellModel();
             model.title = "Section Header";
             return model;
         }()
         
-        self.section.footerModel = {
+        self.section.footer = {
             let model = NormalCellModel();
             model.title = "Section Footer";
             return model;
@@ -40,7 +40,7 @@ class PagingItemBoard: ZHBaseTableViewBoard {
         {
             let item = NormalCellModel();
             item.title = "row = "+"\(i)" ;
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
             self.tableView.reloadData();
         }
         

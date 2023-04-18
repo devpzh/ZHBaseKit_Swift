@@ -49,7 +49,7 @@ open class ZHBaseTableView: ZHBaseCell {
         self.tableView.isScrollEnabled = model.scrollEnabled;
         self.tableView.showsVerticalScrollIndicator  = model.showsVerticalScrollIndicator;
         self.tableView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator;
-        self.tableView.sectionsArray = model.sectionsArray;
+        self.tableView.sections = model.sections;
         self.tableView.reloadData();
     }
    
@@ -60,8 +60,8 @@ open class ZHBaseTableView: ZHBaseCell {
            return;
        }
        
-       if self.tableView.sectionsArray != config.sectionsArray {
-           self.tableView.sectionsArray = config.sectionsArray;
+       if self.tableView.sections != config.sections {
+           self.tableView.sections = config.sections;
        }
        
        self.tableView.reloadData();

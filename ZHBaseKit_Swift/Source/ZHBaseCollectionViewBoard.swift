@@ -23,11 +23,11 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
         return ZHCollectionViewSection();
     }()
     
-    //MARK: sectionsArray
-    public var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
+    //MARK: sections
+    public var sections:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet{
-            if sectionsArray != self.collectionView.sectionsArray {
-                self.collectionView.sectionsArray = sectionsArray;
+            if sections != self.collectionView.sections {
+                self.collectionView.sections = sections;
             }
         }
     }
@@ -36,7 +36,7 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
         super.onViewCreate();
                 
         // add default section
-        self.sectionsArray.append(self.section);
+        self.sections.append(self.section);
        
     }
     

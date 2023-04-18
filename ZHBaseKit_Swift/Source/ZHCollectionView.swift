@@ -34,10 +34,10 @@ open class ZHCollectionView: UICollectionView {
         return imp;
     }()
     
-    public var sectionsArray:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
+    public var sections:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet
         {
-            self.imp.sectionsArray = sectionsArray;
+            self.imp.sections = sections;
         }
     }
     

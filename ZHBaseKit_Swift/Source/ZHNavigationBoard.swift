@@ -10,7 +10,7 @@ import UIKit
 
 open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
 
-    public var isStatusBarHidden = false;
+    public var hiddenStatusBar = false;
    
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate
     }
     
     open override var prefersStatusBarHidden: Bool {
-        return self.isStatusBarHidden;
+        return self.hiddenStatusBar;
     }
 }
 

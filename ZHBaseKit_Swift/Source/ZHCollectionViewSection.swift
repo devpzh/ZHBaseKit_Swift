@@ -20,13 +20,13 @@ open class ZHCollectionViewSection: NSObject{
   public var edgeInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0);
     
   //MARK: Section Header Model
-  public  var headerModel : ZHBaseCellModel?;
+  public var header : ZHBaseCellModel?;
     
   //MARK: Section Footer Model
-  public var footerModel : ZHBaseCellModel?;
+  public var footer : ZHBaseCellModel?;
     
     //MARK: Cell Models
-  public lazy var rowsArray:[ZHBaseCellModel] =
+  public lazy var rows:[ZHBaseCellModel] =
   {
         return [ZHBaseCellModel]();
             

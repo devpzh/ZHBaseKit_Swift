@@ -11,13 +11,13 @@ import UIKit
 open class ZHTableViewSection: NSObject
 {
     //MARK: Section Header Model
-    public var headerModel : ZHBaseCellModel?;
+    public var header:ZHBaseCellModel?;
     
     //MARK: Section Footer Model
-    public var footerModel : ZHBaseCellModel?;
+    public var footer:ZHBaseCellModel?;
     
     //MARK: Cell Models
-    public lazy var rowsArray:[ZHBaseCellModel] =
+    public lazy var rows:[ZHBaseCellModel] =
     {
         return [ZHBaseCellModel]();
     }()

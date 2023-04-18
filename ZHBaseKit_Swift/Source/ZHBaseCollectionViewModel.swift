@@ -15,8 +15,8 @@ open class ZHBaseCollectionViewModel: ZHBaseCellModel {
         return ZHCollectionViewSection();
     }()
     
-    //MARK: sectionsArray
-    public lazy var sectionsArray:[ZHCollectionViewSection] = {
+    //MARK: sections
+    public lazy var sections:[ZHCollectionViewSection] = {
         return [ZHCollectionViewSection]();
     }()
     
@@ -38,7 +38,7 @@ open class ZHBaseCollectionViewModel: ZHBaseCellModel {
     public override init() {
         super.init();
         self.cellClassName = "ZHBaseCollectionView";
-        self.sectionsArray.append(self.section);
+        self.sections.append(self.section);
         
     }
 }

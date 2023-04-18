@@ -10,6 +10,7 @@ import UIKit
 
 open class ZHBaseCellModel: NSObject {
     
+    public var spaceName     : String? = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String
     public var cellClassName : String  = "";
     public var cellWidth     : CGFloat = 0.0;
     public var cellHeight    : CGFloat = 0.0;

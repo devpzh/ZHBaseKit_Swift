@@ -21,13 +21,13 @@ class CollectionViewBoard: ZHBaseCollectionViewBoard {
     
     func onConfiguration()
     {
-//        self.section.headerModel = {
+//        self.section.header = {
 //            let model = NormalCellModel();
 //            model.title = "Section Header";
 //            return model;
 //        }()
 //
-//        self.section.footerModel = {
+//        self.section.footer = {
 //            let model = NormalCellModel();
 //            model.title = "Section Footer";
 //            return model;
@@ -37,7 +37,7 @@ class CollectionViewBoard: ZHBaseCollectionViewBoard {
         {
             let item = CollectionCellModel();
             item.title = "item \(i)";
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
             self.collectionView.reloadData();
         }
         

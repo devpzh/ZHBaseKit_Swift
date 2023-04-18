@@ -21,13 +21,13 @@ class TableViewBoard: ZHBaseTableViewBoard {
 
     func onConfiguration()
     {
-        self.section.headerModel = {
+        self.section.header = {
             let model = NormalCellModel();
             model.title = "Section Header";
             return model;
         }()
         
-        self.section.footerModel = {
+        self.section.footer = {
             let model = NormalCellModel();
             model.title = "Section Footer";
             return model;
@@ -38,7 +38,7 @@ class TableViewBoard: ZHBaseTableViewBoard {
             let item = NormalCellModel();
             item.delegate = self
             item.title = "row = "+"\(i)" ;
-            self.section.rowsArray.append(item);
+            self.section.rows.append(item);
             self.tableView.reloadData();
         }
         

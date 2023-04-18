@@ -16,26 +16,25 @@ public typealias ZHRouterCompleteClosure = ()->();
 open class ZHRouter
 {
     
-   public class func router(url:String, params:[String:Any]? = nil, present:Bool = false, animated:Bool = true ,presentationStyle:UIModalPresentationStyle = .overFullScreen) {
+    public class func router(spaceName:String? = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String, url:String, params:[String:Any]? = nil, present:Bool = false, animated:Bool = true ,presentationStyle:UIModalPresentationStyle = .overFullScreen) {
        
-        router(url: url, params: params, present: present, animated: animated, presentationStyle: presentationStyle, completeClosure: nil);
+        router(spaceName:spaceName ?? "",url: url, params: params, present: present, animated: animated, presentationStyle: presentationStyle, completeClosure: nil);
     }
     
-    class func router(url:String, params:[String:Any]?, present:Bool, animated:Bool , presentationStyle:UIModalPresentationStyle?,completeClosure: ZHRouterCompleteClosure?)
+    class func router(spaceName:String,url:String, params:[String:Any]?, present:Bool, animated:Bool , presentationStyle:UIModalPresentationStyle?,completeClosure: ZHRouterCompleteClosure?)
     {
         if url.isEmpty == true {
             return
         }
         
-        routerViewController(vcName: url, params: params, present: present, animated: animated, presentationStyle: presentationStyle,completeClosure: completeClosure);
+        routerViewController(spaceName:spaceName,vc: url, params: params, present: present, animated: animated, presentationStyle: presentationStyle,completeClosure: completeClosure);
         
         
     }
     
-    class func routerViewController(vcName:String, params:[String:Any]?, present:Bool, animated:Bool, presentationStyle:UIModalPresentationStyle?,completeClosure: ZHRouterCompleteClosure?){
-        
-        let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"];
-        let clazz:AnyClass = NSClassFromString((nameSpace as! String) + "." + vcName)!
+    class func routerViewController(spaceName:String,vc:String, params:[String:Any]?, present:Bool, animated:Bool, presentationStyle:UIModalPresentationStyle?,completeClosure: ZHRouterCompleteClosure?){
+    
+        let clazz:AnyClass = NSClassFromString(spaceName + "." + vc)!
         let clazzType = clazz as? UIViewController.Type;
         if  clazzType == nil {
            return;

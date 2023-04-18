@@ -8,22 +8,24 @@
 
 import UIKit
 
-let kTableViewCellContentViewTag = 10000;
-let kTableViewHeaderFooterContentViewTag = 10001;
-
 public typealias ZHTableViewDidScrollClosure = (UIScrollView)->();
 public typealias ZHTableViewDidEndDeceleratingClosure = (UIScrollView)->();
 public typealias ZHTableViewDidEndDraggingClosure = (UIScrollView,Bool)->();
 
 open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     
+    public struct Tag {
+      public static let cell         = 10000
+      public static let headerFooter = 10001
+    }
+    
     //MARK: Closure
     public var tableViewDidScrollClosure: ZHTableViewDidScrollClosure?
     public var tableViewDidEndDeceleratingClosure: ZHTableViewDidEndDeceleratingClosure?
     public var tableViewDidEndDraggingClosure: ZHTableViewDidEndDraggingClosure?
     
-    //MARK: SectionsArray
-    public lazy var sectionsArray: [ZHTableViewSection] =
+    //MARK: sections
+    public lazy var sections: [ZHTableViewSection] =
         {
          return [ZHTableViewSection]();
     }()
@@ -45,36 +47,31 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     //MARK: UITableViewDelegate
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
+        let model = self.sections[indexPath.section].rows[indexPath.row];
         return model.cellHeight;
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        let headerModel = self.sectionsArray[section].headerModel;
-        return (headerModel != nil) ? headerModel!.cellHeight:0.0;
+        guard let header = self.sections[section].header else { return 0.0 }
+        return header.cellHeight
         
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        let footerModel = self.sectionsArray[section].footerModel;
-        return (footerModel != nil) ? footerModel!.cellHeight:0.0;
+        guard let footer = self.sections[section].footer else { return 0.0 }
+        return footer.cellHeight
     }
     
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerModel = self.sectionsArray[section].headerModel;
-        if  headerModel == nil
-        {
-            return nil;
-        }
-        
-        let header = UITableView.tableView(tableView: tableView, headerFooterClassName: headerModel!.cellClassName);
-        
-        guard let headerContentView = header.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as? ZHBaseCell else
+        guard let headerModel = self.sections[section].header else { return nil}
+        let header = UITableView.tableView(tableView: tableView,spaceName:headerModel.spaceName ?? "",headerFooterClassName:headerModel.cellClassName);
+        guard let headerContentView = header.contentView.viewWithTag(Tag.headerFooter) as? ZHBaseCell else
         { return nil }
+        
         headerContentView.data = headerModel;
         headerContentView.reloadSectionsClosure = {[weak tableView] (animation) in
             let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true;
@@ -88,14 +85,12 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        let footerModel = self.sectionsArray[section].footerModel;
-        if  footerModel == nil
-        {
-            return nil;
-        }
-        let footer = UITableView.tableView(tableView: tableView, headerFooterClassName: footerModel!.cellClassName);
-        guard let footerContentView = footer.contentView.viewWithTag(kTableViewHeaderFooterContentViewTag) as? ZHBaseCell else
+        guard let footerModel = self.sections[section].footer else { return nil }
+        
+        let footer = UITableView.tableView(tableView: tableView,spaceName:footerModel.spaceName ?? "", headerFooterClassName:footerModel.cellClassName);
+        guard let footerContentView = footer.contentView.viewWithTag(Tag.headerFooter) as? ZHBaseCell else
         { return nil }
+        
         footerContentView.data = footerModel;
         footerContentView.reloadSectionsClosure = {[weak tableView] (animation)in
             
@@ -111,19 +106,19 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
     //MARK: UITableViewDataSource
     public func numberOfSections(in tableView: UITableView) -> Int
     {
-        return self.sectionsArray.count;
+        return self.sections.count;
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.sectionsArray[section].rowsArray.count;
+        return self.sections[section].rows.count;
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let model = self.sectionsArray[indexPath.section].rowsArray[indexPath.row];
-        let cell  = UITableView.tableView(tableView: tableView, indexPath: indexPath, cellClassName: model.cellClassName);
-        let contentView:ZHBaseCell = cell.contentView.viewWithTag(kTableViewCellContentViewTag) as! ZHBaseCell;
+        let model = self.sections[indexPath.section].rows[indexPath.row];
+        let cell  = UITableView.tableView(tableView: tableView, indexPath:indexPath,spaceName:model.spaceName ?? "" ,cellClassName:model.cellClassName);
+        let contentView:ZHBaseCell = cell.contentView.viewWithTag(Tag.cell) as! ZHBaseCell;
         contentView.data = model;
         contentView.reloadRowsClosure = { [weak tableView] (animation) in
 
@@ -147,10 +142,9 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
 public extension UITableView
 {
     
-    class func tableView(tableView:UITableView, indexPath:IndexPath, cellClassName:String) -> UITableViewCell
+    class func tableView(tableView:UITableView, indexPath:IndexPath, spaceName:String, cellClassName:String) -> UITableViewCell
     {
-        let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"];
-        let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + cellClassName)!
+        let clazz : AnyClass = NSClassFromString(spaceName + "." + cellClassName)!
         let clazzType = clazz as? ZHBaseCell.Type;
         var cell = tableView.dequeueReusableCell(withIdentifier: cellClassName);
         if cell == nil
@@ -159,22 +153,20 @@ public extension UITableView
             cell?.selectionStyle = .none;
             cell?.backgroundColor = UIColor.clear;
             let contentView = clazzType?.init();
-            contentView?.tag = kTableViewCellContentViewTag;
+            contentView?.tag = ZHTableViewIMP.Tag.cell;
             cell?.contentView.addSubview(contentView!);
             contentView?.snp.makeConstraints({ (make) in
                 make.edges.equalTo(cell!.contentView);
             });
-    
          }
-    
-        return cell!;
+         return cell!;
     }
     
     
-    class func tableView(tableView:UITableView, headerFooterClassName:String) -> UITableViewHeaderFooterView
+    class func tableView(tableView:UITableView,spaceName:String,headerFooterClassName:String) -> UITableViewHeaderFooterView
     {
-        let nameSpace = Bundle.main.infoDictionary!["CFBundleExecutable"];
-        let clazz : AnyClass = NSClassFromString((nameSpace as! String) + "." + headerFooterClassName)!
+        
+        let clazz : AnyClass = NSClassFromString(spaceName + "." + headerFooterClassName)!
         let clazzType = clazz as? ZHBaseCell.Type;
         var headerFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerFooterClassName);
         if headerFooterView == nil
@@ -187,7 +179,7 @@ public extension UITableView
             }();
             
             let contentView = clazzType?.init();
-            contentView?.tag = kTableViewHeaderFooterContentViewTag;
+            contentView?.tag = ZHTableViewIMP.Tag.headerFooter;
             headerFooterView?.contentView.addSubview(contentView!);
             contentView?.snp.makeConstraints({ (make) in
                 make.edges.equalTo(headerFooterView!.contentView);

@@ -28,6 +28,7 @@ class SecondaryBoard: ZHBaseBoard{
     override func onRightTouch() {
         
         ZHRouter.router(url:"MineBoard" )
+
     }
     
 
