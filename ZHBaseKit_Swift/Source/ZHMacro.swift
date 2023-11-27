@@ -11,8 +11,8 @@ import UIKit
 //MARK:
 public let kScreenWidth                 = UIScreen.main.bounds.width;
 public let kScreenHeight                = UIScreen.main.bounds.height;
-public let kNavigationBarHeight:CGFloat = isPhoneX() ? 88.0 : 64.0;
-public let kStatusBarHeight:CGFloat     = isPhoneX() ? 44.0 : 20.0;
+public let kNavigationBarHeight:CGFloat = statusBarHeight() + 44.0;
+public let kStatusBarHeight:CGFloat     = isPhoneX() ? statusBarHeight() : 20.0;
 public let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0;
 public let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0;
 public let kTopSafeHeight:CGFloat       = isPhoneX() ? 24.0 : 0.0;
@@ -21,6 +21,18 @@ public let kMargin:CGFloat       = 10.0;
 public let kSpace:CGFloat        = 16.0;
 public let kPadding:CGFloat      = 8.0;
 public let kScale:CGFloat        = 1.0/UIScreen.main.scale;
+
+
+public func statusBarHeight() -> CGFloat {
+    
+    if #available(iOS 13.0, *) {
+      return UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 44.0
+    }
+    if #available(iOS 11.0, *) {
+       return UIApplication.shared.statusBarFrame.size.height
+    }
+    return 44;
+}
 
 public func isPhoneX() -> Bool {
     
