@@ -11,24 +11,24 @@ import UIKit
 open class ZHCollectionViewSection: NSObject{
     
   //MARK: minimumLineSpacing
-  public var minimumLineSpacing:CGFloat = 0.0;
+  public var minimumLineSpacing:CGFloat = 0.0
     
   //MARK: minimumInteritemSpacing
-  public var minimumInteritemSpacing:CGFloat = 0.0;
+  public var minimumInteritemSpacing:CGFloat = 0.0
     
   //MARK: edgeInset
-  public var edgeInsets: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0);
+  public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
   //MARK: Section Header Model
-  public var header : ZHBaseCellModel?;
+  public var header : ZHBaseCellModel?
     
   //MARK: Section Footer Model
-  public var footer : ZHBaseCellModel?;
+  public var footer : ZHBaseCellModel?
     
     //MARK: Cell Models
   public lazy var rows:[ZHBaseCellModel] =
   {
-        return [ZHBaseCellModel]();
+        return [ZHBaseCellModel]()
             
   }()
     

@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = 'ZHBaseKit_Swift'
 
-  spec.version      = '2.5.1'
+  spec.version      = '2.6.0'
 
   spec.summary      = 'ZHBaseKit_Swift'
 

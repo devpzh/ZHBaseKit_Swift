@@ -12,9 +12,9 @@ open class ZHTableView: UITableView {
 
     //MARK: Lazy loading
     public lazy var imp: ZHTableViewIMP = {
-        let imp  = ZHTableViewIMP();
+        let imp  = ZHTableViewIMP()
         imp.tableViewDidScrollClosure = { [weak self] scorllView in
-           self?.tableViewDidScrollClosure?(scorllView);
+           self?.tableViewDidScrollClosure?(scorllView)
         }
         
         imp.tableViewDidEndDeceleratingClosure = { [weak self] scorllView in
@@ -22,15 +22,15 @@ open class ZHTableView: UITableView {
         }
         
         imp.tableViewDidEndDraggingClosure = { [weak self] scorllView,decelerate in
-           self?.tableViewDidEndDraggingClosure?(scorllView,decelerate);
+           self?.tableViewDidEndDraggingClosure?(scorllView,decelerate)
         }
-        return imp;
+        return imp
     }()
     
     public var sections:[ZHTableViewSection] = [ZHTableViewSection]() {
         didSet
         {
-            self.imp.sections = sections;
+            self.imp.sections = sections
         }
     }
     
@@ -42,16 +42,17 @@ open class ZHTableView: UITableView {
     
     open func onConguration()
     {
-        self.backgroundColor = UIColor.clear;
-        self.showsHorizontalScrollIndicator = false;
-        self.separatorStyle = .none;
+        self.backgroundColor = UIColor.clear
+        self.showsHorizontalScrollIndicator = false
+        self.separatorStyle = .none
+        
+//        self.estimatedRowHeight = 0.0
+//        self.estimatedSectionHeaderHeight = 0.0
+//        self.estimatedSectionFooterHeight = 0.0
         
         if #available(iOS 11.0, *)
         {
-            self.estimatedRowHeight = 0.0;
-            self.estimatedSectionHeaderHeight = 0.0;
-            self.estimatedSectionFooterHeight = 0.0;
-            self.contentInsetAdjustmentBehavior = .never;
+            self.contentInsetAdjustmentBehavior = .never
         }else
         {
            
@@ -59,21 +60,21 @@ open class ZHTableView: UITableView {
                 self.automaticallyAdjustsScrollIndicatorInsets = false
             } else {
                 // Fallback on earlier versions
-            };
+            }
         }
         
         if #available(iOS 15.0, *){
-            self.sectionHeaderTopPadding = 0;
+            self.sectionHeaderTopPadding = 0
         }
         
-        self.delegate   = self.imp;
-        self.dataSource = self.imp;
+        self.delegate   = self.imp
+        self.dataSource = self.imp
     }
     
     public override init(frame: CGRect, style: UITableView.Style)
     {
-        super.init(frame: frame, style: style);
-        self.onConguration();
+        super.init(frame: frame, style: style)
+        self.onConguration()
     }
     
     required public init?(coder: NSCoder) {

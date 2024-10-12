@@ -12,33 +12,33 @@ open class ZHBaseCollectionViewModel: ZHBaseCellModel {
 
     //MARK: default section
     public lazy var section: ZHCollectionViewSection = {
-        return ZHCollectionViewSection();
+        return ZHCollectionViewSection()
     }()
     
     //MARK: sections
     public lazy var sections:[ZHCollectionViewSection] = {
-        return [ZHCollectionViewSection]();
+        return [ZHCollectionViewSection]()
     }()
     
     //MARK: scrollDirection
-    public var scrollDirection: UICollectionView.ScrollDirection = .horizontal;
+    public var scrollDirection: UICollectionView.ScrollDirection = .horizontal
     
     //MARK: pagingEnabled
-    public var pagingEnabled = false;
+    public var pagingEnabled = false
     
     //MARK: scrollEnabled
-    public var scrollEnabled = true;
+    public var scrollEnabled = true
     
     //MARK: showsHorizontalScrollIndicator
-    public var showsHorizontalScrollIndicator = false;
+    public var showsHorizontalScrollIndicator = false
     
     //MARK: showsVerticalScrollIndicator
-    public var showsVerticalScrollIndicator = false;
+    public var showsVerticalScrollIndicator = false
     
     public override init() {
-        super.init();
-        self.cellClassName = "ZHBaseCollectionView";
-        self.sections.append(self.section);
+        super.init()
+        self.cellClassName = "ZHBaseCollectionView"
+        self.sections.append(self.section)
         
     }
 }

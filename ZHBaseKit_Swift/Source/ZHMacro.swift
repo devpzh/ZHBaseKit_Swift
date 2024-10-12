@@ -9,18 +9,18 @@
 import UIKit
 
 //MARK:
-public let kScreenWidth                 = UIScreen.main.bounds.width;
-public let kScreenHeight                = UIScreen.main.bounds.height;
-public let kNavigationBarHeight:CGFloat = statusBarHeight() + 44.0;
-public let kStatusBarHeight:CGFloat     = isPhoneX() ? statusBarHeight() : 20.0;
-public let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0;
-public let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0;
-public let kTopSafeHeight:CGFloat       = isPhoneX() ? 24.0 : 0.0;
+public let kScreenWidth                 = UIScreen.main.bounds.width
+public let kScreenHeight                = UIScreen.main.bounds.height
+public let kNavigationBarHeight:CGFloat = statusBarHeight() + 44.0
+public let kStatusBarHeight:CGFloat     = isPhoneX() ? statusBarHeight() : 20.0
+public let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0
+public let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0
+public let kTopSafeHeight:CGFloat       = isPhoneX() ? 24.0 : 0.0
 
-public let kMargin:CGFloat       = 10.0;
-public let kSpace:CGFloat        = 16.0;
-public let kPadding:CGFloat      = 8.0;
-public let kScale:CGFloat        = 1.0/UIScreen.main.scale;
+public let kMargin:CGFloat       = 10.0
+public let kSpace:CGFloat        = 16.0
+public let kPadding:CGFloat      = 8.0
+public let kScale:CGFloat        = 1.0/UIScreen.main.scale
 
 
 public func statusBarHeight() -> CGFloat {
@@ -31,36 +31,36 @@ public func statusBarHeight() -> CGFloat {
     if #available(iOS 11.0, *) {
        return UIApplication.shared.statusBarFrame.size.height
     }
-    return 44;
+    return 44
 }
 
 public func isPhoneX() -> Bool {
     
-    var isPhoneX = false;
+    var isPhoneX = false
     if #available(iOS 11.0, *){
-        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom;
-        isPhoneX = (bottom ?? 0) > 0.0;
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+        isPhoneX = (bottom ?? 0) > 0.0
         
     }
-    return isPhoneX;
+    return isPhoneX
 
 }
 
 //MARK: Image
 public func kImageName(_ name:String) -> UIImage
 {
-    return  UIImage.init(named: name) ?? UIImage.init();
+    return  UIImage.init(named: name) ?? UIImage.init()
 }
 
 //MARK: Font
 public func kFont(_ size:CGFloat) -> UIFont
 {
-    return  UIFont.systemFont(ofSize: size);
+    return  UIFont.systemFont(ofSize: size)
 }
 
 public func kBoldFont(_ size:CGFloat) -> UIFont
 {
-    return  UIFont.boldSystemFont(ofSize: size);
+    return  UIFont.boldSystemFont(ofSize: size)
 }
 
 public func kMediumFont(_ size:CGFloat) -> UIFont
@@ -74,12 +74,12 @@ public extension UIColor
 {
     static func rgb(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor
     {
-        return UIColor.rgb(r: r, g: g, b: b, alpha: 1.0);
+        return UIColor.rgb(r: r, g: g, b: b, alpha: 1.0)
     }
     
     static func rgb(r:CGFloat, g:CGFloat, b:CGFloat, alpha:CGFloat) -> UIColor
     {
-        return UIColor.init(red: r/255.0 , green: g/255.0, blue: b/255.0, alpha: alpha);
+        return UIColor.init(red: r/255.0 , green: g/255.0, blue: b/255.0, alpha: alpha)
     }
     
     convenience init(_ hex: String) {
@@ -146,10 +146,10 @@ public func kScaleHeight(_ height : CGFloat) -> CGFloat {
 }
 
 public func kScaleWidth(_ width : CGFloat, _ scaleWidth:CGFloat) -> CGFloat {
-    return width * kScreenWidth / scaleWidth;
+    return width * kScreenWidth / scaleWidth
 }
 public func kScaleHeight(_ height : CGFloat,_ scaleHeight:CGFloat ) -> CGFloat {
-    return height * kScreenHeight / scaleHeight;
+    return height * kScreenHeight / scaleHeight
 }
 
 

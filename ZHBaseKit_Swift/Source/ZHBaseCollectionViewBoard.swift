@@ -12,37 +12,37 @@ open class ZHBaseCollectionViewBoard: ZHBaseBoard,ZHCollectionViewLayoutDelegate
 
     //MARK: collectionView
     public lazy var collectionView: ZHCollectionView = {
-        let collectionView = ZHCollectionView.init(self);
-        collectionView.alwaysBounceVertical = true;
-        self.view.addSubview(collectionView);
-        return collectionView;
+        let collectionView = ZHCollectionView.init(self)
+        collectionView.alwaysBounceVertical = true
+        self.view.addSubview(collectionView)
+        return collectionView
     }()
     
     //MARK: default section
     public lazy var section: ZHCollectionViewSection = {
-        return ZHCollectionViewSection();
+        return ZHCollectionViewSection()
     }()
     
     //MARK: sections
     public var sections:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet{
             if sections != self.collectionView.sections {
-                self.collectionView.sections = sections;
+                self.collectionView.sections = sections
             }
         }
     }
     
     open override func onViewCreate() {
-        super.onViewCreate();
+        super.onViewCreate()
                 
         // add default section
-        self.sections.append(self.section);
+        self.sections.append(self.section)
        
     }
     
     //onViewLayout
     open override func onViewLayout() {
-        super.onViewLayout();
+        super.onViewLayout()
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(naviBar.snp.bottom)

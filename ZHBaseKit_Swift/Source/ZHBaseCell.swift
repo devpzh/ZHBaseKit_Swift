@@ -8,8 +8,8 @@
 
 import UIKit
 
-public typealias ZHTableViewCellReloadRowsClosure     = (_ animation:UITableView.RowAnimation?)->();
-public typealias ZHTableViewCellReloadSectionsClosure = (_ animation:UITableView.RowAnimation?)->();
+public typealias ZHTableViewCellReloadRowsClosure     = (_ animation:UITableView.RowAnimation?)->()
+public typealias ZHTableViewCellReloadSectionsClosure = (_ animation:UITableView.RowAnimation?)->()
 
 open class ZHBaseCell: UIView {
   
@@ -26,24 +26,24 @@ open class ZHBaseCell: UIView {
                 self.addGesture()
             }else
             {
-                self.removeGesture();
+                self.removeGesture()
             }
             
         }
         
     }
 
-    public weak var delegate: AnyObject?;
+    public weak var delegate: AnyObject?
     public var data:ZHBaseCellModel?
     {
         didSet
         {
             if data?.delegate != nil
             {
-                self.delegate = data?.delegate;
+                self.delegate = data?.delegate
             }
             
-            self.dataDidChange();
+            self.dataDidChange()
         }
         
         
@@ -52,7 +52,7 @@ open class ZHBaseCell: UIView {
     //MARK: Func
     open func onLoad()
     {
-        self.enabled = true;
+        self.enabled = true
      
     }
     
@@ -64,12 +64,12 @@ open class ZHBaseCell: UIView {
     open func addGesture()
     {
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(onTouch))
-        self.addGestureRecognizer(gesture);
+        self.addGestureRecognizer(gesture)
     }
     
     open func removeGesture()
     {
-        self.gestureRecognizers?.removeAll();
+        self.gestureRecognizers?.removeAll()
     }
         
     @objc open func onTouch()
@@ -91,8 +91,8 @@ open class ZHBaseCell: UIView {
     
     //MARK: Init
     public override init(frame: CGRect) {
-        super.init(frame: frame);
-        self.onLoad();
+        super.init(frame: frame)
+        self.onLoad()
     }
     
     required public init?(coder aDecoder: NSCoder) {

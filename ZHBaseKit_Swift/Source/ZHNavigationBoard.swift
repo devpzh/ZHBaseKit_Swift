@@ -10,26 +10,26 @@ import UIKit
 
 open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate {
 
-    public var hiddenStatusBar = false;
+    public var hiddenStatusBar = false
    
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.interactivePopGestureRecognizer?.delegate = self;
+        self.interactivePopGestureRecognizer?.delegate = self
     }
     
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if self.viewControllers.count <= 1 {
-            return false;
+            return false
         }
-        return true;
+        return true
     }
 
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true;
+        return true
     }
 
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return gestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self);
+        return gestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self)
     }
     
     open override func pushViewController(_ viewController: UIViewController, animated: Bool) {
@@ -37,7 +37,7 @@ open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate
         if (self.children.count > 0)
         {
             // 隐藏tabbar
-            viewController.hidesBottomBarWhenPushed = true;
+            viewController.hidesBottomBarWhenPushed = true
         }
         super.pushViewController(viewController, animated: animated)
     }
@@ -46,12 +46,12 @@ open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate
     open class func addChildControllers(_ viewController:UIViewController)->ZHNavigationBoard {
         
         let navi = ZHNavigationBoard.init(rootViewController: viewController)
-        return navi;
+        return navi
         
     }
     
     open override var prefersStatusBarHidden: Bool {
-        return self.hiddenStatusBar;
+        return self.hiddenStatusBar
     }
 }
 

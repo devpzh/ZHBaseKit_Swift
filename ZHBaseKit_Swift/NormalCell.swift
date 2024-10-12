@@ -14,7 +14,7 @@ class NormalCellModel: ZHBaseCellModel {
     override init() {
         super.init();
         self.cellClassName = "NormalCell";
-        self.cellHeight    = 44.0;
+//        self.cellHeight    = 44.0;
     }
 }
 

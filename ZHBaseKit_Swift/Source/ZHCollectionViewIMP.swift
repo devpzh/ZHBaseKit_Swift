@@ -8,10 +8,10 @@
 
 import UIKit
 
-public typealias ZHCollectionViewDidScrollClosure = (UIScrollView)->();
-public typealias ZHCollectionViewDidEndDeceleratingClosure = (UIScrollView)->();
-public typealias ZHCollectionViewDidEndDraggingClosure = (UIScrollView,Bool)->();
-public typealias ZHCollectionViewDidEndMovingClosure   = (ZHIndexPath,ZHIndexPath)->();
+public typealias ZHCollectionViewDidScrollClosure = (UIScrollView)->()
+public typealias ZHCollectionViewDidEndDeceleratingClosure = (UIScrollView)->()
+public typealias ZHCollectionViewDidEndDraggingClosure = (UIScrollView,Bool)->()
+public typealias ZHCollectionViewDidEndMovingClosure   = (ZHIndexPath,ZHIndexPath)->()
 
 public struct ZHIndexPath {
     let section:Int
@@ -34,20 +34,20 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
     
     //MARK: sections
     public lazy var sections: [ZHCollectionViewSection] = {
-        return [ZHCollectionViewSection]();
+        return [ZHCollectionViewSection]()
     }()
 
     //MARK: UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.collectionViewDidScrollClosure?(scrollView);
+        self.collectionViewDidScrollClosure?(scrollView)
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.collectionViewDidEndDeceleratingClosure?(scrollView);
+        self.collectionViewDidEndDeceleratingClosure?(scrollView)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.collectionViewDidEndDraggingClosure?(scrollView,decelerate);
+        self.collectionViewDidEndDraggingClosure?(scrollView,decelerate)
     }
     
     //MARK: UICollectionViewDelegateFlowLayout
@@ -57,40 +57,40 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
         if indexPath.row >= rows.count {
             return .zero
         }
-        let model = rows[indexPath.row];
-        return CGSize(width: model.cellWidth, height: model.cellHeight);
+        let model = rows[indexPath.row]
+        return CGSize(width: model.cellWidth, height: model.cellHeight ?? 0)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let sec = self.sections[section];
-        return sec.edgeInsets;
+        let sec = self.sections[section]
+        return sec.edgeInsets
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let sec = self.sections[section];
-        return sec.minimumLineSpacing;
+        let sec = self.sections[section]
+        return sec.minimumLineSpacing
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        let sec = self.sections[section];
-        return sec.minimumInteritemSpacing;
+        let sec = self.sections[section]
+        return sec.minimumInteritemSpacing
     }
     
     //MARK : UICollectionViewDataSource
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.sections.count;
+        return self.sections.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let sec = self.sections[section];
-        return sec.rows.count;
+        let sec = self.sections[section]
+        return sec.rows.count
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         guard let header = self.sections[section].header else { return .zero }
-        return CGSize(width:header.cellWidth, height: header.cellHeight)
+        return CGSize(width:header.cellWidth, height: header.cellHeight ?? 0)
         
     }
     
@@ -98,24 +98,24 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         
         guard let footer = self.sections[section].footer else { return .zero }
-        return CGSize(width:footer.cellWidth, height: footer.cellHeight)
+        return CGSize(width:footer.cellWidth, height: footer.cellHeight ?? 0)
     
     }
 
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        var reusableView : UICollectionReusableView!;
-        let model = self.sections[indexPath.section];
+        var reusableView : UICollectionReusableView!
+        let model = self.sections[indexPath.section]
       
         if kind == UICollectionView.elementKindSectionHeader && model.header != nil
         {
             reusableView = UICollectionView.collectionView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath,spaceName:model.header?.spaceName ?? "", cellClassName:model.header?.cellClassName ?? "")
-            let contentView:ZHBaseCell = reusableView.viewWithTag(Tag.headerFooter) as! ZHBaseCell;
-            contentView.data = model.header;
+            let contentView:ZHBaseCell = reusableView.viewWithTag(Tag.headerFooter) as! ZHBaseCell
+            contentView.data = model.header
             contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
                 UIView.setAnimationsEnabled(false)
-                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
+                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section))
                 UIView.setAnimationsEnabled(true)
             }
             
@@ -123,38 +123,38 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
         
         if kind == UICollectionView.elementKindSectionFooter && model.footer != nil {
             
-            reusableView = UICollectionView.collectionView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath,spaceName:model.footer?.spaceName ?? "", cellClassName:model.footer?.cellClassName ?? "");
-            let contentView:ZHBaseCell = reusableView.viewWithTag(Tag.headerFooter) as! ZHBaseCell;
-            contentView.data = model.footer;
+            reusableView = UICollectionView.collectionView(collectionView: collectionView, viewForSupplementaryElementOfKind: kind, indexPath: indexPath,spaceName:model.footer?.spaceName ?? "", cellClassName:model.footer?.cellClassName ?? "")
+            let contentView:ZHBaseCell = reusableView.viewWithTag(Tag.headerFooter) as! ZHBaseCell
+            contentView.data = model.footer
             contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
                 UIView.setAnimationsEnabled(false)
-                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
+                collectionView?.reloadSections(IndexSet.init(integer: indexPath.section))
                 UIView.setAnimationsEnabled(true)
             }
             
         }
         
-        return reusableView;
+        return reusableView
         
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let model = self.sections[indexPath.section].rows[indexPath.row];
-        let cell =  UICollectionView.collectionView(collectionView: collectionView, indexPath: indexPath, spaceName:model.spaceName ?? "",cellClassName: model.cellClassName);
-        let contentView:ZHBaseCell = cell.contentView.viewWithTag(Tag.cell) as! ZHBaseCell;
-        contentView.data = model;
+        let model = self.sections[indexPath.section].rows[indexPath.row]
+        let cell =  UICollectionView.collectionView(collectionView: collectionView, indexPath: indexPath, spaceName:model.spaceName ?? "",cellClassName: model.cellClassName)
+        let contentView:ZHBaseCell = cell.contentView.viewWithTag(Tag.cell) as! ZHBaseCell
+        contentView.data = model
         contentView.reloadRowsClosure = {[weak collectionView] (animation) in
             UIView.setAnimationsEnabled(false)
-            collectionView?.reloadItems(at: [indexPath]);
+            collectionView?.reloadItems(at: [indexPath])
             UIView.setAnimationsEnabled(true)
         }
         contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
             UIView.setAnimationsEnabled(false)
-            collectionView?.reloadSections(IndexSet.init(integer: indexPath.section));
+            collectionView?.reloadSections(IndexSet.init(integer: indexPath.section))
             UIView.setAnimationsEnabled(true)
         }
-        return cell;
+        return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -177,21 +177,21 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
         
         if sourceIndexPath.section == destinationIndexPath.section {
             
-            let section = self.sections[sourceIndexPath.section];
-            let model = section.rows[sourceIndexPath.row];
-            section.rows.remove(at: sourceIndexPath.row);
-            section.rows.insert(model, at: destinationIndexPath.row);
+            let section = self.sections[sourceIndexPath.section]
+            let model = section.rows[sourceIndexPath.row]
+            section.rows.remove(at: sourceIndexPath.row)
+            section.rows.insert(model, at: destinationIndexPath.row)
             
         }else {
             
-            let section    = self.sections[sourceIndexPath.section];
-            let to_section = self.sections[destinationIndexPath.section];
-            let model      = section.rows[sourceIndexPath.row];
-            let to_model   = section.rows[destinationIndexPath.row];
-            section.rows.remove(at: sourceIndexPath.row);
-            section.rows.insert(to_model, at: sourceIndexPath.row);
-            to_section.rows.remove(at: destinationIndexPath.row);
-            to_section.rows.insert(model, at: destinationIndexPath.row);
+            let section    = self.sections[sourceIndexPath.section]
+            let to_section = self.sections[destinationIndexPath.section]
+            let model      = section.rows[sourceIndexPath.row]
+            let to_model   = section.rows[destinationIndexPath.row]
+            section.rows.remove(at: sourceIndexPath.row)
+            section.rows.insert(to_model, at: sourceIndexPath.row)
+            to_section.rows.remove(at: destinationIndexPath.row)
+            to_section.rows.insert(model, at: destinationIndexPath.row)
         }
         
         let at = ZHIndexPath(section: sourceIndexPath.section, row: sourceIndexPath.row)
@@ -207,23 +207,23 @@ public extension UICollectionView
 {
     class func collectionView(collectionView: UICollectionView, indexPath:IndexPath, spaceName:String,cellClassName:String) -> UICollectionViewCell
     {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellClassName);
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellClassName, for: indexPath);
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellClassName)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellClassName, for: indexPath)
         let clazz : AnyClass = NSClassFromString(spaceName + "." + cellClassName)!
-        let clazzType = clazz as? ZHBaseCell.Type;
-        var contentView = cell.contentView.viewWithTag(ZHCollectionViewIMP.Tag.cell);
+        let clazzType = clazz as? ZHBaseCell.Type
+        var contentView = cell.contentView.viewWithTag(ZHCollectionViewIMP.Tag.cell)
         
         if contentView == nil
         {
-            contentView = clazzType?.init();
-            contentView?.tag = ZHCollectionViewIMP.Tag.cell;
-            cell.contentView.addSubview(contentView!);
+            contentView = clazzType?.init()
+            contentView?.tag = ZHCollectionViewIMP.Tag.cell
+            cell.contentView.addSubview(contentView!)
             contentView?.snp.makeConstraints({ (make) in
-                make.edges.equalTo(cell.contentView);
+                make.edges.equalTo(cell.contentView)
             })
         }
         
-        return cell;
+        return cell
     }
     
     
@@ -232,23 +232,23 @@ public extension UICollectionView
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellClassName)
         
         let resuablView = collectionView.dequeueReusableSupplementaryView(ofKind: kind
-            , withReuseIdentifier: cellClassName, for: indexPath);
+            , withReuseIdentifier: cellClassName, for: indexPath)
         
         let clazz : AnyClass = NSClassFromString(spaceName + "." + cellClassName)!
-        let clazzType = clazz as? ZHBaseCell.Type;
-        var contentView = resuablView.viewWithTag(ZHCollectionViewIMP.Tag.headerFooter);
+        let clazzType = clazz as? ZHBaseCell.Type
+        var contentView = resuablView.viewWithTag(ZHCollectionViewIMP.Tag.headerFooter)
         
         if contentView == nil
         {
-           contentView = clazzType?.init();
-           contentView?.tag = ZHCollectionViewIMP.Tag.headerFooter;
-           resuablView.addSubview(contentView!);
+           contentView = clazzType?.init()
+           contentView?.tag = ZHCollectionViewIMP.Tag.headerFooter
+           resuablView.addSubview(contentView!)
            contentView?.snp.makeConstraints({ (make) in
-              make.edges.equalTo(resuablView);
+              make.edges.equalTo(resuablView)
            })
         }
         
-        return resuablView;
+        return resuablView
     }
     
 }

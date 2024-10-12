@@ -10,34 +10,34 @@ import UIKit
 
 @objc public protocol ZHCollectionViewLayoutDelegate
 {
-   @objc optional func collectionViewLayout() -> UICollectionViewLayout;
+   @objc optional func collectionViewLayout() -> UICollectionViewLayout
 }
 
 open class ZHCollectionView: UICollectionView {
 
     public lazy var imp: ZHCollectionViewIMP = {
-        let imp = ZHCollectionViewIMP();
+        let imp = ZHCollectionViewIMP()
         
         imp.collectionViewDidScrollClosure = { [weak self] scorllView in
-            self?.collectionViewDidScrollClosure?(scorllView);
+            self?.collectionViewDidScrollClosure?(scorllView)
         }
         imp.collectionViewDidEndDeceleratingClosure = { [weak self] scorllView in
             self?.collectionViewDidEndDeceleratingClosure?(scorllView)
         }
         imp.collectionViewDidEndDraggingClosure = { [weak self] scorllView,decelerate in
-            self?.collectionViewDidEndDraggingClosure?(scorllView,decelerate);
+            self?.collectionViewDidEndDraggingClosure?(scorllView,decelerate)
         }
         imp.collectionViewDidEndMovingClosure = { [weak self] (at,to) in
             self?.collectionViewDidEndMovingClosure?(at,to)
         }
         
-        return imp;
+        return imp
     }()
     
     public var sections:[ZHCollectionViewSection] = [ZHCollectionViewSection]() {
         didSet
         {
-            self.imp.sections = sections;
+            self.imp.sections = sections
         }
     }
     
@@ -54,9 +54,9 @@ open class ZHCollectionView: UICollectionView {
         didSet {
             
             if allowMoveItems == true {
-                let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longPressGestureAction(_:)));
-                longPressGesture.minimumPressDuration = 0.5;
-                self.addGestureRecognizer(longPressGesture);
+                let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longPressGestureAction(_:)))
+                longPressGesture.minimumPressDuration = 0.5
+                self.addGestureRecognizer(longPressGesture)
             }
         }
         
@@ -71,12 +71,12 @@ open class ZHCollectionView: UICollectionView {
     
     open func onConfiguration()
     {
-        self.backgroundColor = UIColor.clear;
-        self.delegate   = self.imp;
-        self.dataSource = self.imp;
-        self.showsHorizontalScrollIndicator = false;
+        self.backgroundColor = UIColor.clear
+        self.delegate   = self.imp
+        self.dataSource = self.imp
+        self.showsHorizontalScrollIndicator = false
         if #available(iOS 11.0, *) {
-            self.contentInsetAdjustmentBehavior = .never;
+            self.contentInsetAdjustmentBehavior = .never
         }
     
     }
@@ -90,27 +90,27 @@ open class ZHCollectionView: UICollectionView {
         {
             if delegate!.responds(to:#selector(ZHCollectionViewLayoutDelegate.collectionViewLayout))
             {
-                flowLayout =  delegate!.collectionViewLayout();
+                flowLayout =  delegate!.collectionViewLayout()
             }else
             {
-                let layout = UICollectionViewFlowLayout.init();
+                let layout = UICollectionViewFlowLayout.init()
                 layout.scrollDirection = .vertical
-                flowLayout = layout;
+                flowLayout = layout
             }
         }else
         {
-            let layout = UICollectionViewFlowLayout.init();
+            let layout = UICollectionViewFlowLayout.init()
             layout.scrollDirection = .vertical
         }
         
         super.init(frame: CGRect.zero, collectionViewLayout:flowLayout!)
-        self.onConfiguration();
+        self.onConfiguration()
 
     }
     
    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout);
-        self.onConfiguration();
+        super.init(frame: frame, collectionViewLayout: layout)
+        self.onConfiguration()
     }
     
     required public init?(coder: NSCoder) {
@@ -122,24 +122,24 @@ open class ZHCollectionView: UICollectionView {
         switch gesture.state {
         case .began:
     
-            let indexPath = self.indexPathForItem(at: gesture.location(in: self));
+            let indexPath = self.indexPathForItem(at: gesture.location(in: self))
             if indexPath == nil {
-                break;
+                break
             }
 
             currentMoveIndexPath = indexPath
-            let cell = self.cellForItem(at: indexPath!);
+            let cell = self.cellForItem(at: indexPath!)
             if  cell == nil {
                 break
             }
-            self.bringSubviewToFront(cell!);
-            self.beginInteractiveMovementForItem(at: indexPath!);
-            break;
+            self.bringSubviewToFront(cell!)
+            self.beginInteractiveMovementForItem(at: indexPath!)
+            break
         
         case .changed:
             
             if onlyMoveInSameSection == true {
-                let indexPath = self.indexPathForItem(at: gesture.location(in: self));
+                let indexPath = self.indexPathForItem(at: gesture.location(in: self))
                 if indexPath != nil, indexPath?.section != currentMoveIndexPath?.section {
                     cancelInteractiveMovement()
                     currentMoveIndexPath = nil
@@ -147,17 +147,17 @@ open class ZHCollectionView: UICollectionView {
                 }
             }
             
-            self.updateInteractiveMovementTargetPosition(gesture.location(in: self));
-            break;
+            self.updateInteractiveMovementTargetPosition(gesture.location(in: self))
+            break
         
         case .ended:
             currentMoveIndexPath = nil
-            self.endInteractiveMovement();
-            break;
+            self.endInteractiveMovement()
+            break
         
         default:
             currentMoveIndexPath = nil
-            self.endInteractiveMovement();
+            self.endInteractiveMovement()
             
         
         }
@@ -167,55 +167,55 @@ open class ZHCollectionView: UICollectionView {
    
 }
 
-public typealias ZHCollectionViewLayoutClosure = (_ height:CGFloat)->();
+public typealias ZHCollectionViewLayoutClosure = (_ height:CGFloat)->()
 
 open class ZHCollectionViewLayout: UICollectionViewFlowLayout {
     
-    public var space:CGFloat = kMargin;
+    public var space:CGFloat = kMargin
 
     public override init() {
-        super.init();
+        super.init()
        
     }
     
     public required init?(coder: NSCoder) {
-        super.init(coder: coder);
+        super.init(coder: coder)
     }
     
     public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
-        guard let s_layoutAttributes = super.layoutAttributesForElements(in: rect) else { return []};
-        var layoutAttributes:[UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]();
+        guard let s_layoutAttributes = super.layoutAttributesForElements(in: rect) else { return []}
+        var layoutAttributes:[UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]()
         layoutAttributes.append(contentsOf: s_layoutAttributes)
         
-        var t_layoutAttributes:[UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]();
+        var t_layoutAttributes:[UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]()
         
         
         for i in 0..<layoutAttributes.count {
 
-            let current:UICollectionViewLayoutAttributes = layoutAttributes[i];
+            let current:UICollectionViewLayoutAttributes = layoutAttributes[i]
 
-            let previous:UICollectionViewLayoutAttributes? = (i==0) ? nil:layoutAttributes[i-1];
+            let previous:UICollectionViewLayoutAttributes? = (i==0) ? nil:layoutAttributes[i-1]
 
-            let next:UICollectionViewLayoutAttributes? = ((i+1)==layoutAttributes.count) ? nil:layoutAttributes[i+1];
+            let next:UICollectionViewLayoutAttributes? = ((i+1)==layoutAttributes.count) ? nil:layoutAttributes[i+1]
 
-            t_layoutAttributes.append(current);
+            t_layoutAttributes.append(current)
 
 
-            let current_y:CGFloat  = current.frame.maxY;
+            let current_y:CGFloat  = current.frame.maxY
 
-            let previous_y:CGFloat  = (previous != nil) ? previous!.frame.maxY:0;
+            let previous_y:CGFloat  = (previous != nil) ? previous!.frame.maxY:0
 
-            let next_y:CGFloat  = (next != nil) ? next!.frame.maxY:0;
+            let next_y:CGFloat  = (next != nil) ? next!.frame.maxY:0
 
             if current_y != previous_y && current_y != next_y {
 
                 if current.representedElementKind == UICollectionView.elementKindSectionHeader {
-                    layoutAttributes.removeAll();
+                    layoutAttributes.removeAll()
 
                 } else if current.representedElementKind == UICollectionView.elementKindSectionFooter {
 
-                    layoutAttributes.removeAll();
+                    layoutAttributes.removeAll()
 
                 }else {
                     self.updateCellFrame(layoutAttributes: &t_layoutAttributes)
@@ -223,30 +223,30 @@ open class ZHCollectionViewLayout: UICollectionViewFlowLayout {
 
             }else if current_y != next_y {
 
-                self.updateCellFrame(layoutAttributes: &t_layoutAttributes);
+                self.updateCellFrame(layoutAttributes: &t_layoutAttributes)
             }
 
 
         }
 
-        return layoutAttributes;
+        return layoutAttributes
     }
     
     open func updateCellFrame(layoutAttributes: inout [UICollectionViewLayoutAttributes]) {
         
-        var x:CGFloat = kSpace;
+        var x:CGFloat = kSpace
         
         for i in 0..<layoutAttributes.count
         {
-            let attributes = layoutAttributes[i];
+            let attributes = layoutAttributes[i]
             
-            var rect:CGRect = attributes.frame;
-            rect.origin.x = x;
-            attributes.frame = rect;
-            x += rect.size.width + self.space;
+            var rect:CGRect = attributes.frame
+            rect.origin.x = x
+            attributes.frame = rect
+            x += rect.size.width + self.space
 
         }
-        layoutAttributes.removeAll();
+        layoutAttributes.removeAll()
         
     }
 }

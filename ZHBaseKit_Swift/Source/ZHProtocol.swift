@@ -8,5 +8,5 @@
 
 public protocol ZHProtocol {
     
-    func onTouch(_ cell:ZHBaseCell, data:ZHBaseCellModel);
+    func onTouch(_ cell:ZHBaseCell, data:ZHBaseCellModel)
 }

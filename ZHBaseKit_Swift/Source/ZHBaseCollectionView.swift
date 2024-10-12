@@ -10,11 +10,11 @@ import UIKit
 
 open class ZHBaseCollectionView: ZHBaseCell{
 
-   public weak var viewLayoutDelegate: ZHCollectionViewLayoutDelegate?;
+   public weak var viewLayoutDelegate: ZHCollectionViewLayoutDelegate?
     
    public init(_ frame:CGRect, _ viewLayoutDelegate:ZHCollectionViewLayoutDelegate){
-        self.viewLayoutDelegate = viewLayoutDelegate;
-        super.init(frame: CGRect.zero);
+        self.viewLayoutDelegate = viewLayoutDelegate
+        super.init(frame: CGRect.zero)
     }
     
    required public init?(coder aDecoder: NSCoder) {
@@ -22,29 +22,29 @@ open class ZHBaseCollectionView: ZHBaseCell{
     }
     
    public override init(frame: CGRect) {
-        super.init(frame: frame);
+        super.init(frame: frame)
     }
     
    public lazy var collectionView : ZHCollectionView = {
-        let collectionView = ZHCollectionView.init((self.viewLayoutDelegate != nil) ? self.viewLayoutDelegate!:self);
-        self.addSubview(collectionView);
-        return collectionView;
+        let collectionView = ZHCollectionView.init((self.viewLayoutDelegate != nil) ? self.viewLayoutDelegate!:self)
+        self.addSubview(collectionView)
+        return collectionView
     }()
     
     
     public lazy var config:ZHBaseCollectionViewModel = {
          
         if let model = data as? ZHBaseCollectionViewModel{
-            return model;
+            return model
         }
-        return ZHBaseCollectionViewModel();
-    }();
+        return ZHBaseCollectionViewModel()
+    }()
     
    open override func onLoad(){
-        super.onLoad();
-        self.enabled = false;
+        super.onLoad()
+        self.enabled = false
         self.collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self);
+            make.edges.equalTo(self)
         }
     }
     
@@ -53,23 +53,23 @@ open class ZHBaseCollectionView: ZHBaseCell{
         guard let model = self.data as? ZHBaseCollectionViewModel else { return }
         
         if config != model {
-            config = model;
+            config = model
         }
             
         
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
 
             if flowLayout.scrollDirection != model.scrollDirection {
-               flowLayout.scrollDirection = model.scrollDirection;
+               flowLayout.scrollDirection = model.scrollDirection
             }
         }
 
-        self.collectionView.showsVerticalScrollIndicator = model.showsVerticalScrollIndicator;
-        self.collectionView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator;
-        self.collectionView.isPagingEnabled = model.pagingEnabled;
-        self.collectionView.isScrollEnabled = model.scrollEnabled;
-        self.collectionView.sections   = model.sections;
-        self.collectionView.reloadData();
+        self.collectionView.showsVerticalScrollIndicator = model.showsVerticalScrollIndicator
+        self.collectionView.showsHorizontalScrollIndicator = model.showsHorizontalScrollIndicator
+        self.collectionView.isPagingEnabled = model.pagingEnabled
+        self.collectionView.isScrollEnabled = model.scrollEnabled
+        self.collectionView.sections   = model.sections
+        self.collectionView.reloadData()
 
     }
     
@@ -77,14 +77,14 @@ open class ZHBaseCollectionView: ZHBaseCell{
     open func reloadData(){
         
         if data != config {
-            data = config;
-            return;
+            data = config
+            return
         }
         
         if self.collectionView.sections != config.sections {
-            self.collectionView.sections = config.sections;
+            self.collectionView.sections = config.sections
         }
 
-        self.collectionView.reloadData();
+        self.collectionView.reloadData()
     }
 }
