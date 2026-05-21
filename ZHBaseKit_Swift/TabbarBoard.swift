@@ -7,33 +7,29 @@
 //
 
 import UIKit
-import CYLTabBarController
 
-class TabbarBoard : CYLTabBarController {
+class TabbarBoard : UITabBarController {
     
     override func viewDidLoad() {
-        super.viewDidLoad();
-        self.onTabbarAppearance();
-        self.onTabbarControllers()
+        super.viewDidLoad()
+        onTabbarAppearance()
+        onTabbarControllers()
     }
     
     func onTabbarAppearance() {
-        UITabBar.appearance().tintColor = UIColor.black;
-        UITabBar.appearance().unselectedItemTintColor = UIColor.lightGray;
+        UITabBar.appearance().tintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = .lightGray
     }
     
-    func onTabbarControllers()
-    {
-        let main = ZHNavigationBoard.addChildControllers(MainBoard());
-        let mine = ZHNavigationBoard.addChildControllers(MineBoard());
-                
-        let mainItem = [CYLTabBarItemTitle:"首页",CYLTabBarItemImage:"tabbar_home_default",CYLTabBarItemSelectedImage:"tabbar_home_select"];
+    func onTabbarControllers() {
         
-        let mineItem = [CYLTabBarItemTitle:"我的",CYLTabBarItemImage:"tabbar_mine_default",CYLTabBarItemSelectedImage:"tabbar_mine_select"];
+        let home  = ZHNavigationBoard.init(rootViewController: MainBoard())
+        let me    = ZHNavigationBoard.init(rootViewController: MineBoard())
         
-        self.tabBarItemsAttributes = [mainItem,mineItem];
-        self.viewControllers = [main,mine];
-        
+        home.tabBarItem  = UITabBarItem(title:"首页", image:  UIImage(named: "tabbar_home_default"), selectedImage: UIImage(named: "tabbar_home_select"))
+        me.tabBarItem  = UITabBarItem(title:"排行", image: UIImage(named: "tabbar_mine_default"), selectedImage: UIImage(named: "tabbar_mine_select"))
+       
+        viewControllers = [home,me]
     }
     
 }

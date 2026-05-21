@@ -61,10 +61,9 @@ open class ZHBaseCell: UIView {
        
     }
     
-    open func addGesture()
-    {
-        let gesture = UITapGestureRecognizer.init(target: self, action: #selector(onTouch))
-        self.addGestureRecognizer(gesture)
+    open func addGesture() {        
+        let gesture = UITapGestureRecognizer(target: self, action:#selector(onTouch))
+        addGestureRecognizer(gesture)
     }
     
     open func removeGesture()
@@ -76,7 +75,7 @@ open class ZHBaseCell: UIView {
     {
         
     }
-    
+
     open override func layoutSubviews(){
         
         if self.frame.size.width > 0 || self.frame.size.height > 0

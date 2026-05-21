@@ -17,6 +17,9 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
     //MARK: Lazy loading
     public lazy var tableView: ZHTableView = {
         let tableView =  ZHTableView(frame: CGRect.zero, style: tableViewStyle)
+        if ZHBaseKit.shared.useSystemNaviBar {
+            tableView.contentInsetAdjustmentBehavior = .automatic
+        }
         self.view.addSubview(tableView)
         return tableView
     }()
@@ -27,31 +30,26 @@ open class ZHBaseTableViewBoard: ZHBaseBoard {
     }()
     
     //MARK: sections
-    public var sections:[ZHTableViewSection] = [ZHTableViewSection]() {
-        didSet{
-            if sections != self.tableView.sections {
-                self.tableView.sections = sections
-            }
-        }
+    public var sections: [ZHTableViewSection] {
+        get { tableView.sections }
+        set { tableView.sections = newValue }
     }
     
     //MARK: Func
     open override func onViewCreate() {
         super.onViewCreate()
         
-        // add default section
+        //add default section
         self.sections.append(self.section)
         
     }
     
     open override func onViewLayout() {
         super.onViewLayout()
-        
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(naviBar.snp.bottom)
+            make.top.equalTo(naviBarBottom)
             make.leading.trailing.bottom.equalTo(view)
         }
-        
     }
 
     

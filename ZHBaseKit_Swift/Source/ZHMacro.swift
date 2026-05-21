@@ -14,8 +14,19 @@ public let kScreenHeight                = UIScreen.main.bounds.height
 public let kNavigationBarHeight:CGFloat = statusBarHeight() + 44.0
 public let kStatusBarHeight:CGFloat     = isPhoneX() ? statusBarHeight() : 20.0
 public let kTabbarHeight :CGFloat       = isPhoneX() ? 83.0 : 49.0
-public let kBottomSafeHeight :CGFloat   = isPhoneX() ? 34.0 : 0.0
-public let kTopSafeHeight:CGFloat       = isPhoneX() ? 24.0 : 0.0
+
+public var kTopSafeHeight: CGFloat {
+       return max(statusBarHeight() - 20.0, 0)
+ }
+
+public var kBottomSafeHeight: CGFloat {
+    if #available(iOS 15.0, *) {
+       return UIApplication.shared.connectedScenes
+              .compactMap { $0 as? UIWindowScene }
+              .first?.windows.first?.safeAreaInsets.bottom ?? 0
+    }
+    return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+}
 
 public let kMargin:CGFloat       = 10.0
 public let kSpace:CGFloat        = 16.0
@@ -27,9 +38,6 @@ public func statusBarHeight() -> CGFloat {
     
     if #available(iOS 13.0, *) {
       return UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 44.0
-    }
-    if #available(iOS 11.0, *) {
-       return UIApplication.shared.statusBarFrame.size.height
     }
     return 44
 }

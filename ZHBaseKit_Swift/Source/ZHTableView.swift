@@ -46,10 +46,6 @@ open class ZHTableView: UITableView {
         self.showsHorizontalScrollIndicator = false
         self.separatorStyle = .none
         
-//        self.estimatedRowHeight = 0.0
-//        self.estimatedSectionHeaderHeight = 0.0
-//        self.estimatedSectionFooterHeight = 0.0
-        
         if #available(iOS 11.0, *)
         {
             self.contentInsetAdjustmentBehavior = .never

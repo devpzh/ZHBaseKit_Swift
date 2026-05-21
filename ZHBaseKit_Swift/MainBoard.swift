@@ -21,7 +21,7 @@ class MainBoard: ZHBaseTableViewBoard{
         super.onViewCreate();
         self.onShowNavigationTitle("首页");
         self.onShowRightItemWithTitle("Request");
-        self.onConfiguration();
+        self.onConfiguration()
         
         //MARK: tableViewDidScroll
         self.tableView.tableViewDidScrollClosure = { scrollView in
@@ -105,6 +105,10 @@ class MainBoard: ZHBaseTableViewBoard{
             return model;
         }()
         self.section.rows.append(styleCellModel);
+        
+        
+//        self.section.rows.append(contentsOf: section.rows)
+//        self.section.rows.append(contentsOf: section.rows)
 
         self.tableView.reloadData();
     }

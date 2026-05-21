@@ -93,7 +93,6 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         
         footerContentView.data = footerModel
         footerContentView.reloadSectionsClosure = {[weak tableView] (animation)in
-            
             let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true
             UIView.setAnimationsEnabled(enable)
             tableView?.reloadSections(IndexSet.init(integer: section), with:(animation != nil) ? animation! : UITableView.RowAnimation.none)
@@ -120,18 +119,18 @@ open class ZHTableViewIMP: NSObject,UITableViewDelegate,UITableViewDataSource{
         let cell  = UITableView.tableView(tableView: tableView, indexPath:indexPath,spaceName:model.spaceName ?? "" ,cellClassName:model.cellClassName)
         let contentView:ZHBaseCell = cell.contentView.viewWithTag(Tag.cell) as! ZHBaseCell
         contentView.data = model
-        contentView.reloadRowsClosure = { [weak tableView] (animation) in
-
-            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true
+        contentView.reloadRowsClosure = { [weak tableView, weak cell] (animation) in
+            guard let cell = cell, let currentIndexPath = tableView?.indexPath(for: cell) else { return }
+            let enable = (animation == nil || animation == Optional.none) ? false : true
             UIView.setAnimationsEnabled(enable)
-            tableView?.reloadRows(at: [indexPath], with:(animation != nil) ? animation! : UITableView.RowAnimation.none)
+            tableView?.reloadRows(at: [currentIndexPath], with: animation ?? .none)
             UIView.setAnimationsEnabled(true)
         }
-        contentView.reloadSectionsClosure = {[weak tableView] (animation) in
-            
-            let enable = (animation == nil || animation == UITableView.RowAnimation.none) ?false:true
+        contentView.reloadSectionsClosure = { [weak tableView, weak cell] (animation) in
+            guard let cell = cell, let currentIndexPath = tableView?.indexPath(for: cell) else { return }
+            let enable = (animation == nil || animation == Optional.none) ? false : true
             UIView.setAnimationsEnabled(enable)
-            tableView?.reloadSections(IndexSet.init(integer: indexPath.section), with: (animation != nil) ? animation! : UITableView.RowAnimation.none)
+            tableView?.reloadSections(IndexSet(integer: currentIndexPath.section), with: animation ?? .none)
             UIView.setAnimationsEnabled(true)
         }
         return cell
@@ -149,8 +148,8 @@ public extension UITableView
         var cell = tableView.dequeueReusableCell(withIdentifier: cellClassName)
         if cell == nil
         {
-            cell = UITableViewCell.init(style: .value1, reuseIdentifier: cellClassName)
-            cell?.selectionStyle = .none
+            cell = UITableViewCell(style: .value1, reuseIdentifier: cellClassName)
+            cell?.selectionStyle = .gray
             cell?.backgroundColor = UIColor.clear
             let contentView = clazzType?.init()
             contentView?.tag = ZHTableViewIMP.Tag.cell
@@ -173,8 +172,8 @@ public extension UITableView
         {
             headerFooterView = UITableViewHeaderFooterView.init(reuseIdentifier:headerFooterClassName)
             headerFooterView?.backgroundView = {
-            let view = UIView.init(frame: headerFooterView!.bounds)
-            view.backgroundColor = UIColor.clear
+            let view = UIView(frame: headerFooterView!.bounds)
+            view.backgroundColor = .clear
             return view
             }()
             

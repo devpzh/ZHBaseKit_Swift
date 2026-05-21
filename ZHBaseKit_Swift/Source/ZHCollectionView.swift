@@ -93,14 +93,15 @@ open class ZHCollectionView: UICollectionView {
                 flowLayout =  delegate!.collectionViewLayout()
             }else
             {
-                let layout = UICollectionViewFlowLayout.init()
+                let layout = UICollectionViewFlowLayout()
                 layout.scrollDirection = .vertical
                 flowLayout = layout
             }
         }else
         {
-            let layout = UICollectionViewFlowLayout.init()
+            let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
+            flowLayout = layout
         }
         
         super.init(frame: CGRect.zero, collectionViewLayout:flowLayout!)

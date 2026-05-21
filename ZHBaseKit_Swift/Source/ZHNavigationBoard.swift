@@ -14,7 +14,32 @@ open class ZHNavigationBoard: UINavigationController,UIGestureRecognizerDelegate
    
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.interactivePopGestureRecognizer?.delegate = self
+        interactivePopGestureRecognizer?.delegate = self
+        if ZHBaseKit.shared.useSystemNaviBar {
+            applySystemNaviBarAppearance()
+        }
+    }
+
+    open func applySystemNaviBarAppearance() {
+      
+        let standard = UINavigationBarAppearance()
+        standard.configureWithOpaqueBackground()
+        standard.backgroundColor = ZHBaseKit.shared.naviBarBackgroundColor
+        standard.titleTextAttributes = [
+            .foregroundColor: ZHBaseKit.shared.naviBarTitleColor,
+            .font: ZHBaseKit.shared.titleFont
+        ]
+        navigationBar.standardAppearance = standard
+        navigationBar.compactAppearance  = standard
+
+        let scrollEdge = UINavigationBarAppearance()
+        scrollEdge.configureWithTransparentBackground()
+        scrollEdge.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        navigationBar.scrollEdgeAppearance = scrollEdge
+        
+        if #available(iOS 15.0, *) {
+            navigationBar.compactScrollEdgeAppearance = scrollEdge
+        }
     }
     
     open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

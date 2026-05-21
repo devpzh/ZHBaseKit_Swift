@@ -12,7 +12,7 @@ class PagingItemBoard: ZHBaseTableViewBoard {
 
     override func onViewCreate() {
         super.onViewCreate();
-        self.onHiddenNavigationBar();
+//        self.onHiddenNavigationBar();
         self.onConfiguration();
     }
     
@@ -51,6 +51,6 @@ class PagingItemBoard: ZHBaseTableViewBoard {
 extension PagingItemBoard:JXSegmentedListContainerViewListDelegate
 {
     func listView() -> UIView {
-        return self.view;
+        return self.view
     }
 }

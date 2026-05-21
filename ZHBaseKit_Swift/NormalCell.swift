@@ -39,7 +39,7 @@ class NormalCell: ZHBaseCell {
     override func onLoad() {
         super.onLoad()
         
-        self.backgroundColor = UIColor.white;
+//        self.backgroundColor = UIColor.white;
         
         self.titleLb.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(kPadding);

@@ -144,14 +144,16 @@ open class ZHCollectionViewIMP: NSObject,UICollectionViewDelegateFlowLayout,UICo
         let cell =  UICollectionView.collectionView(collectionView: collectionView, indexPath: indexPath, spaceName:model.spaceName ?? "",cellClassName: model.cellClassName)
         let contentView:ZHBaseCell = cell.contentView.viewWithTag(Tag.cell) as! ZHBaseCell
         contentView.data = model
-        contentView.reloadRowsClosure = {[weak collectionView] (animation) in
+        contentView.reloadRowsClosure = { [weak collectionView, weak cell] (animation) in
+            guard let cell = cell, let currentIndexPath = collectionView?.indexPath(for: cell) else { return }
             UIView.setAnimationsEnabled(false)
-            collectionView?.reloadItems(at: [indexPath])
+            collectionView?.reloadItems(at: [currentIndexPath])
             UIView.setAnimationsEnabled(true)
         }
-        contentView.reloadSectionsClosure = { [weak collectionView] (animation) in
+        contentView.reloadSectionsClosure = { [weak collectionView, weak cell] (animation) in
+            guard let cell = cell, let currentIndexPath = collectionView?.indexPath(for: cell) else { return }
             UIView.setAnimationsEnabled(false)
-            collectionView?.reloadSections(IndexSet.init(integer: indexPath.section))
+            collectionView?.reloadSections(IndexSet(integer: currentIndexPath.section))
             UIView.setAnimationsEnabled(true)
         }
         return cell

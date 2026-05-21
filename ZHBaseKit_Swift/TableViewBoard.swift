@@ -44,12 +44,17 @@ class TableViewBoard: ZHBaseTableViewBoard {
         
     }
 
+    override func onBarRightItemCreate() {
+    
+        guard let image = UIImage(systemName:"square.and.arrow.up") else { return }
+        onShowRightItemWithImage(image)
+    }
     
 }
 
 extension TableViewBoard:ZHProtocol {
     
     func onTouch(_ cell: ZHBaseCell, data: ZHBaseCellModel) {
-        ZH.router.router(url: "TableViewBoard", present: true,presentationStyle: .pageSheet)
+        ZH.router.router(url: "TableViewBoard", present: false, presentationStyle:.pageSheet)
     }
 }

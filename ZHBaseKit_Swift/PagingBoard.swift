@@ -27,6 +27,7 @@ class PagingBoard: ZHBaseBoard {
     lazy var segmentedView: JXSegmentedView = {
         
         let segmentedView = JXSegmentedView()
+        segmentedView.backgroundColor = .white
         segmentedView.dataSource = self.segmentedDataSource;
         let indicator = JXSegmentedIndicatorLineView()
         indicator.indicatorHeight = 1;

@@ -21,7 +21,7 @@ open class ZHBaseTableView: ZHBaseCell {
     public var tableHeaderViewModel:ZHBaseCellModel?
     
     //MARK: tableView.tableFooterView,非 sectionFooter
-    var tableFooterViewModel:ZHBaseCellModel?
+    public var tableFooterViewModel:ZHBaseCellModel?
     
     public lazy var config:ZHBaseTableViewModel = {
          
@@ -90,7 +90,7 @@ open class ZHBaseTableView: ZHBaseCell {
         if self.tableFooterViewModel != nil && self.tableFooterViewModel!.cellClassName == footerViewModel?.cellClassName
         {
             let footer = self.tableView.tableFooterView as! ZHBaseCell
-            footer.data = tableHeaderViewModel
+            footer.data = tableFooterViewModel
         
         }else{
             

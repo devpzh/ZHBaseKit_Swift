@@ -1,5 +1,5 @@
 use_frameworks!
-platform :ios, '10.0'
+platform :ios, '13.0'
 target 'ZHBaseKit_Swift' do
   
   #SnapKit
@@ -7,9 +7,6 @@ target 'ZHBaseKit_Swift' do
   
   #JXSegmentedView
   pod 'JXSegmentedView'
-  
-  #CYLTabBarController
-  pod 'CYLTabBarController'
   
   #Alamofire
   pod 'Alamofire'
