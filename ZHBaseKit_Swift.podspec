@@ -79,7 +79,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'SnapKit'
 
-  spec.ios.deployment_target = '10.0'
+  spec.ios.deployment_target = '13.0'
 
   spec.source_files  = 'ZHBaseKit_Swift/Source/*.swift'
  
